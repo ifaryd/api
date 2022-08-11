@@ -26,7 +26,10 @@ class User extends Authenticatable
         'telephone',
         'facebook',
         'youtube',
-        'avatar'
+        'avatar',
+        'updated_at',
+        'created_at',
+        'deleted_at'
     ];
 
     public $full_name;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Apis;
 use App\Http\Controllers\Controller;
 use App\Http\Services\UserService;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserStoreRequest;
 
 class UserController extends Controller
 {
@@ -22,8 +23,8 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-      return $this->userService->filterModel($request);   
-    }
+      return $this->userService->filterUserModel($request);   
+    } 
 
     /**
      * Store a newly created resource in storage.
@@ -31,9 +32,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        //
+      $user = $request->validated();
+      return $this->userService->createUserModel($user);
     }
 
     /**
@@ -54,9 +56,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserStoreRequest $request, $id)
     {
-        //
+      $user = $request->validated();
+      return $this->userService->updateUserModel($user, $id);
     }
 
     /**
@@ -67,7 +70,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+      return $this->userService->deleteUserModel($id);
     }
   
 }

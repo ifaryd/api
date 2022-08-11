@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Http\Request;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 function modelNotFound(){
-  return response()->json(['message' => 'Model not found'], 404);
+  throw new HttpResponseException(response()->json(['message' => 'Model not found'], 404));
 }
