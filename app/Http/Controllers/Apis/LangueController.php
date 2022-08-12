@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Apis;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserStoreRequest as DataStoreRequest;
-use App\Http\Services\UserService as DataService;
-class UserController extends Controller
+use App\Http\Requests\LangueStoreRequest as DataStoreRequest;
+use App\Http\Services\LangueService as DataService;
+
+class LangueController extends Controller
 {
     private $dataService;
     
@@ -71,5 +72,4 @@ class UserController extends Controller
     {
       return $this->dataService->deleteDataModel($id);
     }
-  
 }

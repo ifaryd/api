@@ -3,53 +3,52 @@
 namespace App\Http\Services;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\UserResource;
-use App\Models\User;
-//use \Throwable;
+use App\Http\Resources\UserResource as DataResource;
+use App\Models\User as DataModel;
 
 class UserService{
 
-  public function findUserModel($id)
+  public function findDataModel($id)
   {
-    $user = $this->find($id);
-    return new UserResource($user);
+    $data = $this->find($id);
+    return new DataResource($data);
   }
 
-  public function filterUserModel(Request $request){
+  public function filterDataModel(Request $request){
     
-    $users;
+    $data;
     if ($request->per_page){
-      $users = User::orderBy('id', 'desc')->paginate((int)$request->per_page);
+      $data = DataModel::orderBy('id', 'desc')->paginate((int)$request->per_page);
     }
     else{
-      $users = User::lazyById(100);
+      $data = DataModel::lazyById(100);
     }
-    return UserResource::collection($users);
+    return DataResource::collection($data);
   }
 
-  public function createUserModel($user){
+  public function createDataModel($body){
 
-    $user = User::create($user);
-    return new UserResource($user);
+    $data = DataModel::create($body);
+    return new DataResource($data);
   }
 
-  public function updateUserModel($data, $id){
+  public function updateDataModel($body, $id){
 
-    $user = $this->find($id);
-    return $user->update($data);
+    $data = $this->find($id);
+    return $data->update($body);
   }
 
-  public function deleteUserModel($id){
+  public function deleteDataModel($id){
 
-    $user = $this->find($id);
-    return $user->delete();
+    $data = $this->find($id);
+    return $data->delete();
   }
 
   public function find($id)
   {
-    $user = User::find($id);
-    if (!$user) modelNotFound();
-    return $user;
+    $data = DataModel::find($id);
+    if (!$data) modelNotFound();
+    return $data;
   }
 
 }

@@ -4,26 +4,18 @@ namespace App\Http\Controllers\Apis;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserStoreRequest as DataStoreRequest;
-use App\Http\Services\UserService as DataService;
-class UserController extends Controller
-{
-    private $dataService;
-    
-    function __construct(DataService $dataService){
-      $this->dataService = $dataService;
-    }
 
+class Charge extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function index(Request $request)
+    public function index()
     {
-      return $this->dataService->filterDataModel($request);   
-    } 
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -31,10 +23,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DataStoreRequest $request)
+    public function store(Request $request)
     {
-      $body = $request->validated();
-      return $this->dataService->createDataModel($body);
+        //
     }
 
     /**
@@ -45,7 +36,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-      return $this->dataService->findDataModel($id);
+        //
     }
 
     /**
@@ -55,10 +46,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DataStoreRequest $request, $id)
+    public function update(Request $request, $id)
     {
-      $body = $request->validated();
-      return $this->dataService->updateDataModel($body, $id);
+        //
     }
 
     /**
@@ -69,7 +59,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-      return $this->dataService->deleteDataModel($id);
+        //
     }
-  
 }

@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Apis\UserController;
-
+use App\Http\Controllers\Apis\TypeController;
+use App\Http\Controllers\Apis\LangueController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,4 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResources([
     'users' => UserController::class,
+    'types' => TypeController::class,
+    'langues' => LangueController::class,
 ]);
