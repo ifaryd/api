@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('cantiques', function (Blueprint $table) {
             $table->id();
             $table->string("titre");
-            $table->string("lien_audio")->nullable();
-            $table->string("contenu");
+            $table->longText("lien_audio");
+            $table->longText("contenu");
             $table->integer("duree");
-            $table->foreignId('langue_id')->nullable()->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->softDeletes();
+            $table->foreignId('langue_id')->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

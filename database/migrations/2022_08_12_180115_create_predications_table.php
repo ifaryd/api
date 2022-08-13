@@ -17,17 +17,17 @@ return new class extends Migration
             $table->id();
             $table->string("titre");
             $table->string("sous_titre")->nullable();
-            $table->string("lien_audio")->nullable();
-            $table->string("nom_audio")->nullable();
-            $table->string("lien_video")->nullable();
-            $table->integer("duree")->nullable();
             $table->integer("numero");
-            $table->integer("chapitre")->nullable();
-            $table->string("couverture")->nullable();
-            $table->string("sermon_similaire")->nullable();
+            $table->longText("lien_audio");
+            $table->string("nom_audio");
+            $table->longText("lien_video")->nullable();
+            $table->integer("duree")->nullable();
+            $table->string("chapitre")->nullable();
+            $table->longText("couverture")->nullable();
+            $table->longText("sermon_similaire")->nullable();
             $table->foreignId('langue_id')->nullable()->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

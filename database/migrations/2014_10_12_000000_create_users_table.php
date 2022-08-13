@@ -25,15 +25,15 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('telephone')->nullable();
-            $table->string('avatar')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('youtube')->nullable();
+            $table->longText('avatar')->nullable();
+            $table->longText('facebook')->nullable();
+            $table->longText('youtube')->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     } 
 

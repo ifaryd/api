@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('versets', function (Blueprint $table) {
             $table->id();
-            $table->integer("numero")->nullable();
-            $table->string("contenu")->nullable();
-            $table->string("info")->nullable();
+            $table->integer("numero");
+            $table->longText("contenu");
+            $table->longText("info")->nullable();
             $table->foreignId('predication_id')->nullable()->constrained('predications')->onUpdate('cascade')->onDelete('cascade');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

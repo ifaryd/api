@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('actualites', function (Blueprint $table) {
             $table->id();
             $table->string("miniature")->nullable();
-            $table->string("lien_video")->nullable();
-            $table->string("contenu")->nullable();
-            $table->foreignId('langue_id')->nullable()->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
-            $table->softDeletes();
+            $table->longText("contenu");
+            $table->longText("video")->nullable();
+            $table->foreignId('langue_id')->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

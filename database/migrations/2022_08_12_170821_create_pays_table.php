@@ -17,8 +17,17 @@ return new class extends Migration
             $table->id();
             $table->string("nom");
             $table->string("sigle");
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::create('langue_pays', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('langue_id')->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('pays_id')->constrained('pays')->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('principal', false);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +38,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('langue_pays');
         Schema::dropIfExists('pays');
     }
 };

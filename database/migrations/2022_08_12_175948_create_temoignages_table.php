@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('temoignages', function (Blueprint $table) {
             $table->id();
             $table->string("titre")->nullable();
-            $table->string("lien_video")->nullable();
-            $table->string("lien_photo")->nullable();
-            $table->string("contenu")->nullable();
+            $table->longText("lien_video")->nullable();
+            $table->longText("photo")->nullable();
+            $table->longText("contenu")->nullable();
             $table->foreignId('langue_id')->nullable()->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->string("titre");
+            $table->longText("url");
             $table->string("lieu")->nullable();
-            $table->string("description")->nullable();
+            $table->longText("description")->nullable();
             $table->foreignId('type_id')->nullable()->constrained('types')->onUpdate('cascade')->onDelete('cascade');
-            $table->softDeletes();
+            $table->foreignId('langue_id')->nullable()->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

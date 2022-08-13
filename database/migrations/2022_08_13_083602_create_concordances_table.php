@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('types', function (Blueprint $table) {
+        Schema::create('concordances', function (Blueprint $table) {
             $table->id();
-            $table->string("libelle");
-            $table->longText("description")->nullable();
+            $table->foreignId('verset_from_id')->constrained('versets')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('verset_to_id')->constrained('versets')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('concordances');
     }
 };

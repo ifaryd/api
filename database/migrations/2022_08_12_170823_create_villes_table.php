@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('villes', function (Blueprint $table) {
             $table->id();
             $table->string("libelle");
-            $table->string("description")->nullable();
-            $table->foreignId('pay_id')->nullable()->constrained('pays')->onUpdate('cascade')->onDelete('cascade');
-            $table->softDeletes();
+            $table->longText("description")->nullable();
+            $table->foreignId('pays_id')->nullable()->constrained('pays')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

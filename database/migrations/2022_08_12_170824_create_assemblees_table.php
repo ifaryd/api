@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('types', function (Blueprint $table) {
+        Schema::create('assemblees', function (Blueprint $table) {
             $table->id();
-            $table->string("libelle");
-            $table->longText("description")->nullable();
+            $table->foreignId('ville_id')->constrained('villes')->onUpdate('cascade')->onDelete('cascade');
+            $table->longText('localisation')->nullable();
+            $table->string('addresse')->nullable();
+            $table->longText('photo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('assemblees');
     }
 };

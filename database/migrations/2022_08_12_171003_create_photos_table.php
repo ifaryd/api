@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
+            $table->longText("url");
             $table->string("lieu")->nullable();
-            $table->string("description")->nullable();
+            $table->longText("description")->nullable();
             $table->foreignId('langue_id')->nullable()->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

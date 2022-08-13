@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('types', function (Blueprint $table) {
+        Schema::create('confirmes', function (Blueprint $table) {
             $table->id();
-            $table->string("libelle");
-            $table->longText("description")->nullable();
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('pays_id')->constrained('pays')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('video_id')->nullable()->constrained('videos')->onUpdate('cascade')->onDelete('cascade');
+            $table->longText("details")->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('confirmes');
     }
 };

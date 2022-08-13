@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string("libelle");
             $table->string("initial");
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
