@@ -17,7 +17,7 @@ class ChargeStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,10 +25,34 @@ class ChargeStoreRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
-            //
+            'libelle' => 'required|min:4|max:255',
+            'description' => 'nullable',
+            'libelle' => [Rule::unique('charges')->ignore($request->libelle)],
         ];
     }
-}
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+          'libelle.required' => "Libellé est requis",
+          'libelle.unique' => "Libellé existe déjä",
+        ];
+    }
+    
+    /*** Get the error messages for the defined validation rules.** @return array*/
+    protected function failedValidation(Validator $validator)
+    {
+      throw new HttpResponseException(
+        response()->json($validator->errors(), 422)
+      );
+    }
+} 
+ 

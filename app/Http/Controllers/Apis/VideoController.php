@@ -4,18 +4,27 @@ namespace App\Http\Controllers\Apis;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\VideoStoreRequest as DataStoreRequest;
+use App\Http\Services\VideoService as DataService;
 
-class Video extends Controller
+class VideoController extends Controller
 {
+    private $dataService;
+    
+    function __construct(DataService $dataService){
+      $this->dataService = $dataService;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(Request $request)
     {
-        //
-    }
+      return $this->dataService->filterDataModel($request);   
+    } 
 
     /**
      * Store a newly created resource in storage.
@@ -23,9 +32,10 @@ class Video extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DataStoreRequest $request)
     {
-        //
+      $body = $request->validated();
+      return $this->dataService->createDataModel($body);
     }
 
     /**
@@ -36,7 +46,7 @@ class Video extends Controller
      */
     public function show($id)
     {
-        //
+      return $this->dataService->findDataModel($id);
     }
 
     /**
@@ -46,9 +56,10 @@ class Video extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DataStoreRequest $request, $id)
     {
-        //
+      $body = $request->validated();
+      return $this->dataService->updateDataModel($body, $id);
     }
 
     /**
@@ -59,6 +70,6 @@ class Video extends Controller
      */
     public function destroy($id)
     {
-        //
+      return $this->dataService->deleteDataModel($id);
     }
 }

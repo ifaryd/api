@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class VideoResource extends JsonResource
 {
-    /**
+/**
      * The "data" wrapper that should be applied.
      *
      * @var string|null
@@ -21,14 +21,6 @@ class VideoResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'type_id' => $this->type_id,
-            'langue_id' => $this->langue_id,
-            'titre' => $this->titre,
-            'url' => $this->url,
-            'lieu' => $this->lieu,
-            'description' => $this->description,
-        ];
+        return parent::toArray($request);
     }
 }

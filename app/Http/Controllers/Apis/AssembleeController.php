@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Apis;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\ChargeStoreRequest as DataStoreRequest;
-use App\Http\Services\ChargeService as DataService;
+use App\Http\Requests\AssembleeStoreRequest as DataStoreRequest;
+use App\Http\Services\AssembleeService as DataService;
 
-class ChargeController extends Controller
+class AssembleeController extends Controller
 {
     private $dataService;
     

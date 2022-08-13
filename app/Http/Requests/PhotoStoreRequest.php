@@ -3,7 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
 class PhotoStoreRequest extends FormRequest
 {
     /**
@@ -13,7 +16,7 @@ class PhotoStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +24,33 @@ class PhotoStoreRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
-            //
+            'url' => 'required|max:255',
+            'lieu' => 'nullable|max:255',
+            'description' => 'nullable',
+            'langue_id' => 'nullable|integer',
         ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+          'url.required' => "url est requis",
+        ];
+    }
+    
+    /*** Get the error messages for the defined validation rules.** @return array*/
+    protected function failedValidation(Validator $validator)
+    {
+      throw new HttpResponseException(
+        response()->json($validator->errors(), 422)
+      );
     }
 }

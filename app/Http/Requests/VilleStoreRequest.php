@@ -3,7 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
 class VilleStoreRequest extends FormRequest
 {
     /**
@@ -13,7 +16,7 @@ class VilleStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +24,35 @@ class VilleStoreRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
-            //
+            'libelle' => 'required|min:4|max:255',
+            'pays_id' => 'required|max:255',
+            'description' => 'nullable',
+            'libelle' => [Rule::unique('villes')->ignore($request->libelle)],
         ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+          'libelle.required' => "Libellé est requis",
+          'pays_id.required' => "Pays est requis",
+          'libelle.unique' => "Libellé existe déjä",
+        ];
+    }
+    
+    /*** Get the error messages for the defined validation rules.** @return array*/
+    protected function failedValidation(Validator $validator)
+    {
+      throw new HttpResponseException(
+        response()->json($validator->errors(), 422)
+      );
     }
 }

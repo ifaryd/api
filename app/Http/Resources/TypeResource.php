@@ -21,10 +21,6 @@ class TypeResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'libelle' => $this->libelle,
-            'description' => $this->description,
-        ];
+        return parent::toArray($request);
     }
 }

@@ -4,9 +4,9 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LangueResource extends JsonResource
+class AssembleeResource extends JsonResource
 {
-    /**
+/**
      * The "data" wrapper that should be applied.
      *
      * @var string|null

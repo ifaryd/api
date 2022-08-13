@@ -21,11 +21,6 @@ class VilleResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'pays_id' => $this->pays_id,
-            'libelle' => $this->libelle,
-            'description' => $this->description,
-        ];
+        return parent::toArray($request);
     }
 } 

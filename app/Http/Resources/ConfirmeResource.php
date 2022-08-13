@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LangueResource extends JsonResource
+class ConfirmeResource extends JsonResource
 {
     /**
      * The "data" wrapper that should be applied.

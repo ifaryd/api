@@ -21,14 +21,6 @@ class ChargeResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'titre' => $this->titre,
-            'url' => $this->url,
-            'lieu' => $this->lieu,
-            'description' => $this->description,
-            'type_id' => $this->type_id,
-            'langue_id' => $this->langue_id,
-        ];
+        return parent::toArray($request);
     }
 }

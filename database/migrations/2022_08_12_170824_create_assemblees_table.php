@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('assemblees', function (Blueprint $table) {
             $table->id();
+            $table->string('nom')->nullable();
             $table->foreignId('ville_id')->constrained('villes')->onUpdate('cascade')->onDelete('cascade');
             $table->longText('localisation')->nullable();
             $table->string('addresse')->nullable();

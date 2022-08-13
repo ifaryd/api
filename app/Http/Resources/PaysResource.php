@@ -21,10 +21,6 @@ class PaysResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'nom' => $this->nom,
-            'sigle' => $this->sigle,
-        ];
+        return parent::toArray($request);
     }
 }

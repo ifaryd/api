@@ -8,7 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
-class PaysStoreRequest extends FormRequest
+class ActualiteStoreResource extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,10 +28,11 @@ class PaysStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'nom' => 'required|min:4|max:255',
-            'sigle' => 'required|max:255',
-            'sigle' => [Rule::unique('pays')->ignore($request->initial)],
-            'nom' => [Rule::unique('pays')->ignore($request->libelle)],
+            'miniature' => 'nullable|max:255',
+            'contenu' => 'required',
+            'video' => 'nullable',
+            'description' => 'nullable',
+            'langue_id' => 'required|integer',
         ];
     }
 
@@ -43,10 +44,8 @@ class PaysStoreRequest extends FormRequest
     public function messages()
     {
         return [
-          'nom.required' => "Nom est requis",
-          'sigle.required' => "Sigle est requis",
-          'sigle.unique' => "Sigle existe déjä",
-          'nom.unique' => "Nom existe déjä",
+          'contenu.required' => "contenu est requis",
+          'langue_id.required' => "contenu est requis",
         ];
     }
     

@@ -8,7 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
-class PaysStoreRequest extends FormRequest
+class CantiqueStoreResource extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,10 +28,12 @@ class PaysStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'nom' => 'required|min:4|max:255',
-            'sigle' => 'required|max:255',
-            'sigle' => [Rule::unique('pays')->ignore($request->initial)],
-            'nom' => [Rule::unique('pays')->ignore($request->libelle)],
+            'titre' => 'required|max:255',
+            'lien_audio' => 'required',
+            'contenu' => 'required',
+            'duree' => 'required',
+            'user_id' => 'require|integer',
+            'langue_id' => 'required|integer',
         ];
     }
 
@@ -43,10 +45,12 @@ class PaysStoreRequest extends FormRequest
     public function messages()
     {
         return [
-          'nom.required' => "Nom est requis",
-          'sigle.required' => "Sigle est requis",
-          'sigle.unique' => "Sigle existe déjä",
-          'nom.unique' => "Nom existe déjä",
+          'titre.required' => "titre est requis",
+          'lien_audio.required' => "lien_audio est requis",
+          'contenu.required' => "contenu est requis",
+          'duree.required' => "duree est requis",
+          'user_id.required' => "chantre est requis",
+          'langue_id.required' => "langue est requis",
         ];
     }
     
