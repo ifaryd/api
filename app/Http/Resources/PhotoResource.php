@@ -7,6 +7,13 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class PhotoResource extends JsonResource
 {
     /**
+     * The "data" wrapper that should be applied.
+     *
+     * @var string|null
+    */
+    public static $wrap = '';
+    
+    /**
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -14,6 +21,12 @@ class PhotoResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'langue_id' => $this->langue_id,
+            'url' => $this->url,
+            'lieu' => $this->lieu,
+            'description' => $this->description,
+        ];
     }
 }

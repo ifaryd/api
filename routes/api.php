@@ -5,6 +5,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Apis\UserController;
 use App\Http\Controllers\Apis\TypeController;
 use App\Http\Controllers\Apis\LangueController;
+use App\Http\Controllers\Apis\PhotoController;
+use App\Http\Controllers\Apis\VideoController;
+use App\Http\Controllers\Apis\PaysController;
+use App\Http\Controllers\Apis\TemoignageController;
+use App\Http\Controllers\Apis\ActualiteController;
+use App\Http\Controllers\Apis\VilleController;
+use App\Http\Controllers\Apis\ChargeController;
+use App\Http\Controllers\Apis\CantiqueController;
+use App\Http\Controllers\Apis\PredicationController;
+use App\Http\Controllers\Apis\VersetController;
+use App\Http\Controllers\Apis\AssembleeController;
+use App\Http\Controllers\Apis\ConfirmeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,4 +36,16 @@ Route::apiResources([
     'users' => UserController::class,
     'types' => TypeController::class,
     'langues' => LangueController::class,
+    'photos' => PhotoController::class,
+    'videos' => VideoController::class,
+    'pays' => PaysController::class,
+    'villes' => VilleController::class,
+    'actualites' => ActualiteController::class,
+    'temoignages' => TemoignageController::class,
+    'charges' => ChargeController::class,
+    'cantiques' => CantiqueController::class,
+    'predications' => PredicationController::class,
+    'versets' => VersetController::class,
+    'assemblees' => AssembleeController::class,
+    'confirmes' => ConfirmeController::class,
 ]);

@@ -19,3 +19,4 @@ class Pays extends Model
         'sigle',
     ];
 }
+ 

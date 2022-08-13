@@ -14,8 +14,5 @@ class Langue extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'libelle',
-        'initial',
-    ];
+    protected $guarded = ['id'];
 }

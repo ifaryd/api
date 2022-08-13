@@ -7,6 +7,13 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class VilleResource extends JsonResource
 {
     /**
+     * The "data" wrapper that should be applied.
+     *
+     * @var string|null
+    */
+    public static $wrap = '';
+    
+    /**
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -14,6 +21,11 @@ class VilleResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'pays_id' => $this->pays_id,
+            'libelle' => $this->libelle,
+            'description' => $this->description,
+        ];
     }
-}
+} 
