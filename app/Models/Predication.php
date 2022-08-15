@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Langue;
+use App\Models\Verset;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Predication extends Model
 {
     use HasFactory, SoftDeletes;
@@ -14,4 +17,14 @@ class Predication extends Model
      * @var array<int, string>
      */
     protected $guarded = ['id'];
+
+    public function langue()
+    {
+        return $this->belongsTo(Langue::class);
+    }
+
+    public function verset()
+    {
+        return $this->hasMany(Verset::class);
+    }
 }

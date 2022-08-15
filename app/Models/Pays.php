@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Ville;
+use App\Models\Confirme;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pays extends Model
 {
@@ -18,5 +20,14 @@ class Pays extends Model
         'nom',
         'sigle',
     ];
+
+    public function ville()
+    {
+        return $this->hasMany(Ville::class);
+    }
+
+    public function confirme()
+    {
+        return $this->hasMany(Confirme::class);
+    }
 }
- 

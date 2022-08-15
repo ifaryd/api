@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Ville;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Assemblee extends Model
 {
     use HasFactory, SoftDeletes;
@@ -14,4 +16,9 @@ class Assemblee extends Model
      * @var array<int, string>
      */
     protected $guarded = ['id'];
+
+    public function ville()
+    {
+        return $this->belongsTo(Ville::class);
+    }
 }
