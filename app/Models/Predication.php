@@ -23,7 +23,7 @@ class Predication extends Model
         return $this->belongsTo(Langue::class);
     }
 
-    public function verset()
+    public function versets()
     {
         return $this->hasMany(Verset::class);
     }

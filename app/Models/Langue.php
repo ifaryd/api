@@ -22,32 +22,32 @@ class Langue extends Model
      */
     protected $guarded = ['id'];
 
-    public function predication()
+    public function predications()
     {
         return $this->hasMany(Predication::class);
     }
 
-    public function cantique()
+    public function cantiques()
     {
         return $this->hasMany(Cantique::class);
     }
 
-    public function video()
+    public function videos()
     {
         return $this->hasMany(Video::class);
     }
 
-    public function photo()
+    public function photos()
     {
         return $this->hasMany(Photo::class);
     }
 
-    public function temoignage()
+    public function temoignages()
     {
         return $this->hasMany(Temoignage::class);
     }
 
-    public function actualite()
+    public function actualites()
     {
         return $this->hasMany(Actualite::class);
     }

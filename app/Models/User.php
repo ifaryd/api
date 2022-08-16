@@ -54,12 +54,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function cantique()
+    public function cantiques()
     {
         return $this->hasMany(Cantique::class);
     }
 
-    public function confirme()
+    public function confirmes()
     {
         return $this->hasMany(Confirme::class);
     }

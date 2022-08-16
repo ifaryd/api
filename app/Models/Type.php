@@ -20,7 +20,7 @@ class Type extends Model
         'description',
     ];
 
-    public function video()
+    public function videos()
     {
         return $this->hasMany(Video::class);
     }

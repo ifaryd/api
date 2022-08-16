@@ -29,7 +29,7 @@ class Video extends Model
         return $this->belongsTo(Type::class);
     }
 
-    public function confirme()
+    public function confirmes()
     {
         return $this->hasMany(Confirme::class);
     }

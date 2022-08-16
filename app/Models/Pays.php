@@ -21,12 +21,12 @@ class Pays extends Model
         'sigle',
     ];
 
-    public function ville()
+    public function villes()
     {
         return $this->hasMany(Ville::class);
     }
 
-    public function confirme()
+    public function confirmes()
     {
         return $this->hasMany(Confirme::class);
     }

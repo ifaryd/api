@@ -23,7 +23,7 @@ class Ville extends Model
         return $this->belongsTo(Pays::class);
     }
 
-    public function assemblee()
+    public function assemblees()
     {
         return $this->hasMany(Assemblee::class);
     }
