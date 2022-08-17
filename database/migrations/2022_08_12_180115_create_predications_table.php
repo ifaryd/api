@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string("titre");
             $table->string("sous_titre")->nullable();
             $table->integer("numero");
-            $table->longText("lien_audio");
-            $table->string("nom_audio");
+            $table->longText("lien_audio")->nullable();;
+            $table->string("nom_audio")->nullable();;
             $table->longText("lien_video")->nullable();
             $table->integer("duree")->nullable();
             $table->string("chapitre")->nullable();
