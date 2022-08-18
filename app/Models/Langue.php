@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Photo;
 use App\Models\Video;
 use App\Models\Cantique;
+use App\Models\Pays;
 use App\Models\Actualite;
 use App\Models\Temoignage;
 use App\Models\Predication;
@@ -50,5 +51,9 @@ class Langue extends Model
     public function actualites()
     {
         return $this->hasMany(Actualite::class);
+    }
+
+    public function pays(){
+        return $this->belongsToMany(Pays::class);
     }
 }

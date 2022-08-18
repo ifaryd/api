@@ -27,10 +27,9 @@ class VilleStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'libelle' => 'required|min:4|max:255',
             'pays_id' => 'required|max:255',
             'description' => 'nullable',
-            'libelle' => [Rule::unique('villes')->ignore($request->libelle)],
+            'libelle' => ['required', 'min:4', 'max:255', Rule::unique('villes')->ignore($request->id)],
         ];
     }
 

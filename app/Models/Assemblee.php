@@ -22,3 +22,4 @@ class Assemblee extends Model
         return $this->belongsTo(Ville::class);
     }
 }
+ 

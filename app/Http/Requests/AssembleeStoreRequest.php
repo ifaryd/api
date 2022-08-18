@@ -8,7 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
-class AssembleeStoreResource extends FormRequest
+class AssembleeStoreRequest extends FormRequest
 {
 /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +30,7 @@ class AssembleeStoreResource extends FormRequest
         return [
             'nom' => 'nullable|max:255',
             'photo' => 'nullable|max:255',
-            'addresse' => 'nullable|max:255',
+            'addresse' => 'required|max:255',
             'localisation' => 'nullable',
             'ville_id' => 'required|integer',
         ];

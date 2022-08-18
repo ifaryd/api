@@ -28,10 +28,10 @@ class LangueStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'libelle' => 'required|min:4|max:255',
-            'initial' => 'required|max:255',
-            'initial' => [Rule::unique('langues')->ignore($request->initial)],
-            'libelle' => [Rule::unique('langues')->ignore($request->libelle)],
+            'pays_id' => ['required', 'integer'],
+            'principal' => ['nullable', 'boolean'],
+            'initial' => ['required', 'max:255', Rule::unique('langues')->ignore($request->id)],
+            'libelle' => ['required', 'max:255', Rule::unique('langues')->ignore($request->id)],
         ];
     }
 

@@ -11,6 +11,8 @@ class VilleService{
     public function findDataModel($id)
     {
       $data = $this->find($id);
+      $data->pays = $data->pays;
+      $data->assemblees = $data->assemblees;
       return new DataResource($data);
     }
   
@@ -18,10 +20,10 @@ class VilleService{
       
       $data;
       if ($request->per_page){
-        $data = DataModel::orderBy('id', 'desc')->paginate((int)$request->per_page);
+        $data = DataModel::with('pays')->orderBy('id', 'desc')->paginate((int)$request->per_page);
       }
       else{
-        $data = DataModel::lazyById(100);
+        $data = DataModel::with('pays')->lazyById(100);
       }
       return DataResource::collection($data);
     }

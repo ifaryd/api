@@ -18,7 +18,7 @@ class PaysStoreRequest extends FormRequest
     public function authorize()
     {
         return true;
-    }
+    } 
 
     /**
      * Get the validation rules that apply to the request.
@@ -28,10 +28,10 @@ class PaysStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'nom' => 'required|min:4|max:255',
-            'sigle' => 'required|max:255',
-            'sigle' => [Rule::unique('pays')->ignore($request->initial)],
-            'nom' => [Rule::unique('pays')->ignore($request->libelle)],
+            'langue_id' => ['required', 'integer'],
+            'principal' => ['nullable', 'boolean'],
+            'nom' => ['required', 'min:4', 'max:255', Rule::unique('pays')->ignore($request->id)],
+            'sigle' => ['required', 'max:255', Rule::unique('pays')->ignore($request->id)],
         ];
     }
 

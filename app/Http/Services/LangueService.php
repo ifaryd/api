@@ -29,13 +29,17 @@ class LangueService{
     public function createDataModel($body){
   
       $data = DataModel::create($body);
+      $this->langue_pays($body, $data);
       return new DataResource($data);
     }
   
     public function updateDataModel($body, $id){
   
       $data = $this->find($id);
-      return $data->update($body);
+      $dataUpdated = $data->update($body);
+      $this->langue_pays($body, $data);
+
+      return $dataUpdated;
     }
   
     public function deleteDataModel($id){
@@ -51,4 +55,12 @@ class LangueService{
       return $data;
     }
 
+    public function langue_pays($body, $data){
+
+      $principal = false;
+      if(isset($body['principal']) && !empty($body['principal'])){
+        $principal = $body['principal'];
+      }
+      $data->pays()->sync([$body['pays_id'] => ['principal' => $principal]]);
+    }
 }

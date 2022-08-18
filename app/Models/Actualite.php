@@ -21,4 +21,4 @@ class Actualite extends Model
     {
         return $this->belongsTo(Langue::class);
     }
-}
+} 
