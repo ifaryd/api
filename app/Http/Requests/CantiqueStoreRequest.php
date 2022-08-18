@@ -8,7 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
-class CantiqueStoreResource extends FormRequest
+class CantiqueStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,11 +28,11 @@ class CantiqueStoreResource extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'titre' => 'required|max:255',
+            'titre' => ['required', 'min:4', 'max:255', Rule::unique('cantiques')->ignore($request->id)],
             'lien_audio' => 'required',
             'contenu' => 'required',
-            'duree' => 'required',
-            'user_id' => 'require|integer',
+            'duree' => 'required|integer',
+            'user_id' => 'required|integer',
             'langue_id' => 'required|integer',
         ];
     }

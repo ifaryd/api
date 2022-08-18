@@ -18,13 +18,13 @@ class Cantique extends Model
      */
     protected $guarded = ['id'];
 
-    public function langue()
-    {
-        return $this->belongsTo(Langue::class);
-    }
-
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->select(['id', 'first_name', 'last_name']);
+    }
+
+    public function langue()
+    {
+        return $this->belongsTo(Langue::class)->select(['id', 'libelle', 'initial']);
     }
 }

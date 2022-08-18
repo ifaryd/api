@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Cantique;
 use App\Models\Confirme;
+use App\Models\Charge;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -62,5 +63,10 @@ class User extends Authenticatable
     public function confirmes()
     {
         return $this->hasMany(Confirme::class);
+    }
+
+    public function charges()
+    {
+        return $this->belongsToMany(Charge::class)->withPivot(['assemblee_id', 'pays_id', 'position_chantre', 'principal']);
     }
 }

@@ -33,12 +33,19 @@ class UserStoreRequest extends FormRequest
         'telephone' => 'nullable',
         'facebook' => 'nullable',
         'youtube' => 'nullable',
-        'avatar' => 'nullable|dimensions:min_width=100,min_height=200',
+        "charge_id" => 'nullable',
+        "pays_id" => 'nullable',
+        "assemblee_id" => 'nullable',
+        "position_chantre" => 'nullable',
+        "principal" => 'nullable',
+        'avatar' => 'nullable|string',
         'updated_at' => 'nullable|date',
         'created_at' => 'nullable|date',
         'deleted_at' => 'nullable|date'
       ];
     }
+
+    
 
     /**
      * Get the error messages for the defined validation rules.

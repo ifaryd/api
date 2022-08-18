@@ -5,27 +5,42 @@ namespace App\Http\Services;
 use Illuminate\Http\Request;
 use App\Http\Resources\CantiqueResource as DataResource;
 use App\Models\Cantique as DataModel;
+use App\Models\User;
 
 class CantiqueService{
 
     public function findDataModel($id)
     {
       $data = $this->find($id);
+      $data->user = $data->user;
+      $data->langue = $data->langue;
       return new DataResource($data);
     }
   
     public function filterDataModel(Request $request){
       
+      
+
       $data;
+      $chantres = User::orderBy('id', "DESC")->whereHas('charges', function ($query){
+      });
       if ($request->per_page){
-        $data = DataModel::orderBy('id', 'desc')->paginate((int)$request->per_page);
+        $chantres =  $chantres->paginate((int)$request->per_page);
+
+        foreach($chantres as $chantre){
+          $chantre['cantiques'] = $chantre->cantiques;
+          $data [] = $chantre;
+        }
+
       }
       else{
-        $data = DataModel::lazyById(100);
+
+      $chantres = $chantres->get();
+      $data = $chantres->each->cantiques;
       }
       return DataResource::collection($data);
     }
-  
+
     public function createDataModel($body){
   
       $data = DataModel::create($body);

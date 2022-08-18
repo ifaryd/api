@@ -21,7 +21,7 @@ return new class extends Migration
             $table->softDeletes();
         });
 
-        Schema::create('charge_user', function (Blueprint $table) {
+        Schema::create('charge_users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('charge_id')->constrained('charges')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');

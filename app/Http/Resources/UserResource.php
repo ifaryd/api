@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\ChargeResource;
 
 class UserResource extends JsonResource
 {
@@ -42,6 +43,7 @@ class UserResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'deleted_at' => $this->deleted_at,
+            'charges' => ChargeResource::collection($this->whenLoaded('charges')),
         ];
     }
 }
