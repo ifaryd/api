@@ -16,27 +16,18 @@ class CantiqueService{
       $data->langue = $data->langue;
       return new DataResource($data);
     }
-  
+
     public function filterDataModel(Request $request){
       
-      
-
       $data;
       $chantres = User::orderBy('id', "DESC")->whereHas('charges', function ($query){
-      });
+      })->get();
       if ($request->per_page){
-        $chantres =  $chantres->paginate((int)$request->per_page);
-
-        foreach($chantres as $chantre){
-          $chantre['cantiques'] = $chantre->cantiques;
-          $data [] = $chantre;
-        }
-
+        $data = $chantres->each->cantiques;
+        $data = paginate($data, (int)$request->per_page);
       }
       else{
-
-      $chantres = $chantres->get();
-      $data = $chantres->each->cantiques;
+        $data = $chantres->each->cantiques;
       }
       return DataResource::collection($data);
     }

@@ -28,12 +28,10 @@ class VersetStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'numero' => 'required|integer',
-            'contenu' => 'required',
             'info' => 'nullable',
             'predication_id' => 'required|max:255',
-            'numero' => [Rule::unique('versets')->ignore($request->numero)],
-            'contenu' => [Rule::unique('versets')->ignore($request->contenu)]
+            'numero' => ['required', 'integer', Rule::unique('versets')->ignore($request->id)],
+            'contenu' => ['required', Rule::unique('versets')->ignore($request->contenu)]
         ];
     }
 

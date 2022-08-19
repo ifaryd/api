@@ -14,4 +14,12 @@ class Concordance extends Model
      * @var array<int, string>
      */
     protected $guarded = ['id'];
+
+    public function verset_from(){
+        return $this->belongsTo(Verset::class, 'verset_from_id', 'id');
+    }
+
+    public function verset_to(){
+        return $this->belongsTo(Verset::class, 'verset_to_id', 'id');
+    }
 }

@@ -21,4 +21,8 @@ class Verset extends Model
     {
         return $this->belongsTo(Predication::class);
     }
+
+    public function concordances(){
+        return $this->hasMany(Concordance::class, 'verset_from_id', 'id');
+    }
 }

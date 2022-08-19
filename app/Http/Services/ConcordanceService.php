@@ -3,32 +3,25 @@
 namespace App\Http\Services;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\ConfirmeResource as DataResource;
-use App\Models\Confirme as DataModel;
+use App\Http\Resources\CantiqueResource as DataResource;
+use App\Models\Cantique as DataModel;
+use App\Models\User;
 
-class ConfirmeService{
+class CantiqueService{
 
     public function findDataModel($id)
     {
       $data = $this->find($id);
-      $data->user = $data->user;
-      $data->pays = $data->pays;
-      $data->video = $data->video;
+      $data->verset_from = $data->verset_from;
+      $data->verset_to = $data->verset_to;
       return new DataResource($data);
     }
   
     public function filterDataModel(Request $request){
       
-      $data;
-      if ($request->per_page){
-        $data = DataModel::orderBy('id', 'desc')->paginate((int)$request->per_page);
-      }
-      else{
-        $data = DataModel::lazyById(100);
-      }
-      return DataResource::collection($data);
+      return [];
     }
-  
+
     public function createDataModel($body){
   
       $data = DataModel::create($body);

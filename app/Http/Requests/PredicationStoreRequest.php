@@ -27,9 +27,9 @@ class PredicationStoreRequest extends FormRequest
      */
     public function rules(Request $request)
     {
-        return [
+        $predictions = [
             'titre' => 'required|min:4|max:225',
-            'sous_titre' => 'nullable',
+            'sous_titre' => 'required',
             'numero' => 'required|integer',
             'lien_audio' => 'nullable',
             'nom_audio' => 'nullable',
@@ -40,6 +40,8 @@ class PredicationStoreRequest extends FormRequest
             'sermon_similaire' => 'nullable',
             'langue_id' => 'required'
         ];
+
+        return $predictions;
     }
 
     /**

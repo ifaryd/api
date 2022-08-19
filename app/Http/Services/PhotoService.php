@@ -11,18 +11,29 @@ class PhotoService{
     public function findDataModel($id)
     {
       $data = $this->find($id);
+      $data->langue = $data->langue;
       return new DataResource($data);
     }
   
     public function filterDataModel(Request $request){
       
       $data;
-      if ($request->per_page){
-        $data = DataModel::orderBy('id', 'desc')->paginate((int)$request->per_page);
+      if($request->langue){
+        $data = Langue::with('photos')->where('initial', $request->langue);
       }
-      else{
+      if(!$request->langue && !$request->per_page){
         $data = DataModel::lazyById(100);
       }
+      if(!$request->langue && $request->per_page){
+        $data = DataModel::paginate((int)$request->per_page);
+      }
+      if ($request->langue && $request->per_page){
+        $data = $data->paginate((int)$request->per_page);
+      }
+      if($request->langue && !$request->per_page){
+        $data = $data->get();
+      }
+
       return DataResource::collection($data);
     }
   
