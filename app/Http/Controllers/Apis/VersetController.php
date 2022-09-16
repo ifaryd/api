@@ -72,4 +72,14 @@ class VersetController extends Controller
     {
       return $this->dataService->deleteDataModel($id);
     }
+
+    public function addConcordance(Request $request){
+
+      return $this->dataService->addConcordance($request->all());
+    }
+
+    public function removeConcordance($id){
+
+      return $this->dataService->removeConcordance($id);
+    }
 }

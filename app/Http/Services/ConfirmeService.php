@@ -21,10 +21,10 @@ class ConfirmeService{
       
       $data;
       if ($request->per_page){
-        $data = DataModel::orderBy('id', 'desc')->paginate((int)$request->per_page);
+        $data = DataModel::orderBy('id', 'desc')->with(["user", "video", "pays"])->paginate((int)$request->per_page);
       }
       else{
-        $data = DataModel::lazyById(100);
+        $data = DataModel::with(["user", "video", "pays"])->lazyById(100);
       }
       return DataResource::collection($data);
     }

@@ -28,8 +28,6 @@ class PaysStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'langue_id' => ['required', 'integer'],
-            'principal' => ['nullable', 'boolean'],
             'nom' => ['required', 'min:4', 'max:255', Rule::unique('pays')->ignore($request->id)],
             'sigle' => ['required', 'max:255', Rule::unique('pays')->ignore($request->id)],
         ];
@@ -43,10 +41,10 @@ class PaysStoreRequest extends FormRequest
     public function messages()
     {
         return [
-          'nom.required' => "Nom est requis",
-          'sigle.required' => "Sigle est requis",
-          'sigle.unique' => "Sigle existe déjä",
-          'nom.unique' => "Nom existe déjä",
+          'nom.required' => "Nom pays est requis",
+          'sigle.required' => "Sigle pays est requis",
+          'sigle.unique' => "Sigle pays existe déjä",
+          'nom.unique' => "Nom pays existe déjä",
         ];
     }
     

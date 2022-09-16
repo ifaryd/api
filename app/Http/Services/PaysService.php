@@ -12,8 +12,9 @@ class PaysService
 
   public function findDataModel($id)
   {
-    $data = $this->find($id);
-    $data->langues = $data->langues;
+    $data = DataModel::where('id', $id)->orWhere('nom', $id)->orWhere('sigle', $id)->first();
+    if (!$data) return $data;
+    return new DataResource($data);
     return new DataResource($data);
   }
 
@@ -66,6 +67,9 @@ class PaysService
     if(isset($body['principal']) && !empty($body['principal'])){
       $principal = $body['principal'];
     }
-    $data->langues()->sync([$body['langue_id'] => ['principal' => $principal]]);
+    if(isset($body['langue_id'])){
+      $data->langues()->sync([$body['langue_id'] => ['principal' => $principal]]);
+    }
+
   }
 }

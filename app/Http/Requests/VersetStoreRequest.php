@@ -31,7 +31,7 @@ class VersetStoreRequest extends FormRequest
             'info' => 'nullable',
             'predication_id' => 'required|max:255',
             'numero' => ['required', 'integer', Rule::unique('versets')->ignore($request->id)],
-            'contenu' => ['required', Rule::unique('versets')->ignore($request->contenu)]
+            'contenu' => ['required', Rule::unique('versets')->ignore($request->id)]
         ];
     }
 

@@ -28,8 +28,6 @@ class LangueStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'pays_id' => ['required', 'integer'],
-            'principal' => ['nullable', 'boolean'],
             'initial' => ['required', 'max:255', Rule::unique('langues')->ignore($request->id)],
             'libelle' => ['required', 'max:255', Rule::unique('langues')->ignore($request->id)],
         ];
@@ -43,10 +41,10 @@ class LangueStoreRequest extends FormRequest
     public function messages()
     {
         return [
-          'libelle.required' => "Libellé est requis",
-          'initial.required' => "Initial est requis",
-          'libelle.unique' => "Libellé existe déjä",
-          'initial.unique' => "Initial existe déjä",
+          'libelle.required' => "Libellé langue est requis",
+          'initial.required' => "Initial langue est requis",
+          'libelle.unique' => "Libellé langue existe déjä",
+          'initial.unique' => "Initial langue existe déjä",
         ];
     }
     

@@ -35,6 +35,11 @@ class LangueController extends Controller
     public function store(DataStoreRequest $request)
     {
       $body = $request->validated();
+      if(isset($request->pays_id) && !empty($request->pays_id)){
+        $body['pays_id'] = $request->pays_id;
+        $body['principal'] = $request->principal;
+      }
+  
       return $this->dataService->createDataModel($body);
     }
 
@@ -59,6 +64,10 @@ class LangueController extends Controller
     public function update(DataStoreRequest $request, $id)
     {
       $body = $request->validated();
+      if(isset($request->pays_id) && !empty($request->pays_id)){
+        $body['pays_id'] = $request->pays_id;
+        $body['principal'] = $request->principal;
+      }
       return $this->dataService->updateDataModel($body, $id);
     }
 

@@ -8,7 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
-class ConfirmeStoreResource extends FormRequest
+class ConfirmeStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -8,7 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
-class TemoignageStoreResource extends FormRequest
+class TemoignageStoreRequest extends FormRequest
 {
 /**
      * Determine if the user is authorized to make this request.

@@ -10,7 +10,8 @@ class LangueService{
 
     public function findDataModel($id)
     {
-      $data = $this->find($id);
+      $data = DataModel::where('id', $id)->orWhere('initial', $id)->orWhere('libelle', $id)->first();
+      if (!$data) return $data;
       return new DataResource($data);
     }
   
@@ -19,6 +20,9 @@ class LangueService{
       $data;
       if ($request->per_page){
         $data = DataModel::orderBy('id', 'desc')->paginate((int)$request->per_page);
+      }
+      if($request->pays){
+        $data = DataModel::with("pays")->lazyById(100);
       }
       else{
         $data = DataModel::lazyById(100);
@@ -34,10 +38,10 @@ class LangueService{
     }
   
     public function updateDataModel($body, $id){
-  
+
       $data = $this->find($id);
       $dataUpdated = $data->update($body);
-      $this->langue_pays($body, $data);
+      return $this->langue_pays($body, $data);
 
       return $dataUpdated;
     }
@@ -61,6 +65,8 @@ class LangueService{
       if(isset($body['principal']) && !empty($body['principal'])){
         $principal = $body['principal'];
       }
-      $data->pays()->sync([$body['pays_id'] => ['principal' => $principal]]);
+      if (isset($body['pays_id']) && !empty($body['pays_id'])){
+        $data->pays()->attach([$body['pays_id'] => ['principal' => $principal]]);
+      }
     }
 }

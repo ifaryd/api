@@ -41,7 +41,7 @@ class PhotoService{
   
       $data = DataModel::create($body);
       return new DataResource($data);
-    }
+    } 
   
     public function updateDataModel($body, $id){
   

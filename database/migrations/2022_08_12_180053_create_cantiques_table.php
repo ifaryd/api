@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string("titre");
             $table->longText("lien_audio");
-            $table->longText("contenu");
-            $table->integer("duree");
-            $table->foreignId('langue_id')->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
+            $table->longText("nom_fichier")->nullable();
+            $table->longText("contenu")->nullable();
+            $table->integer("duree")->nullable();
+            $table->foreignId('langue_id')->nullable()->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();

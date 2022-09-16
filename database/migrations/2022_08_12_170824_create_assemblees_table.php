@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nom')->nullable();
             $table->foreignId('ville_id')->constrained('villes')->onUpdate('cascade')->onDelete('cascade');
             $table->longText('localisation')->nullable();
-            $table->string('addresse')->nullable();
+            $table->longText('addresse')->nullable();
             $table->longText('photo')->nullable();
             $table->timestamps();
             $table->softDeletes();

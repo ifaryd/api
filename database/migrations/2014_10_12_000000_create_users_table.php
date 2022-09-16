@@ -23,7 +23,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
-            $table->string('last_name');
+            $table->string('last_name')->nullable();
             $table->string('telephone')->nullable();
             $table->longText('avatar')->nullable();
             $table->longText('facebook')->nullable();
@@ -36,7 +36,7 @@ return new class extends Migration
             $table->softDeletes();
         });
     } 
-
+    
     /**
      * Reverse the migrations.
      *

@@ -17,6 +17,7 @@ use App\Http\Controllers\Apis\PredicationController;
 use App\Http\Controllers\Apis\VersetController;
 use App\Http\Controllers\Apis\AssembleeController;
 use App\Http\Controllers\Apis\ConfirmeController;
+use App\Http\Controllers\Apis\MergeDbController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -49,3 +50,7 @@ Route::apiResources([
     'assemblees' => AssembleeController::class,
     'confirmes' => ConfirmeController::class,
 ]);
+
+Route::get('/merges', [MergeDbController::class, 'merges']);
+Route::post('/concordances', [VersetController::class, 'addConcordance']);
+Route::delete('/concordances/{id}', [VersetController::class, 'removeConcordance']);
