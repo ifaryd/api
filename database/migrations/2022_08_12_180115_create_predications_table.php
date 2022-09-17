@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("titre");
             $table->string("sous_titre")->nullable();
-            $table->integer("numero");
+            $table->integer("numero")->nullable();
             $table->longText("lien_audio")->nullable();;
             $table->string("nom_audio")->nullable();;
             $table->longText("lien_video")->nullable();
@@ -30,7 +30,6 @@ return new class extends Migration
             $table->softDeletes();
         });
     }
-
     /**
      * Reverse the migrations.
      *

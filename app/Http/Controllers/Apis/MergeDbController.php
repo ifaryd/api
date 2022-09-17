@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Apis;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pays;
+use App\Models\Langue;
 use App\Models\Ville;
 use App\Models\Assemblee;
 use App\Models\User;
@@ -12,7 +13,14 @@ use App\Models\Chantre;
 use App\Models\Ministre;
 use App\Models\Dirigeant;
 use App\Models\Cantique;
-use Illuminate\Support\Facades\DB;
+use App\Models\Predication;
+use App\Models\Verset;
+use App\Models\Concordance;
+use App\Models\Temoignage;
+use App\Models\Photo;
+use App\Models\Video;
+use App\Models\Type;
+use Illuminate\Support\Facades\DB; 
 
 class MergeDbController extends Controller
 {
@@ -26,13 +34,17 @@ class MergeDbController extends Controller
 public function merges()
 {
 
-    $pays = $this->mergePays();
-    $villes = $this->mergeVilles();
-    $chantres = $this->mergeCharges('Chantre');
-    $ministres = $this->mergeCharges('Ministre');
-    $assemblees = $this->mergeAssemblees();
-    $cantiques = $this->mergeCantiques();
-    return $cantiques;
+    // $pays = $this->mergePays();
+    // $villes = $this->mergeVilles();
+    // $chantres = $this->mergeCharges('Chantre');
+    // $ministres = $this->mergeCharges('Ministre');
+    // $assemblees = $this->mergeAssemblees();
+    // $cantiques = $this->mergeCantiques();
+   // $predications = $this->mergePredication("Français", "fr-fr", "France", "fr", true);
+    $temoignages =  $this->mergeTemoignages("fr-fr");
+    $photos = $this->mergePhotos("fr-fr");
+    $videos = $this->mergeVideos("fr-fr");
+    return $videos;
 }
 
 private function mergePays(){
@@ -260,6 +272,180 @@ private function mergeCantiques(){
 
     return $dataModel->all();
     
+}
+
+private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $sigle_pays, $principal){
+
+    $pays = Pays::firstOrCreate(
+        ['sigle' =>  strtoupper($sigle_pays)],
+        ['nom' =>  $nom_pays, 'sigle' =>  strtoupper($sigle_pays)]
+    );
+
+    $langue = Langue::firstOrCreate(
+        ['libelle' =>  $libelle_langue],
+        ['libelle' =>  $libelle_langue, 'initial' =>  $initial_langue]
+    );
+
+    $pays->langues()->sync([$langue->id => ['principal' => $principal]]);
+
+    $dataModel = new Predication;
+    $predications = $dataModel::on('sqlite')->withTrashed()->get();
+
+    foreach ($predications as $key => $predication){
+        $duree = str_replace("mn ", ",", $predication->duree);
+        $duree = str_replace("s", ",", $duree);
+        $duree = str_replace("h ", ",", $duree);
+
+        $duree = explode(",", $duree);
+        
+        if(isset($duree) && isset($duree[2]) && (int)$duree[2] > 1){
+            $duree = ((int)$duree[0] * 3600) + ((int)$duree[1] * 60) + (int)$duree[2];
+        }
+        if(isset($duree) && isset($duree[2]) &&  (int)$duree[2] == 0){
+            $duree = (int)$duree[0] * 60 + (int)$duree[1];
+        }
+
+        $predication = Predication::updateOrCreate(
+            ['titre' =>  $predication->titre],
+            [
+            'sous_titre' => $predication->sous_titre,
+            'numero' => $predication->numero, 
+            'lien_audio'=>$predication->lien_audio,
+            "nom_audio"=>$predication->nom_audio,
+            "lien_video"=>$predication->lien_video,
+            "duree"=> $duree,
+            "chapitre"=>$predication->chapitre,
+            "couverture"=>"",
+            "sermon_similaire"=>$predication->similar_sermon,
+            "langue_id"=>$langue->id,
+            ]
+        );
+        $versets = Verset::on('sqlite')->where("num_pred", $predication->numero)->withTrashed()->get();
+
+        if(isset($versets) && !empty($versets) && !empty($predication->id)){
+
+            foreach ($versets as $verset){
+
+                if(isset($verset) && !empty($verset->numero) && !empty($verset->contenu)){
+                    
+                    $verset = Verset::updateOrCreate(
+                        [
+                            'contenu' =>  $verset->contenu,
+                            'predication_id' =>  $predication->id
+                        ],
+                        [
+                        'info' => $verset->info,
+                        'numero' => $verset->numero,
+                        ]
+                    );
+        
+                    $concordances = Concordance::on('sqlite')
+                        ->where("num_pred", $predication->numero)
+                        ->where("num_verset", $verset->numero)
+                        ->withTrashed()->get();
+        
+                    foreach($concordances as $concordance){
+        
+                        $concordance_verset = str_replace("[Kc.", "", $concordance->concordance);
+                        $concordance_verset = str_replace("] [Kc.", "", $concordance_verset);
+                        $concordance_verset = str_replace("]", "", $concordance_verset);
+        
+                        $concordance_verset = explode(" ", $concordance_verset);
+                        foreach($concordance_verset as $verset_to){
+                            $predication_num = explode("v", $verset_to)[0];
+
+                            $predication_new = Predication::where("numero", (int)$predication_num)
+                                            ->where("langue_id", $langue->id)
+                                            ->first();
+        
+                            if(isset($predication_new) && isset($predication_new->id)){
+                                $verset_to = Verset::where("predication_id", $predication_new->id)
+                                                    ->withTrashed()->first();
+                                if(isset($verset_to)){
+                                    Concordance::updateOrCreate(
+                                        ['verset_from_id' => $verset->id, 'verset_to_id' =>  $verset_to->id]
+                                    );
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+    
+            }
+        }
+        //   
+    }
+
+    return [Predication::count(), Verset::count(), Concordance::count()];
+}
+
+private function mergeTemoignages($initial_langue){
+
+    $langue = Langue::where('initial', $initial_langue)->first();
+    $temoignages = Temoignage::on('sqlite')->withTrashed()->get();
+
+    foreach ($temoignages as $temoignage){
+        Temoignage::updateOrCreate(
+            ['titre' =>  $temoignage->titre],
+            [
+            'contenu' => $temoignage->texte,
+            "langue_id"=>$langue->id,
+            'lien_video' => $temoignage->lien_video,
+            "photo"=>$temoignage->photo,
+            ]
+        );
+    }
+
+    return Temoignage::count();
+}
+
+private function mergePhotos($initial_langue){
+
+    $langue = Langue::where('initial', $initial_langue)->first();
+    $photos = Photo::on('sqlite')->withTrashed()->get();
+
+    foreach ($photos as $photo){
+        Photo::updateOrCreate(
+            ['url' =>  $photo->lien],
+            [
+            'description' => $photo->description,
+            "langue_id"=>$langue->id,
+            'lieu' => $photo->lieu,
+            ]
+        );
+    }
+
+    return Photo::count();
+}
+
+
+private function mergeVideos($initial_langue){
+
+    $langue = Langue::where('initial', $initial_langue)->first();
+    $videos = Video::on('sqlite')->withTrashed()->get();
+
+    foreach ($videos as $video){
+        $type = Type::updateOrCreate(
+            ['libelle' =>  $video->type],
+            [
+            'description' => ""
+            ]
+        );
+
+        Video::updateOrCreate(
+            ['url' =>  $video->lien],
+            [
+            'description' => $video->description,
+            'titre' => $video->titre,
+            "langue_id"=>$langue->id,
+            'lieu' => $video->lieu,
+            'type_id' => $type->id,
+            ]
+        );
+    }
+
+    return Video::all();
 }
 
 }
