@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->string("titre");
+            $table->longText("titre");
             $table->longText("url");
-            $table->string("lieu")->nullable();
+            $table->longText("lieu")->nullable();
             $table->longText("description")->nullable();
             $table->foreignId('type_id')->nullable()->constrained('types')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('langue_id')->nullable()->constrained('langues')->onUpdate('cascade')->onDelete('cascade');

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('actualites', function (Blueprint $table) {
             $table->id();
-            $table->string("miniature")->nullable();
+            $table->longText("miniature")->nullable();
             $table->longText("contenu");
             $table->longText("video")->nullable();
             $table->foreignId('langue_id')->constrained('langues')->onUpdate('cascade')->onDelete('cascade');

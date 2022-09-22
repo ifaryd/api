@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->longText("url");
-            $table->string("lieu")->nullable();
+            $table->longText("lieu")->nullable();
             $table->longText("description")->nullable();
             $table->foreignId('langue_id')->nullable()->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

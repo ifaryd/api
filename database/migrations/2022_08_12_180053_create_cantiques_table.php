@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('cantiques', function (Blueprint $table) {
             $table->id();
-            $table->string("titre");
+            $table->longText("titre");
             $table->longText("lien_audio");
             $table->longText("nom_fichier")->nullable();
             $table->longText("contenu")->nullable();

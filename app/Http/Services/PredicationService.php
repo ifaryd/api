@@ -34,7 +34,8 @@ class PredicationService{
         }
       }
       else{
-        $predications = $predications->where('langue_id', $request->langue)->get();
+        //return $request->langue;
+        $predications = DataModel::where('langue_id', $request->langue)->get();
         if($request->per_page){
             $data = $predications->each->versets;
             $data = paginate($data, (int)$request->per_page);
