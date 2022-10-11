@@ -15,7 +15,6 @@ class PaysService
     $data = DataModel::where('id', $id)->orWhere('nom', $id)->orWhere('sigle', $id)->first();
     if (!$data) return $data;
     return new DataResource($data);
-    return new DataResource($data);
   }
 
   public function filterDataModel(Request $request)

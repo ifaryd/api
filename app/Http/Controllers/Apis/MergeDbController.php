@@ -34,12 +34,18 @@ class MergeDbController extends Controller
  */
 public function merges()
 {
+    // $predications = Predication::all();
+
+    // foreach ($predications as $predication){
+    //     Predication::where('id',$predication->id)
+    //     ->update(['lien_audio_cloud' =>explode("-", $predication->lien_audio)[0]]);
+    // }
 
     //return $this->mergeLanguageCommon();
     //return $this->mergeLanguageData("Français", "fr-fr", "France", "fr", true);
     //return $this->mergeLanguageData("Anglais", "en-en", "Angletèrre", "en", true);
     //return $this->mergeLanguageData("Espagnol", "es-es", "Espagne", "es", true);
-    return $this->mergeLanguageData("Portugais", "pt-pt", "Portugal", "pt", true);
+    //return $this->mergeLanguageData("Portugais", "pt-pt", "Portugal", "pt", true);
 }
 
 private function mergeLanguageData($langue, $initial_langue, $pays, $sigle_pays, $langue_principal_du_pays){
@@ -350,6 +356,7 @@ private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $
             'sous_titre' => $predicationF->sous_titre,
             'numero' => $predicationF->numero, 
             'lien_audio'=>$predicationF->lien_audio,
+            'lien_audio_cloud' => explode("-", $predicationF->lien_audio)[0],
             "nom_audio"=>$predicationF->nom_audio,
             "lien_video"=>$predicationF->lien_video,
             "duree"=> $duree,
