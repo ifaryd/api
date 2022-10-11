@@ -37,8 +37,13 @@ public function merges()
     // $predications = Predication::all();
 
     // foreach ($predications as $predication){
-    //     Predication::where('id',$predication->id)
-    //     ->update(['lien_audio_cloud' =>explode("-", $predication->lien_audio)[0]]);
+    //     $data =  explode("-", $predication->lien_audio)[0];
+    //     if(isset($data) && !empty($data)){
+    //         $update = "https://api.soundcloud.com/tracks/".explode("stream/",trim($data))[1];
+    //         Predication::where('id',$predication->id)
+    //     ->update(['lien_audio_cloud' => $update]);
+    //     }
+        
     // }
 
     //return $this->mergeLanguageCommon();
@@ -352,11 +357,16 @@ private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $
             $duree = 0; 
         }
 
+        $data =  explode("-", $predicationF->lien_audio)[0];
+        if(isset($data) && !empty($data)){
+            $data = "https://api.soundcloud.com/tracks/".explode("stream/",trim($data))[1];
+        }
+
         $predicationData =  [
             'sous_titre' => $predicationF->sous_titre,
             'numero' => $predicationF->numero, 
             'lien_audio'=>$predicationF->lien_audio,
-            'lien_audio_cloud' => explode("-", $predicationF->lien_audio)[0],
+            'lien_audio_cloud' => $data,
             "nom_audio"=>$predicationF->nom_audio,
             "lien_video"=>$predicationF->lien_video,
             "duree"=> $duree,
