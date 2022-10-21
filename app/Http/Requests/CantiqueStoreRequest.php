@@ -30,7 +30,7 @@ class CantiqueStoreRequest extends FormRequest
         return [
             'titre' => ['required', 'min:4', 'max:255', Rule::unique('cantiques')->ignore($request->id)],
             'lien_audio' => 'required',
-            'contenu' => 'required',
+            'contenu' => '',
             'duree' => 'required|integer',
             'user_id' => 'required|integer',
             'langue_id' => 'required|integer',

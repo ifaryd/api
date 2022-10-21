@@ -54,3 +54,4 @@ Route::apiResources([
 Route::get('/merges', [MergeDbController::class, 'merges']);
 Route::post('/concordances', [VersetController::class, 'addConcordance']);
 Route::delete('/concordances/{id}', [VersetController::class, 'removeConcordance']);
+Route::get('/dirigeant-assemblee/{assemblee_id}', [AssembleeController::class, 'dirigeantAssemblee']);

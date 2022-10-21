@@ -26,6 +26,10 @@ class AssembleeController extends Controller
       return $this->dataService->filterDataModel($request);   
     } 
 
+    public function dirigeantAssemblee($assemblee_id){
+      return $this->dataService->dirigeantAssemblee($assemblee_id); 
+    }
+
     /**
      * Store a newly created resource in storage.
      *

@@ -27,7 +27,6 @@ class TypeService{
     }
   
     public function createDataModel($body){
-  
       $data = DataModel::create($body);
       return new DataResource($data);
     }

@@ -22,10 +22,10 @@ class PhotoService{
         $data = Langue::with('photos')->where('initial', $request->langue);
       }
       if(!$request->langue && !$request->per_page){
-        $data = DataModel::lazyById(100);
+        $data = DataModel::with('langue')->lazyById(100);
       }
       if(!$request->langue && $request->per_page){
-        $data = DataModel::paginate((int)$request->per_page);
+        $data = DataModel::with('langue')->paginate((int)$request->per_page);
       }
       if ($request->langue && $request->per_page){
         $data = $data->paginate((int)$request->per_page);

@@ -28,7 +28,7 @@ class TemoignageStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'titre' => 'required|max:255',
+            'titre' => ['required', 'min:4', 'max:255', Rule::unique('temoignages')->ignore($request->id)],
             'lien_video' => 'nullable',
             'photo' => 'nullable',
             'contenu' => 'nullable',

@@ -27,7 +27,7 @@ class VideoStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'titre' => 'required|min:4|max:255',
+            'titre' => ['required', 'min:4', Rule::unique('videos')->ignore($request->id)],
             'url' => 'required|max:255',
             'lieu' => 'nullable|max:255',
             'description' => 'nullable',
@@ -35,7 +35,7 @@ class VideoStoreRequest extends FormRequest
             'langue_id' => 'nullable|integer',
         ];
     }
-         
+      
     /**
      * Get the error messages for the defined validation rules.
      *

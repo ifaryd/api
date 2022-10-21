@@ -21,5 +21,10 @@ class Assemblee extends Model
     {
         return $this->belongsTo(Ville::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withPivot(['assemblee_id', 'pays_id', 'position_chantre', 'principal']);
+    }
 }
  

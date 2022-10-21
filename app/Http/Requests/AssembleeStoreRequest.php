@@ -28,7 +28,7 @@ class AssembleeStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'nom' => 'nullable|max:255',
+            'nom' => ['required', 'min:4', 'max:255', Rule::unique('assemblees')->ignore($request->id)],
             'photo' => 'nullable|max:255',
             'addresse' => 'required|max:255',
             'localisation' => 'nullable',

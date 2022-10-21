@@ -28,9 +28,8 @@ class TypeStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'libelle' => 'required|min:4|max:255',
+            'libelle' => ['required', 'min:4', 'max:255', Rule::unique('types')->ignore($request->id)],
             'description' => 'nullable|max:255',
-            'libelle' => [Rule::unique('types')->ignore($request->libelle)],
         ];
     }
 

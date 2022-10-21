@@ -20,10 +20,10 @@ class CantiqueService{
     public function filterDataModel(Request $request){
       
       $data;
-      $chantres = User::orderBy('id', "DESC")->whereHas('charges', function ($query){
+      $chantres = User::whereHas('charges', function ($query){
         $query->where('libelle', '=', 'Chantre');
       })->get();
-      
+
       if ($request->per_page){
         $data = $chantres->each->cantiques;
         $data = paginate($data, (int)$request->per_page);

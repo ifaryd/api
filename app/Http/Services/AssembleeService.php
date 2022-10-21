@@ -5,7 +5,8 @@ namespace App\Http\Services;
 use Illuminate\Http\Request;
 use App\Http\Resources\AssembleeResource as DataResource;
 use App\Models\Assemblee as DataModel;
-
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 class AssembleeService{
 
     public function findDataModel($id)
@@ -14,14 +15,22 @@ class AssembleeService{
       return new DataResource($data);
     }
   
+    public function dirigeantAssemblee($assemblee_id){
+      $userId = DB::table('charge_user')
+        ->where("assemblee_id", $assemblee_id)
+        ->where("principal", 1)
+        ->first();
+        return $user = User::find($userId->user_id);
+    }
+
     public function filterDataModel(Request $request){
       
       $data;
       if ($request->per_page){
-        $data = DataModel::orderBy('id', 'desc')->paginate((int)$request->per_page);
+        $data = DataModel::with('ville')->orderBy('id', 'desc')->paginate((int)$request->per_page);
       }
       else{
-        $data = DataModel::lazyById(100);
+        $data = DataModel::with('ville')->get();
       }
       return DataResource::collection($data);
     }

@@ -24,10 +24,10 @@ class VideoService{
         $data = Langue::with('videos')->where('initial', $request->langue);
       }
       if(!$request->langue && !$request->per_page){
-        $data = DataModel::lazyById(100);
+        $data = DataModel::with(['langue','type'])->lazyById(100);
       }
       if(!$request->langue && $request->per_page){
-        $data = DataModel::paginate((int)$request->per_page);
+        $data = DataModel::with(['langue','type'])->paginate((int)$request->per_page);
       }
       if ($request->langue && $request->per_page){
         $data = $data->paginate((int)$request->per_page);
@@ -43,7 +43,7 @@ class VideoService{
       }
 
       if($request->type && !$request->langue){
-        $data = DataModel::where('type_id', $request->type)->lazyById(100);
+        $data = DataModel::with(['langue','type'])->where('type_id', $request->type)->lazyById(100);
       }
 
       return DataResource::collection($data);

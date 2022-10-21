@@ -27,7 +27,7 @@ class PhotoStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'url' => 'required|max:255',
+            'url' => ['required', 'min:4', Rule::unique('photos')->ignore($request->id)],
             'lieu' => 'nullable|max:255',
             'description' => 'nullable',
             'langue_id' => 'nullable|integer',
