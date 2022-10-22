@@ -24,13 +24,14 @@ class PredicationService{
       $data;
 
       if(!$request->langue){
-        $predications = $predications->get();
+        $predications = DataModel::with('langue')->get();
         if ($request->per_page){
             $data = $predications->each->versets;
             $data = paginate($data, (int)$request->per_page);
         }
         else{
-            $data = $predications->each->versets;
+            return DataResource::collection($predications);;
+            //$data = $predications->each->versets;
         }
       }
       else{
