@@ -28,7 +28,7 @@ class PredicationStoreRequest extends FormRequest
     public function rules(Request $request)
     {
         $predictions = [
-            'titre' => 'required|min:4|max:225',
+            'titre' => ['required', 'min:4', 'max:255', Rule::unique('predications')->ignore($request->id)],
             'sous_titre' => 'required',
             'numero' => 'required|integer',
             'lien_audio' => 'nullable',

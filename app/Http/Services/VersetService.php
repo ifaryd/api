@@ -21,19 +21,24 @@ class VersetService{
     public function filterDataModel(Request $request){
       
       $data;
-      $predications = Predication::orderBy('id', "ASC")->whereHas('langue', function ($query){
-      });
+      $versets = DataModel::orderBy('id', "ASC")->with(['predication','concordances']);
+
+      // ->whereHas('predication', function ($query){
+          //$query->where('langue_id', $request->langue);
+      // })
 
       if($request->langue){
-        $predications->where('langue_id', $request->langue)->with('versets');
+        $versets->whereHas('predication', function ($query){
+          $query->where('langue_id', $request->langue);
+        });
       }if($request->predication){
-        $predications->where('id', $request->predication)->with('versets');
+        $versets->where('predication_id', $request->predication);
       }
       if ($request->per_page){
-        $data =  $predications->paginate((int)$request->per_page);
+        $data =  $versets->paginate((int)$request->per_page);
       }
       else{
-        $data = $predications->with('versets')->limit(2)->get();
+        $data = $versets->get();
       }
       return DataResource::collection($data);
     }
