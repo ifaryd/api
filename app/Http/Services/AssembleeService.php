@@ -7,6 +7,7 @@ use App\Http\Resources\AssembleeResource as DataResource;
 use App\Models\Assemblee as DataModel;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Ville;
 class AssembleeService{
 
     public function findDataModel($id)
@@ -24,10 +25,17 @@ class AssembleeService{
     }
 
     public function filterDataModel(Request $request){
-      
+      // return $dbuser = DB::table('charge_user')
+      // ->where("assemblee_id", 1)
+      // ->join('users', 'charge_user.user_id', '=', 'users.id')
+      // ->join('charges', 'charge_user.charge_id', '=', 'charges.id')
+      // ->get();
       $data;
       if ($request->per_page){
         $data = DataModel::with('ville')->orderBy('id', 'desc')->paginate((int)$request->per_page);
+      }
+      if ($request->ville){
+        $data = DataModel::with('ville')->where("ville_id", $request->ville)->orderBy('id', 'desc')->get();
       }
       else{
         $data = DataModel::with('ville')->get();

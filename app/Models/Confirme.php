@@ -33,4 +33,9 @@ class Confirme extends Model
         return $this->belongsTo(Video::class);
     }
 
+    public function langue()
+    {
+        return $this->belongsTo(Langue::class);
+    }
+
 }

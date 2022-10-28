@@ -5,7 +5,7 @@ namespace App\Http\Services;
 use Illuminate\Http\Request;
 use App\Http\Resources\ConfirmeResource as DataResource;
 use App\Models\Confirme as DataModel;
-
+use App\Models\Pays;
 class ConfirmeService{
 
     public function findDataModel($id)
@@ -14,17 +14,31 @@ class ConfirmeService{
       $data->user = $data->user;
       $data->pays = $data->pays;
       $data->video = $data->video;
-      return new DataResource($data);
+      return new DataResource($data); 
     }
   
     public function filterDataModel(Request $request){
-      
+
       $data;
       if ($request->per_page){
-        $data = DataModel::orderBy('id', 'desc')->with(["user", "video", "pays"])->paginate((int)$request->per_page);
+        $data = DataModel::orderBy('id', 'desc')->with(["user", "video", "pays", "langue"])->paginate((int)$request->per_page);
+      }
+      if ($request->has("per_country")){
+        $data = Pays::whereHas('confirmes', function ($query){
+                })->with("confirmes", function ($query){
+                  $query->with(["user", "video","langue"]);
+                })->get();
+      }
+      if ($request->has("per_country") && $request->langue){
+        $langue_id = $request->langue;
+        $data = Pays::whereHas('confirmes', function ($query){
+                })->with("confirmes", function ($query) use($langue_id){
+                  $query->with(["user", "video","langue"])->where("langue_id", $langue_id);
+                })
+                ->get();
       }
       else{
-        $data = DataModel::with(["user", "video", "pays"])->lazyById(100);
+        $data = DataModel::with(["user", "video", "pays", "langue"])->lazyById(100);
       }
       return DataResource::collection($data);
     }

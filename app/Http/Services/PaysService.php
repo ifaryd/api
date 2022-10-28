@@ -22,7 +22,11 @@ class PaysService
     $data;
     if ($request->per_page) {
       $data = DataModel::with('langues')->orderBy('id', 'desc')->paginate((int)$request->per_page);
-    } else {
+    }
+    if($request->has("villes")){
+      $data = DataModel::with(['langues', "villes"])->lazyById(100);
+    }
+    else {
       $data = DataModel::with('langues')->lazyById(100);
     }
     return DataResource::collection($data);
