@@ -26,7 +26,9 @@ class PredicationService{
       if(!$request->langue){
         $predications = DataModel::with('langue')->get();
         if ($request->per_page){
-            $data = $predications->each->versets;
+            if($request->verset && $request->verset==='true'){
+              $data = $predications->each->versets;
+            }
             $data = paginate($data, (int)$request->per_page);
         }
         else{
@@ -38,11 +40,19 @@ class PredicationService{
         //return $request->langue;
         $predications = DataModel::where('langue_id', $request->langue)->get();
         if($request->per_page){
-            $data = $predications->each->versets;
+            if($request->verset && $request->verset==='true'){
+              $data = $predications->each->versets;
+            }
             $data = paginate($data, (int)$request->per_page);
         }
         else{
-            $data = $predications->each->versets;
+            if($request->verset && $request->verset==='true'){
+              $data = $predications->each->versets;
+            }
+
+            else{
+              $data = $predications;
+            }
         }
       }
       return DataResource::collection($data);
