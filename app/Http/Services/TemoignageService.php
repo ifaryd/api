@@ -18,6 +18,10 @@ class TemoignageService{
     public function filterDataModel(Request $request){
 
       $data;
+      if($request->mobile){
+        $data = DataModel::all();
+        return DataResource::collection($data);
+      }
       if($request->langue){
         $data = Langue::with('temoignages')->where('initial', $request->langue);
       }

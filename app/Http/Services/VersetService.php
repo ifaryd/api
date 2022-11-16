@@ -21,6 +21,10 @@ class VersetService{
     public function filterDataModel(Request $request){
       
       $data;
+      if($request->mobile && $request->predication){
+        $data = DataModel::where('predication_id', $request->predication)->get();
+        return DataResource::collection($data);
+      }
       $versets = DataModel::orderBy('id', "ASC")->with(['predication','concordances']);
 
       // ->whereHas('predication', function ($query){

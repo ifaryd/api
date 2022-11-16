@@ -20,6 +20,10 @@ class CantiqueService{
     public function filterDataModel(Request $request){
       
       $data;
+      if($request->mobile){
+        $data = DataModel::all();
+        return DataResource::collection($data);
+      }
       $chantres = User::whereHas('charges', function ($query){
         $query->where('libelle', '=', 'Chantre');
       })->get();

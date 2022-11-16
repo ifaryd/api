@@ -31,6 +31,10 @@ class AssembleeService{
       // ->join('charges', 'charge_user.charge_id', '=', 'charges.id')
       // ->get();
       $data;
+      if($request->mobile){
+        $data = DataModel::all();
+        return DataResource::collection($data);
+      }
       if ($request->per_page){
         $data = DataModel::with('ville')->orderBy('id', 'desc')->paginate((int)$request->per_page);
       }

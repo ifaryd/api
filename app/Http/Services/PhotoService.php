@@ -18,6 +18,10 @@ class PhotoService{
     public function filterDataModel(Request $request){
       
       $data;
+      if($request->mobile){
+        $data = DataModel::all();
+        return DataResource::collection($data);
+      }
       if($request->langue){
         $data = Langue::with('photos')->where('initial', $request->langue);
       }

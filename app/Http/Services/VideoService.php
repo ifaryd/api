@@ -20,6 +20,10 @@ class VideoService{
     public function filterDataModel(Request $request){
       
       $data;
+      if($request->mobile){
+        $data = DataModel::all();
+        return DataResource::collection($data);
+      }
       if($request->langue){
         $data = Langue::with('videos')->where('initial', $request->langue);
       }

@@ -20,6 +20,10 @@ class ConfirmeService{
     public function filterDataModel(Request $request){
 
       $data;
+      if($request->mobile){
+        $data = DataModel::all();
+        return DataResource::collection($data);
+      }
       if ($request->per_page){
         $data = DataModel::orderBy('id', 'desc')->with(["user", "video", "pays", "langue"])->paginate((int)$request->per_page);
       }

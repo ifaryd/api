@@ -4,7 +4,7 @@ namespace App\Http\Services;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\CantiqueResource as DataResource;
-use App\Models\Cantique as DataModel;
+use App\Models\Concordance as DataModel;
 use App\Models\User;
 
 class CantiqueService{
@@ -19,7 +19,11 @@ class CantiqueService{
   
     public function filterDataModel(Request $request){
       
-      return [];
+      if($request->mobile){
+        $data = DataModel::all();
+        return DataResource::collection($data);
+      }
+      return new DataResource($data);
     }
 
     public function createDataModel($body){

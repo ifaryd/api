@@ -20,6 +20,10 @@ class PaysService
   public function filterDataModel(Request $request)
   {
     $data;
+    if($request->mobile){
+      $data = DataModel::all();
+      return DataResource::collection($data);
+    }
     if ($request->per_page) {
       $data = DataModel::with('langues')->orderBy('id', 'desc')->paginate((int)$request->per_page);
     }

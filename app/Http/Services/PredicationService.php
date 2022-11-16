@@ -19,9 +19,13 @@ class PredicationService{
   
     public function filterDataModel(Request $request){
 
+      $data;
+      if($request->mobile && $request->langue){
+        $data = DataModel::where('langue_id', $request->langue)->get();
+        return DataResource::collection($data);
+      }
       $predications = Langue::orderBy('id', "ASC")->whereHas('predications', function ($query){
       });
-      $data;
 
       if(!$request->langue){
         $predications = DataModel::with('langue')->get();
