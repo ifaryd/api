@@ -22,28 +22,26 @@ class VersetService{
       
       $data;
       if($request->mobile && $request->predication){
-        $data = DataModel::where('predication_id', $request->predication)->get();
+        $data = DataModel::orderBy('id', "ASC")->where('predication_id', $request->predication)->get();
         return DataResource::collection($data);
       }
-      $versets = DataModel::orderBy('id', "ASC")->with(['predication','concordances']);
-
-      // ->whereHas('predication', function ($query){
-          //$query->where('langue_id', $request->langue);
-      // })
 
       if($request->langue){
-        $versets->whereHas('predication', function ($query){
-          $query->where('langue_id', $request->langue);
-        });
+        $predication = Predication::where('langue_id', $request->langue)->first();
+        if(!$predication || empty($predication)){
+          return DataResource::collection([]); 
+        }else{
+          $data = DataModel::orderBy('id', "ASC")
+          ->where('predication_id', $predication->id)->get();
+        }
       }if($request->predication){
-        $versets->where('predication_id', $request->predication);
+        $data = DataModel::orderBy('id', "ASC")
+          ->where('predication_id', $request->predication)->get();
       }
       if ($request->per_page){
         $data =  $versets->paginate((int)$request->per_page);
       }
-      else{
-        $data = $versets->get();
-      }
+
       return DataResource::collection($data);
     }
 
