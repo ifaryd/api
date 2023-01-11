@@ -39,7 +39,7 @@ class UserService{
 
   public function charges_user(){
     $data;
-    $data = DB::table('charge_users')->get();
+    $data = DB::table('charge_user')->get();
     return ChargeResource::collection($data);
   }
 
