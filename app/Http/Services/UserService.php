@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource as DataResource;
+use App\Http\Resources\ChargeResource;
 use App\Models\User as DataModel;
 use Illuminate\Support\Facades\DB;
 class UserService{
@@ -40,7 +41,7 @@ class UserService{
     $data;
     if($request->mobile){
       $data = DB::table('charge_users')->get();
-      return DataResource::collection($data);
+      return ChargeResource::collection($data);
     }
   }
 
