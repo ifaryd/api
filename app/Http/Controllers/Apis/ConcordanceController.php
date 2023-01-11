@@ -15,6 +15,10 @@ class ConcordanceController extends Controller
       $this->dataService = $dataService;
     }
 
+    function versetConcordance($predicationId, $versetId){
+      return $this->dataService->versetConcordance($predicationId, $versetId); 
+    }
+
     /**
      * Display a listing of the resource.
      *

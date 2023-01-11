@@ -3,11 +3,11 @@
 namespace App\Http\Services;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\CantiqueResource as DataResource;
+use App\Http\Resources\ConcordanceResource as DataResource;
 use App\Models\Concordance as DataModel;
 use App\Models\User;
 
-class CantiqueService{
+class ConcordanceService{
 
     public function findDataModel($id)
     {

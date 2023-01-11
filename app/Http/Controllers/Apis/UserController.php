@@ -25,6 +25,10 @@ class UserController extends Controller
       return $this->dataService->filterDataModel($request);   
     } 
 
+    public function charges_user(){
+      return $this->dataService->charges_user();
+    }
+
     /**
      * Store a newly created resource in storage.
      *

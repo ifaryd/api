@@ -17,6 +17,7 @@ use App\Http\Controllers\Apis\PredicationController;
 use App\Http\Controllers\Apis\VersetController;
 use App\Http\Controllers\Apis\AssembleeController;
 use App\Http\Controllers\Apis\ConfirmeController;
+use App\Http\Controllers\Apis\ConcordanceController;
 use App\Http\Controllers\Apis\MergeDbController;
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,9 @@ Route::apiResources([
     'confirmes' => ConfirmeController::class,
 ]);
 
+Route::get('/charge_users', [UserController::class, 'charges_user']);
 Route::get('/merges', [MergeDbController::class, 'merges']);
 Route::post('/concordances', [VersetController::class, 'addConcordance']);
+Route::post('/concordances/{predicationId}/{versetId}', [ConcordanceController::class, 'versetConcordance']);
 Route::delete('/concordances/{id}', [VersetController::class, 'removeConcordance']);
 Route::get('/dirigeant-assemblee/{assemblee_id}', [AssembleeController::class, 'dirigeantAssemblee']);
