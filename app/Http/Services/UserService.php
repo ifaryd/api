@@ -37,12 +37,10 @@ class UserService{
     return DataResource::collection($data);
   }
 
-  public function charges_user(Request $request){
+  public function charges_user(){
     $data;
-    if($request->mobile){
-      $data = DB::table('charge_users')->get();
-      return ChargeResource::collection($data);
-    }
+    $data = DB::table('charge_users')->get();
+    return ChargeResource::collection($data);
   }
 
   public function createDataModel($body){
