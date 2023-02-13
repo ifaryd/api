@@ -9,7 +9,6 @@
     /* background-image: url('templates/images/logo-pkacou3.jpeg');
     background-repeat: no-repeat;
     background-size: 100%; */
-    flex-wrap: wrap
   }
 </style>
 <div id="home" class="main-demo-hero">
@@ -21,7 +20,7 @@
           
           <h1 class="hero-lead wow fadeInLeft" data-wow-duration="1.5s">Le cri de minuit<br> a retenti</h1>
           <h4 class="h-alt hero-subheading wow fadeIn" data-wow-duration="2s" data-wow-delay=".7s">Prophète Kacou Philippe</h4>
-          <a href="predications" class="btn wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">Les prédications</a>
+          <a href="/fr-fr/predications" class="btn wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">Les prédications</a>
 
         </div>
       </div>
@@ -81,7 +80,7 @@
 
         
         <!-- Blog Post 1 -->
-        <div style="display: flex; flex-direction:row; align-items: start;">
+        <div style="">
         @foreach ($predications as $predication)
         @if($predication)
         
