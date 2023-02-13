@@ -5,6 +5,7 @@ namespace App\Http\Services;
 use Illuminate\Http\Request;
 use App\Http\Resources\PhotoResource as DataResource;
 use App\Models\Photo as DataModel;
+use App\Models\Langue;
 
 class PhotoService{
 

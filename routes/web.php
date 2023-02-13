@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 use App\Http\Services\PredicationService;
+use App\Http\Services\PhotoService;
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,13 @@ Route::get('/fr-fr/predications/{id}', function ($id) {
     $predicationService = new PredicationService();
     $predication =  $predicationService->findDataModel($id); 
     return view('templates/predications-details',compact('predication'));
+});
+
+Route::get('/fr-fr/galeries', function () {
+    $request = new Request();
+    //$request->langue = 1;
+    $request->per_page = 12;
+    $photoService = new PhotoService();
+    $photos =  $photoService->filterDataModel($request); 
+    return view('templates/galeries',compact('photos'));
 });

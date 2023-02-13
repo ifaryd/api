@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @php
-  $assetUrl = "public/templates";
+  $assetUrl = "templates";
 @endphp
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -108,10 +108,10 @@
         <!-- / Adorations -->
 
          <!-- Galerie -->
-         <li class="dropdown mega-fw mg">
-          <a href="galeries" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Galérie</a>
-        <!-- / .dropdown-menu -->
-        </li><!-- / Galerie -->
+         <li class="dropdown mg">
+          <a href="/fr-fr/galeries" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Galéries</a>
+        </li>
+        <!-- / Galerie -->
         
         <!-- Médias -->
         <li class="dropdown mg">
