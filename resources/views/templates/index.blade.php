@@ -21,7 +21,7 @@
           
           <h1 class="hero-lead wow fadeInLeft" data-wow-duration="1.5s">Le cri de minuit<br> a retenti</h1>
           <h4 class="h-alt hero-subheading wow fadeIn" data-wow-duration="2s" data-wow-delay=".7s">Prophète Kacou Philippe</h4>
-          <a href="fr-fr/predications" class="btn wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">Les prédications</a>
+          <a href="predications" class="btn wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">Les prédications</a>
 
         </div>
       </div>
@@ -89,7 +89,7 @@
             <div class="blog-post wow fadeIn" data-wow-duration="2s">
   
               <!-- Image -->
-              <a href="predications-ecrites-details.html" class="post-img"><img src="{{asset($assetUrl.'/images/couv.png') }}" alt="Blog Post 1"></a>
+              <a href="fr-fr/predications/{{$predication->id}}" class="post-img"><img src="{{asset($assetUrl.'/images/couv.png') }}" alt="Blog Post 1"></a>
   
               <div class="bp-content">
                 
@@ -104,13 +104,13 @@
                 <!-- / .meta -->
   
                 <!-- Post Title -->
-                <a href="fr-fr/predications-details/{{$predication->id}}" class="post-title"><h4>{{$predication->chapitre}}</h4></a>
+                <a href="fr-fr/predications/{{$predication->id}}" class="post-title"><h4>{{$predication->chapitre}}</h4></a>
   
                 <!-- Blurb -->
                 <p>{{$predication->chapitre}} : {{$predication->titre}}</p>
   
                 <!-- Link -->
-                <a href="fr-fr/predications-details/{{$predication->id}}" class="btn btn-small">Lire la suite</a>
+                <a href="fr-fr/predications/{{$predication->id}}" class="btn btn-small">Lire la suite</a>
   
               </div><!-- / .bp-content -->
   

@@ -44,7 +44,7 @@
     <div class="row ws-m">
     
     
-        <div class="col-md-6 mb-sm-50">
+        <div class="col-md-6 mb-sm-50" id="download">
             <a type="" title="Télécharger"  onclick="document.title = '{{ $predication->chapitre }} : {{ $predication->titre }}'; printForm()">
                 <button class="btn-ghost btn-small">Télécharger le pdf</button>
             </a>

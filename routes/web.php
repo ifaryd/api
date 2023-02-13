@@ -16,12 +16,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    $request = new Request();
-    $request->langue = 1;
-    $request->per_page = 4;
-    $predicationService = new PredicationService();
-    $predications =  $predicationService->filterDataModel($request); 
-    return view('templates/index',compact('predications'));
+    return redirect('/fr-fr');
 });
 
 Route::get('/fr-fr', function () {
