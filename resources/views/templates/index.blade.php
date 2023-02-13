@@ -1,7 +1,7 @@
 @extends('templates/base')
 @php
   $title = "Bienvenue sur le site officiel du Prophète";
-  $assetUrl = "templates";
+  $assetUrl = "public/templates";
 @endphp
 @section('content')
 <style>
