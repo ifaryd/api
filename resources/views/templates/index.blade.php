@@ -1,6 +1,7 @@
 @extends('templates/base')
 @php
-  $title = "Bienvenue sur le site officiel du Prophète"
+  $title = "Bienvenue sur le site officiel du Prophète";
+  $assetUrl = "public/templates";
 @endphp
 @section('content')
 <style>
@@ -53,7 +54,7 @@
       </div>
 
       <div class="col-md-12">
-        <img class="img-responsive wow fadeIn center-block pro" data-wow-duration="2s" src="{{asset('templates/images/logo-pkacou3.jpeg')}}" alt="" style="max-width: 400px;">
+        <img class="img-responsive wow fadeIn center-block pro" data-wow-duration="2s" src="{{asset($assetUrl.'/images/logo-pkacou3.jpeg')}}" alt="" style="max-width: 400px;">
       </div>
 
     </div><!-- / .row -->
@@ -88,7 +89,7 @@
             <div class="blog-post wow fadeIn" data-wow-duration="2s">
   
               <!-- Image -->
-              <a href="predications-ecrites-details.html" class="post-img"><img src="{{asset('templates/images/couv.png') }}" alt="Blog Post 1"></a>
+              <a href="predications-ecrites-details.html" class="post-img"><img src="{{asset($assetUrl.'/images/couv.png') }}" alt="Blog Post 1"></a>
   
               <div class="bp-content">
                 
@@ -103,13 +104,13 @@
                 <!-- / .meta -->
   
                 <!-- Post Title -->
-                <a href="predications-details" class="post-title"><h4>{{$predication->chapitre}}</h4></a>
+                <a href="fr-fr/predications-details/{{$predication->id}}" class="post-title"><h4>{{$predication->chapitre}}</h4></a>
   
                 <!-- Blurb -->
                 <p>{{$predication->chapitre}} : {{$predication->titre}}</p>
   
                 <!-- Link -->
-                <a href="predications-details" class="btn btn-small">Lire la suite</a>
+                <a href="fr-fr/predications-details/{{$predication->id}}" class="btn btn-small">Lire la suite</a>
   
               </div><!-- / .bp-content -->
   

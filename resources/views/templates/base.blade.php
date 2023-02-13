@@ -1,6 +1,9 @@
 
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@php
+  $assetUrl = "public/templates";
+@endphp
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
@@ -9,25 +12,25 @@
         <meta name="description" content="">
 
         <!-- Favicon -->
-        <link rel="shortcut icon" href="{{asset('templates/images/favicon.ico')}}">
+        <link rel="shortcut icon" href="{{asset($assetUrl.'/images/favicon.ico')}}">
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="{{asset('templates/styles/vendor/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset($assetUrl.'/styles/vendor/bootstrap.min.css')}}">
         <!-- Fonts -->
-        <link rel="stylesheet" href="{{asset('templates/fonts/et-lineicons/css/style.css') }}">
-        <link rel="stylesheet" href="{{asset('templates/fonts/linea-font/css/linea-font.css') }}">
-        <link rel="stylesheet" href="{{asset('templates/fonts/fontawesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{asset($assetUrl.'/fonts/et-lineicons/css/style.css') }}">
+        <link rel="stylesheet" href="{{asset($assetUrl.'/fonts/linea-font/css/linea-font.css') }}">
+        <link rel="stylesheet" href="{{asset($assetUrl.'/fonts/fontawesome/css/font-awesome.min.css') }}">
         <!-- Slider -->
-        <link rel="stylesheet" href="{{asset('templates/styles/vendor/slick.css') }}">
+        <link rel="stylesheet" href="{{asset($assetUrl.'/styles/vendor/slick.css') }}">
         <!-- Lightbox -->
-        <link rel="stylesheet" href="{{asset('templates/styles/vendor/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{asset($assetUrl.'/styles/vendor/magnific-popup.css') }}">
         <!-- Animate.css -->
-        <link rel="stylesheet" href="{{asset('templates/styles/vendor/animate.css') }}">
+        <link rel="stylesheet" href="{{asset($assetUrl.'/styles/vendor/animate.css') }}">
 
 
         <!-- Definity CSS -->
-        <link rel="stylesheet" href="{{asset('templates/styles/main.css') }}">
-        <link rel="stylesheet" href="{{asset('templates/styles/perso.css') }}">
-        <link rel="stylesheet" href="{{asset('templates/styles/responsive.css') }}">
+        <link rel="stylesheet" href="{{asset($assetUrl.'/styles/main.css') }}">
+        <link rel="stylesheet" href="{{asset($assetUrl.'/styles/perso.css') }}">
+        <link rel="stylesheet" href="{{asset($assetUrl.'/styles/responsive.css') }}">
 
         <!-- JS -->
         <script src="{{asset('templates/js/vendor/modernizr-2.8.3.min.js') }}"></script>
@@ -285,34 +288,34 @@
 
         <!-- ========== Scripts ========== -->
 
-        <script src="{{asset('templates/js/vendor/jquery-2.1.4.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/google-fonts.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/jquery.easing.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/jquery.waypoints.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/bootstrap.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/bootstrap-hover-dropdown.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/smoothscroll.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/jquery.localScroll.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/jquery.scrollTo.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/jquery.stellar.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/jquery.parallax.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/slick.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/jquery.easypiechart.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/countup.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/isotope.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/jquery.magnific-popup.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/wow.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/jquery.mb.YTPlayer.min.js')}}"></script>
-        <script src="{{asset('templates/js/vendor/jquery.ajaxchimp.js')}}"></script>
-        <script src="{{asset('templates/js/pdf.js')}}"></script>
-        <script src="{{asset('templates/js/print.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/jquery-2.1.4.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/google-fonts.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/jquery.easing.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/jquery.waypoints.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/bootstrap.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/bootstrap-hover-dropdown.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/smoothscroll.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/jquery.localScroll.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/jquery.scrollTo.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/jquery.stellar.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/jquery.parallax.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/slick.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/jquery.easypiechart.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/countup.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/isotope.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/jquery.magnific-popup.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/wow.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/jquery.mb.YTPlayer.min.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/vendor/jquery.ajaxchimp.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/pdf.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/print.min.js')}}"></script>
 
         <!-- Google Maps -->
-        <script src="{{asset('templates/js/gmap.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/gmap.js')}}"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"></script>
 
         <!-- Definity JS -->
-        <script src="{{asset('templates/js/main.js')}}"></script>
+        <script src="{{asset($assetUrl.'/js/main.js')}}"></script>
     </body>
 
 <!-- Mirrored from ajdethemes.com/definity-html/index-main-mp.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Aug 2022 11:37:25 GMT -->
