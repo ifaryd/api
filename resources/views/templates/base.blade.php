@@ -103,8 +103,9 @@
 
         <!-- Adorations -->
         <li class="dropdown mg">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Cantiques</a>
+          <a href="/fr-fr/cantiques" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Cantiques</a>
         </li>
+
         <!-- / Adorations -->
 
          <!-- Galerie -->
@@ -316,6 +317,15 @@
 
         <!-- Definity JS -->
         <script src="{{asset($assetUrl.'/js/main.js')}}"></script>
+        <script>
+          $('select').change(function() {
+          if ($(this).children('option:first-child').is(':selected')) {
+            $(this).addClass('placeholder');
+          } else {
+            $(this).removeClass('placeholder');
+          }
+          });
+        </script>
     </body>
 
 <!-- Mirrored from ajdethemes.com/definity-html/index-main-mp.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Aug 2022 11:37:25 GMT -->

@@ -24,6 +24,13 @@ class CantiqueService{
         $data = DataModel::all();
         return DataResource::collection($data);
       }
+
+      if($request->user_id){
+        $data = DataModel::where('user_id', '=', $request->user_id)->with('user')->get();
+        $data = paginate($data, (int)$request->per_page ?? 15);
+        return DataResource::collection($data);
+      }
+
       $chantres = User::whereHas('charges', function ($query){
         $query->where('libelle', '=', 'Chantre');
       })->get();

@@ -19,10 +19,13 @@
         <div class="hero-content">
           
           <h1 class="hero-lead wow fadeInLeft" data-wow-duration="1.5s">Le cri de minuit<br> a retenti</h1>
-          <h4 class="h-alt hero-subheading wow fadeIn" data-wow-duration="2s" data-wow-delay=".7s">Prophète Kacou Philippe</h4>
-          <a href="/fr-fr/predications" class="btn wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">Les prédications</a>
+          <h4 class="h-alt hero-subheading wow fadeIn acti" data-wow-duration="2s" data-wow-delay=".7s">Prophète Kacou Philippe</h4>
+          <a href="/fr-fr/predications" class="btn wow fadeIn" data-wow-duration="2s" data-wow-delay="1s" style="margin-bottom: 5px">prédications</a>
+          <a target="_blank" href="https://play.google.com/store/apps/details?id=com.matth25.prophetekacou" class="btn wow fadeIn" data-wow-duration="2s" data-wow-delay="1s" style="margin-bottom: 5px">Application Android</a>
+          <a target="_blank" href="https://apps.apple.com/bj/app/proph%C3%A8te-kacou-officiel/id1348915504" class="btn wow fadeIn" data-wow-duration="2s" data-wow-delay="1s" style="margin-bottom: 5px">Application Iphone</a>
+          <a target="_blank" href="https://www.philippekacou.org/file/local/ProphetKacou.exe" class="btn wow fadeIn" data-wow-duration="2s" data-wow-delay="1s" style="margin-bottom: 5px">Application Windows</a>
 
-        </div>
+        </div> 
       </div>
 
       <!-- Scroller -->
