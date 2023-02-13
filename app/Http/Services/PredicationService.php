@@ -33,7 +33,7 @@ class PredicationService{
             if($request->verset && $request->verset==='true'){
               $data = $predications->each->versets;
             }
-            $data = paginate($data, (int)$request->per_page);
+            $data = paginate($predications, (int)$request->per_page);
         }
         else{
             return DataResource::collection($predications);;
@@ -47,7 +47,7 @@ class PredicationService{
             if($request->verset && $request->verset==='true'){
               $data = $predications->each->versets;
             }
-            $data = paginate($data, (int)$request->per_page);
+            $data = paginate($predications, (int)$request->per_page);
         }
         else{
             if($request->verset && $request->verset==='true'){

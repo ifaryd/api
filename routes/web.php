@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Http;
+use App\Http\Services\PredicationService;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +16,34 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $request = new Request();
+    $request->langue = 1;
+    $request->per_page = 4;
+    $predicationService = new PredicationService();
+    $predications =  $predicationService->filterDataModel($request); 
+    return view('templates/index',compact('predications'));
+});
+
+Route::get('/fr-fr', function () {
+    $request = new Request();
+    $request->langue = 1;
+    $request->per_page = 4;
+    $predicationService = new PredicationService();
+    $predications =  $predicationService->filterDataModel($request); 
+    return view('templates/index',compact('predications'));
+});
+
+Route::get('/fr-fr/predications', function () {
+    $request = new Request();
+    $request->langue = 1;
+    $request->per_page = 10;
+    $predicationService = new PredicationService();
+    $predications =  $predicationService->filterDataModel($request); 
+    return view('templates/predications-lists',compact('predications'));
+});
+
+Route::get('/fr-fr/predications/{id}', function ($id) {
+    $predicationService = new PredicationService();
+    $predication =  $predicationService->findDataModel($id); 
+    return view('templates/predications-details',compact('predication'));
 });
