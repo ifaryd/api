@@ -71,6 +71,7 @@ return array(
     'App\\Http\\Services\\AssembleeService' => $baseDir . '/app/Http/Services/AssembleeService.php',
     'App\\Http\\Services\\CantiqueService' => $baseDir . '/app/Http/Services/CantiqueService.php',
     'App\\Http\\Services\\ChargeService' => $baseDir . '/app/Http/Services/ChargeService.php',
+    'App\\Http\\Services\\ConcordanceService' => $baseDir . '/app/Http/Services/ConcordanceService.php',
     'App\\Http\\Services\\ConfirmeService' => $baseDir . '/app/Http/Services/ConfirmeService.php',
     'App\\Http\\Services\\LangueService' => $baseDir . '/app/Http/Services/LangueService.php',
     'App\\Http\\Services\\PaysService' => $baseDir . '/app/Http/Services/PaysService.php',

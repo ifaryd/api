@@ -40,10 +40,21 @@ class AssembleeService{
       }
       if ($request->ville){
         $data = DataModel::with('ville')->where("ville_id", $request->ville)->orderBy('id', 'desc')->get();
+        if($request->per_page){
+          $data = $data->paginate($request->per_page);
+        }
+      }
+      if ($request->pays_id){
+
+        $data = Ville::orderBy('id', "ASC")->where('pays_id', $request->pays_id)->with('assemblees');
+        if($request->per_page){
+          $data = $data->paginate($request->per_page);
+        }
       }
       else{
-        $data = DataModel::with('ville')->get();
+        $data = DataModel::with('ville')->paginate(100);
       }
+
       return DataResource::collection($data);
     }
   

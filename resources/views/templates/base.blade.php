@@ -76,7 +76,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand log" id="brand" href="/fr-fr" style="display: none;">Accueil</a>
+
+      <h1 class="hero-lead wow fadeInLeft" data-wow-duration="1.5s">
+        <a  href="/fr-fr" style="display: block; color: #7b3d1a;">Matthieu25v6</a>
+      </h1>
       <!-- Logo -->
       <!-- <a class="navbar-brand log" href=""><img src="{% static 'images/logo.png" alt="Definity - Logo"></a>  -->
     </div><!-- / .navbar-header -->
@@ -85,36 +88,36 @@
     <div id="navbar" class="navbar-collapse collapse navr" >
       <ul class="nav navbar-nav" style="margin-top: 0px !important;">
         <li class="dropdown">
-          <a href="/fr-fr"><button class="btn-ghost btn-small" style="width: 176px;padding-right: 2px;padding-left: 2px;margin-top: 6px; margin-right: 35px; "> philippekacou.org</button></a>
-            </li>
-        
         <!-- Accueil -->
         <li class="dropdown mg">
-          <a href="/fr-fr" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Accueil</a>
+          <a href="/fr-fr" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">Accueil</a>
         <!-- / .dropdown-menu -->
         </li>
         <!-- / Accueil -->
 
         <!-- Prédications -->
         <li class="dropdown mg">
-          <a href="/fr-fr/predications" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Prédications</a>
+          <a href="/fr-fr/predications" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">Prédications</a>
         </li>
         <!-- / Prédications -->
 
         <!-- Adorations -->
         <li class="dropdown mg">
-          <a href="/fr-fr/cantiques" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Cantiques</a>
+          <a href="/fr-fr/cantiques" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">Cantiques</a>
         </li>
 
         <!-- / Adorations -->
 
-         <!-- Galerie -->
-         <li class="dropdown mg">
-          <a href="/fr-fr/galeries" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Galéries</a>
+        <li class="dropdown mg">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">Galéries<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/fr-fr/galeries/photos" style="color:black">Photos</a></li>
+            <li><a href="/fr-fr/galeries/videos" style="color:black">Videos</a></li>
+          </ul>
         </li>
         <!-- / Galerie -->
         
-        <!-- Médias -->
+        <!-- Médias 
         <li class="dropdown mg">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Médias<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -124,12 +127,12 @@
 
           </ul>
         </li>
-        <!-- / Médias -->
+      / Médias -->
 
 
        
 
-        <!-- Ressources -->
+        <!-- Ressources 
         <li class="dropdown mg">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Ressources<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -141,20 +144,20 @@
 
           </ul>
         </li>
-        <!-- / Ressources -->
+         / Ressources -->
 
          
 
         <!-- Le monde -->
         <li class="dropdown mega-fw mg">
-          <a href="mondes" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Le cri de minuit dans monde</a>
+          <a href="/fr-fr/assemblees" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">Le cri de minuit dans monde</a>
         <!-- / .dropdown-menu -->
         </li>
         <!-- / Le monde -->
 
         <!-- Contacts -->
         <li class="dropdown mg">
-          <a href="contacts" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Contacts</a>
+          <a href="/fr-fr/contacts" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">Contacts</a>
         <!-- / .dropdown-menu -->
         </li>
         <!-- / Contacts -->
@@ -204,7 +207,7 @@
               <div class="col-md-3 col-sm-6 mb-sm-100" style="margin-bottom: 67px;">
                 <div class="widget about-widget">
                   <h5 class="header-widget">
-                    <a href="predications"><li class="fot">Prédications</li></a>
+                    <a href="/fr-fr/predications"><li class="fot">Prédications</li></a>
                   </h5>
 
                   <ul class="social-links">
@@ -218,24 +221,18 @@
               <!-- Instagram Feed -->
               <div class="col-md-3 col-sm-6 mb-sm-100">
                 <div class="widget gallery-widget">
-                  <h5 class="header-widget">Medias</h5>
-
-                    <a href="predications-ecrites.html"><li class="fot">Presse écrites</li></a> 
-                    <a href="emissions-radios"><li class="fot">Emissions radio</li></a>
-                    <a href="emissions-tv"><li class="fot">Emissions TV</li></a>
-                    <a href="autres-videos"><li class="fot">Autres vidéos</li></a>
+                  <h5 class="header-widget">
+                    <a href="/fr-fr/cantiques"><li class="fot">Cantiques</li></a>
+                  </h5>
                 </div><!-- / .widget -->
               </div><!-- / .col-md-3 -->
 
               <!-- Twitter Feed -->
               <div class="col-md-3 col-sm-6 mb-sm-100">
                 <div class="widget twitter-widget">
-                  <h5 class="header-widget">Ressources</h5>
-                  <a href="temoignages"><li class="fot">Témoignages</li></a> 
-                    <a href="actualites"><li class="fot">Actualités</li></a>
-                    <a href="pepites"><li class="fot">Les pépites d'or</li></a>
-                    <a href="aides"><li class="fot">Aides pour la lecture</li></a>
-                    <a href="logiciels"><li class="fot">Logiciels importants</li></a>
+                  <h5 class="header-widget">Galéries</h5>
+                  <a href="/fr-fr/galeries/photos"><li class="fot">Photos</li></a> 
+                  <a href="/fr-fr/galeries/videos"><li class="fot">Videos</li></a>
                 </div><!-- / .widget -->
               </div><!-- / .col-md-3 -->
 

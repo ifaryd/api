@@ -28,10 +28,10 @@ class PaysService
       $data = DataModel::with('langues')->orderBy('id', 'desc')->paginate((int)$request->per_page);
     }
     if($request->has("villes")){
-      $data = DataModel::with(['langues', "villes"])->lazyById(100);
+      $data = DataModel::with(['langues', "villes"])->get();
     }
     else {
-      $data = DataModel::with('langues')->lazyById(100);
+      $data = DataModel::with('langues')->get();
     }
     return DataResource::collection($data);
   }

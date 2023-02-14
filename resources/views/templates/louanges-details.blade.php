@@ -27,7 +27,7 @@
       </header>
 
       @if($predication->contenu)
-      <p>{{ $predication->contenu }}</p>
+      <p style="display:flex; justify-content:center">{!! nl2br($predication->contenu) !!}</p>
       @else
       Aucun texte associé
       @endif

@@ -26,8 +26,15 @@ class VilleService{
       if ($request->per_page){
         $data = DataModel::with('pays')->orderBy('id', 'desc')->paginate((int)$request->per_page);
       }
+      if($request->pays_id){
+        $data = DataModel::with('pays')->where('pays_id', $request->pays_id)->get();
+        if ($request->per_page){
+            $data = paginate($predications, (int)$request->per_page);
+        }
+        return DataResource::collection($data);
+      }
       else{
-        $data = DataModel::with('pays')->lazyById(100);
+        $data = DataModel::with('pays')->get();
       }
       return DataResource::collection($data);
     }

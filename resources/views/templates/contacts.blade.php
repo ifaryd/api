@@ -1,23 +1,18 @@
-{% extends 'base.html' %}
-{% load i18n %}
-
-{% block title %}
-Nous contacter
-{% endblock title %}
-
-
-
-
-
-{% block content %}
+@extends(('templates/base'))
+@section('content')
+@php
+  $title = "Nous contactez";
+  $langue = 'fr-fr';
+  $url ="photos"
+@endphp
 
 <header class="page-title pt-small" style="margin-top: 70px;">
     <div class="container">
       <div class="row">
-        <h1 class="col-sm-6">{% trans 'Nous contacter' %}</h1>
+        <h1 class="col-sm-6">Nous contacter</h1>
         <ol class="col-sm-6 text-right breadcrumb">
-          <li><a href="accueil">{% trans 'Accueil' %}</a></li>
-          <li class="active">{% trans 'contacts' %}</li>
+          <li><a href="accueil">Accueil</a></li>
+          <li class="active">contacts</li>
         </ol>
       </div>
     </div>
@@ -26,8 +21,8 @@ Nous contacter
   <section id="contact" class="section contact-1">
   
     <header class="sec-heading">
-      <h2>{% trans 'Contactez nous' %}</h2>
-      <span class="subheading">{% trans 'Vous avez une question ?' %}</span>
+      <h2>Contactez nous</h2>
+      <span class="subheading">Vous avez une question ?</span>
     </header>
     
     <div class="contact-wrapper">
@@ -49,14 +44,14 @@ Nous contacter
 
                 <!-- Phone -->
                 <div class="col-sm-6 address-group">
-                  <span>{% trans 'Téléphone' %}</span>
+                  <span>Téléphone</span>
                   <a href="#">+225 07 08 000 789</a>
                   <a href="#">+225 07 74 747 430 </a>
                 </div>
 
                 <!-- Address -->
                 <div class="col-sm-5 address-group">
-                  <span>{% trans 'Addresse Postale' %}</span>
+                  <span>Addresse Postale</span>
                   <p>BP 374 Sikensi (Côte d'Ivoire)</p>
                 </div>
 
@@ -95,14 +90,14 @@ Nous contacter
 
               <!-- Name -->
               <div class="form-group">
-                <input type="text" name="name" id="name-contact-1" class="form-control validate-locally" placeholder="{% trans 'Entrer votre nom' %}">
-                <label for="name-contact-1">{% trans 'Nom' %}</label>
+                <input type="text" name="name" id="name-contact-1" class="form-control validate-locally" placeholder="Entrer votre nom">
+                <label for="name-contact-1">Nom</label>
                 <span class="pull-right alert-error"></span>
               </div>
 
               <!-- Email -->
               <div class="form-group">
-                <input type="email" name="email" id="email-contact-1" class="form-control validate-locally" placeholder="{% trans 'Entrer votre email' %}">
+                <input type="email" name="email" id="email-contact-1" class="form-control validate-locally" placeholder="Entrer votre email">
                 <label for="email-contact-1">Email</label>
                 <span class="pull-right alert-error"></span>
               </div>
@@ -113,11 +108,11 @@ Nous contacter
 
               <!-- Message -->
               <div class="form-group">
-                <textarea name="message" id="message-contact-1" class="form-control" rows="5" placeholder="{% trans 'Votre message' %}"></textarea>
-                <label for="message-contact-1">{% trans 'Message' %}</label>
+                <textarea name="message" id="message-contact-1" class="form-control" rows="5" placeholder="Votre message"></textarea>
+                <label for="message-contact-1">Message</label>
               </div>
               <div>
-                <input type="submit" class="btn pull-right" value="{% trans 'Envoyez' %}">
+                <input type="submit" class="btn pull-right" value="Envoyez">
               </div>
 
               <!-- Ajax Message -->
@@ -131,4 +126,4 @@ Nous contacter
     </div><!-- / .contact-wrapper -->
   </section><!-- / .contact-1 -->
 
-{% endblock content %} 
+@endsection

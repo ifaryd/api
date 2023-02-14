@@ -1,18 +1,18 @@
 @extends(('templates/base'))
 @section('content')
 @php
-  $title = "Galéries";
+  $title = "Videos";
   $langue = 'fr-fr';
-  $url ="galeries"
+  $url ="videos"
 @endphp
 
 <header class="page-title pt-small" style="margin-top: 70px;">
     <div class="container">
       <div class="row">
-        <h1 class="col-sm-6">Galeries</h1>
+        <h1 class="col-sm-6">Videos</h1>
         <ol class="col-sm-6 text-right breadcrumb">
-          <li><a href="/{{ $langue }}">Accueil</a></li>
-          <li class="active">Galeries</li>
+          <li><a href="/{{ $langue }}">Accueil/Galéries</a></li>
+          <li class="active">Videos</li>
         </ol>
       </div>
     </div>
@@ -32,19 +32,12 @@
               @endif
             @endfor
           </ul>
-        </nav>
+        </nav> 
         @endif
         @foreach ($photos as $photo)
         <div class="col-md-4 portfolio-item print mt-1">
           <div class="p-wrapper hover-default" style="height: 292px !important;">
-            <img src="{{ $photo->url }}" alt="{{ $photo->description }}">
-            <div class="p-hover" style="height: 292px !important;">
-              <div class="p-content">
-                
-                <h6 class="subheading">{{ $photo->description }}</h6>
-              </div>
-            </div>
-            <a href="{{ $photo->url }}" class="open-btn open-gallery"><i class="fa fa-expand"></i></a>
+            <iframe width="420" height="315" src="https://www.youtube.com/embed?v={{ $photo->url }}?frameborder=0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div><!-- / .portfolio-item -->
         @endforeach 

@@ -614,6 +614,7 @@ class ComposerStaticInit177022ec2344c44788bfb4c00fa44b86
         'App\\Http\\Services\\AssembleeService' => __DIR__ . '/../..' . '/app/Http/Services/AssembleeService.php',
         'App\\Http\\Services\\CantiqueService' => __DIR__ . '/../..' . '/app/Http/Services/CantiqueService.php',
         'App\\Http\\Services\\ChargeService' => __DIR__ . '/../..' . '/app/Http/Services/ChargeService.php',
+        'App\\Http\\Services\\ConcordanceService' => __DIR__ . '/../..' . '/app/Http/Services/ConcordanceService.php',
         'App\\Http\\Services\\ConfirmeService' => __DIR__ . '/../..' . '/app/Http/Services/ConfirmeService.php',
         'App\\Http\\Services\\LangueService' => __DIR__ . '/../..' . '/app/Http/Services/LangueService.php',
         'App\\Http\\Services\\PaysService' => __DIR__ . '/../..' . '/app/Http/Services/PaysService.php',

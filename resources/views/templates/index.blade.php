@@ -52,7 +52,7 @@
       </header>
 
       <div class="col-md-offset-2 col-md-8 text-center ws-m" style="padding-bottom: 50px;">
-        <p>Comme les prophètes de la Bible, en avril 1993, un homme qui n'avait jamais été dans une église reçoit en vision, la visitation d'un Ange qui le commissionne pour un Message destiné au Salut de l'humanité en accomplissement de<strong> Matth.25:6 </strong> et d' <strong>Apoc.12:14</strong>.</p>
+        <p style="color:black; font-size: 18px;">Comme les prophètes de la Bible, en avril 1993, un homme qui n'avait jamais été dans une église reçoit en vision, la visitation d'un Ange qui le commissionne pour un Message destiné au Salut de l'humanité en accomplissement de<strong> Matth.25:6 </strong> et d' <strong>Apoc.12:14</strong>.</p>
       </div>
 
       <div class="col-md-12">
