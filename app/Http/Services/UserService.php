@@ -24,10 +24,10 @@ class UserService{
       return DataResource::collection($data);
     }
     if ($request->per_page){
-      $data = DataModel::orderBy('id', 'desc')->paginate((int)$request->per_page);
+      $data = DataModel::orderBy('id', 'ASC')->paginate((int)$request->per_page);
     }
     if($request->charge && $request->charge == "chantre"){
-      $data = DataModel::orderBy('id', "DESC")->whereHas('charges', function ($query){
+      $data = DataModel::orderBy('id', "ASC")->whereHas('charges', function ($query){
         $query->where('libelle', '=', 'Chantre');
       })->get();
     }
