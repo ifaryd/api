@@ -1,8 +1,7 @@
 @extends(('templates/base'))
 @section('content')
 @php
-  $title = "Cantiques";
-  $langue = 'fr-fr';
+  $langue = '';
   $url ="cantique";
 @endphp
 <style>
@@ -14,10 +13,10 @@ select option{color: #555;}
 <header class="page-title pt-small" style="margin-top: 70px;">
     <div class="container">
       <div class="row">
-        <h1 class="col-sm-6">Cantiques</h1>
+        <h1 class="col-sm-6">{{__('app.menu.cantique')}}</h1>
         <ol class="col-sm-6 text-right breadcrumb">
-          <li><a href="/{{ $langue }}">Accueil</a></li>
-          <li class="active">Cantiques</li>
+          <li><a href="/{{ $langue }}">{{__('app.menu.home')}}</a></li>
+          <li class="active">{{__('app.menu.cantique')}}</li>
         </ol>
       </div>
     </div>
@@ -44,6 +43,7 @@ select option{color: #555;}
         @endif
         <div>
             <select class="form-control placeholder" onchange="change(this)">
+              <option>...</option>
                 @foreach($chantres as $chantre)
                     @if($chantre->id == $userId)
                       <option selected value="{{ $chantre->id }}">{{ $chantre->first_name }}</option>
@@ -57,16 +57,16 @@ select option{color: #555;}
         <table class="table table-row-highlight">
           <thead>
             <tr>
-              <th>Titre</th>
-              <th>Télécharger</th>
-              <th>Ecouter</th>
+              <th>{{__('app.app.home_subtitle9')}}</th>
+              <th>{{__('app.app.home_subtitle7')}}</th>
+              <th>{{__('app.app.home_subtitle8')}}</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($predications as $predication)
             <tr>
               <td data-label><a href="{{$url.'/'.$predication->id}}" class="fott">{{ $predication->titre }}</a></td>
-              <td data-label><a href="{{ $predication->lien_audio }}" class="fott">Télécharger</a> </td>
+              <td data-label><a href="{{ $predication->lien_audio }}" class="fott">{{__('app.app.home_subtitle7')}}</a> </td>
               @php
                $link = str_replace('feeds', 'api', $predication->lien_audio);
                $link = str_replace('stream', 'tracks', $link);
@@ -101,6 +101,9 @@ select option{color: #555;}
   <script>
     function change(selector){
 
+      if(!selector.value){
+        return false;
+      }
       var userURL = document.getElementById('url');
       //$('a#url').data('url');
  

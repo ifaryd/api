@@ -26,6 +26,9 @@ class PhotoService{
       if($request->langue){
         $data = Langue::with('photos')->where('initial', $request->langue);
       }
+      if($request->langue_id){
+        $data = DataModel::with('langue')->where('langue_id', $request->langue_id);
+      }
       if(!$request->langue && !$request->per_page){
         $data = DataModel::with('langue')->lazyById(100);
       }

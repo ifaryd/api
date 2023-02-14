@@ -1,8 +1,7 @@
 @extends(('templates/base'))
 @section('content')
 @php
-  $title = "Assemblees";
-  $langue = 'fr-fr';
+  $langue = '';
   $url ="assemblees";
 @endphp
 <style>
@@ -13,10 +12,10 @@ select option{color: #555;}
 <header class="page-title pt-small" style="margin-top: 70px;">
     <div class="container">
       <div class="row">
-        <h1 class="col-sm-6">Assemblees</h1>
+        <h1 class="col-sm-6">{{__('app.app.home_subtitle10')}}</h1>
         <ol class="col-sm-6 text-right breadcrumb">
-          <li><a href="/{{ $langue }}">Accueil</a></li>
-          <li class="active">Assemblees</li>
+          <li><a href="/{{ $langue }}">{{__('app.menu.home')}}</a></li>
+          <li class="active">{{__('app.app.home_subtitle10')}}</li>
         </ol>
       </div>
     </div>
@@ -43,6 +42,7 @@ select option{color: #555;}
         @endif
         <div>
             <select class="form-control placeholder" onchange="change(this)">
+              <option>...</option>
                 @foreach($chantres as $chantre)
                     @if($chantre->id == $pays_id)
                       <option selected value="{{ $chantre->id }}">{{ $chantre->nom }}</option>
@@ -56,11 +56,11 @@ select option{color: #555;}
         <table class="table table-row-highlight">
           <thead>
             <tr>
-              <th>Nom</th>
-              <th>Ville</th>
-              <th>Addresse</th>
-              <th>Dirigeant</th>
-              <th>Contact</th>
+              <th>{{__('app.app.home_subtitle15')}}</th>
+              <th>{{__('app.app.home_subtitle14')}}</th>
+              <th>{{__('app.app.home_subtitle13')}}</th>
+              <th>{{__('app.app.home_subtitle12')}}</th>
+              <th>{{__('app.app.home_subtitle11')}}</th>
             </tr>
           </thead>
           <tbody>
@@ -104,6 +104,9 @@ select option{color: #555;}
   <script>
     function change(selector){
 
+      if(!selector.value){
+        return false;
+      }
       var userURL = document.getElementById('url');
 
       $.ajax({

@@ -1,17 +1,16 @@
 @extends(('templates/base'))
 @section('content')
 @php
-  $title = "Cantiques";
-  $langue = 'fr-fr';
+  $langue = '';
   $url ="cantiques"
 @endphp
 <header class="page-title pt-small" style="margin-top: 70px;">
     <div class="container">
       <div class="row">
-        <h1 class="col-sm-6">Cantiques</h1>
+        <h1 class="col-sm-6">{{__('app.menu.cantique')}}</h1>
         <ol class="col-sm-6 text-right breadcrumb">
-          <li><a href="/{{ $langue }}">Accueil</a></li>
-          <li><a href="/{{ $langue }}/{{$url}}">Cantique</a></li>
+          <li><a href="/{{ $langue }}">{{__('app.menu.home')}}</a></li>
+          <li><a href="/{{ $langue }}/{{$url}}">{{__('app.menu.cantique')}}</a></li>
           <li class="active">{{ $predication->titre }}</li>
         </ol>
       </div>
@@ -29,7 +28,7 @@
       @if($predication->contenu)
       <p style="display:flex; justify-content:center">{!! nl2br($predication->contenu) !!}</p>
       @else
-      Aucun texte associé
+      {{__('app.app.home_subtitle6')}}
       @endif
 
 
@@ -39,8 +38,8 @@
     
     
         <div class="col-md-6 mb-sm-50" id="download">
-            <a href="{{ $predication->lien_audio }}"  title="Télécharger">
-                <button class="btn-ghost btn-small">Télécharger</button>
+            <a href="{{ $predication->lien_audio }}"  title="{{__('app.app.home_subtitle7')}}">
+                <button class="btn-ghost btn-small">{{__('app.app.home_subtitle7')}}</button>
             </a>
          </div>
          

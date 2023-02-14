@@ -11,6 +11,8 @@ use App\Http\Services\PaysService;
 use App\Http\Services\VilleService;
 use App\Http\Services\AssembleeService;
 use Illuminate\Http\Request;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,64 +24,88 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/fr-fr');
+Route::get('/changeLanguage/{en}', function ($lng) {
+    session(['locale'=>$lng]);
+    return redirect('/');
 });
 
-Route::get('/fr-fr', function () {
+Route::get('/', function () {
+    setLocalApplication();
     $request = new Request();
+    $langueId = session('langueId');
     $request->langue = 1;
+    if($langueId && (int)$langueId >0){
+        $request->langue = (int)$langueId;
+    }
     $request->per_page = 4;
     $predicationService = new PredicationService();
     $predications =  $predicationService->filterDataModel($request); 
     return view('templates/index',compact('predications'));
 });
 
-Route::get('/fr-fr/predications', function () {
+Route::get('/predications', function () {
+    setLocalApplication();
     $request = new Request();
+    $langueId = session('langueId');
     $request->langue = 1;
+    if($langueId && (int)$langueId >0){
+        $request->langue = (int)$langueId;
+    }
     $request->per_page = 10;
     $predicationService = new PredicationService();
     $predications =  $predicationService->filterDataModel($request); 
     return view('templates/predications-lists',compact('predications'));
 });
 
-Route::get('/fr-fr/predications/{id}', function ($id) {
+Route::get('/predications/{id}', function ($id) {
+    setLocalApplication();
     $predicationService = new PredicationService();
     $predication =  $predicationService->findDataModel($id); 
     return view('templates/predications-details',compact('predication'));
 });
 
-Route::get('/fr-fr/galeries/photos', function () {
+Route::get('/galeries/photos', function () {
+    setLocalApplication();
     $request = new Request();
-    //$request->langue = 1;
+    $langueId = session('langueId');
+    $request->langue = 1;
+    if($langueId && (int)$langueId >0){
+        //$request->langue_id = (int)$langueId;
+    }
     $request->per_page = 12;
     $photoService = new PhotoService();
     $photos =  $photoService->filterDataModel($request); 
     return view('templates/images',compact('photos'));
 });
 
-Route::get('/fr-fr/galeries/videos', function () {
+Route::get('/galeries/videos', function () {
+    setLocalApplication();
     $request = new Request();
-    //$request->langue = 1;
+    $langueId = session('langueId');
+    $request->langue = 1;
+    if($langueId && (int)$langueId >0){
+       // $request->langue_id = (int)$langueId;
+    }
     $request->per_page = 12;
     $photoService = new VideoService();
     $photos =  $photoService->filterDataModel($request); 
     return view('templates/videos',compact('photos'));
 });
 
-Route::get('/fr-fr/changeCantique/{id}', function ($id) {
+Route::get('/changeCantique/{id}', function ($id) {
+    setLocalApplication();
     session(['chantre_id'=>$id]);
     return "success";
 });
 
-Route::get('/fr-fr/changeAssemblee/{id}', function ($id) {
+Route::get('/changeAssemblee/{id}', function ($id) {
+    setLocalApplication();
     session(['pays_id'=>$id]);
     echo ('success');
 });
 
-Route::get('/fr-fr/cantiques', function (Request $request) {
-
+Route::get('/cantiques', function (Request $request) {
+    setLocalApplication();
     $request = new Request();
     $request->langue = 1;
     $request->per_page = 100;
@@ -102,8 +128,8 @@ Route::get('/fr-fr/cantiques', function (Request $request) {
     return view('templates/louanges',compact('predications', 'chantres', 'userId'));
 });
 
-Route::get('/fr-fr/assemblees', function (Request $request) {
-
+Route::get('/assemblees', function (Request $request) {
+    setLocalApplication();
     $request = new Request();
     $request->langue = 1;
     $cantiqueService = new AssembleeService();
@@ -128,12 +154,14 @@ Route::get('/fr-fr/assemblees', function (Request $request) {
     return view('templates/assemblees',compact('predications', 'chantres', 'pays_id', 'villes'));
 });
 
-Route::get('/fr-fr/cantique/{id}', function ($id) {
+Route::get('/cantique/{id}', function ($id) {
+    setLocalApplication();
     $cantiqueService = new CantiqueService();
     $predication =  $cantiqueService->findDataModel($id); 
     return view('templates/louanges-details',compact('predication'));
 });
 
-Route::get('/fr-fr/contacts', function () {
+Route::get('/contacts', function () {
+    setLocalApplication();
     return view('templates/contacts');
 });

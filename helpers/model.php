@@ -7,6 +7,8 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Langue;
+use Illuminate\Support\Facades\App;
 
 function modelNotFound(){
   throw new HttpResponseException(response()->json(['message' => 'Model not found'], 404));
@@ -35,4 +37,27 @@ function dirigeantAssemblee($assemblee_id){
     ->where("principal", 1)
     ->first();
     return $user = User::find($userId->user_id);
+}
+
+function setLocalApplication($locale = ''){
+
+  if(isset($locale) && !empty($locale)){
+    $locale = $locale;
+  }
+  else{
+    $locale = session('locale');
+  }
+
+  if(in_array($locale, ['en', 'es', 'fr', 'pt'])) {
+      App::setLocale($locale);
+  }
+  else{
+      App::setLocale('fr');
+      $locale = 'fr';
+  }
+
+  $langue = Langue::where('initial', $locale.'-'.$locale)->first();
+  if($langue && $langue->id){
+    session(['langueId' => $langue->id]);
+  }
 }

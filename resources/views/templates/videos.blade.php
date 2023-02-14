@@ -1,18 +1,17 @@
 @extends(('templates/base'))
 @section('content')
 @php
-  $title = "Videos";
-  $langue = 'fr-fr';
+  $langue = '';
   $url ="videos"
 @endphp
 
 <header class="page-title pt-small" style="margin-top: 70px;">
     <div class="container">
       <div class="row">
-        <h1 class="col-sm-6">Videos</h1>
+        <h1 class="col-sm-6">{{__('app.menu.video')}}</h1>
         <ol class="col-sm-6 text-right breadcrumb">
-          <li><a href="/{{ $langue }}">Accueil/Galéries</a></li>
-          <li class="active">Videos</li>
+          <li><a href="/{{ $langue }}">{{__('app.menu.home')}}/{{__('app.menu.galerie')}}</a></li>
+          <li class="active">{{__('app.app.video')}}</li>
         </ol>
       </div>
     </div>

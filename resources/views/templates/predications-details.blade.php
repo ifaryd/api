@@ -1,17 +1,16 @@
 @extends(('templates/base'))
 @section('content')
 @php
-  $title = "Prédications";
-  $langue = 'fr-fr';
+  $langue = '';
   $url ="predications"
 @endphp
 <header class="page-title pt-small" style="margin-top: 70px;">
     <div class="container">
       <div class="row">
-        <h1 class="col-sm-6">Prédications</h1>
+        <h1 class="col-sm-6">{{__('app.menu.predication')}}</h1>
         <ol class="col-sm-6 text-right breadcrumb">
-          <li><a href="/{{ $langue }}">Accueil</a></li>
-          <li><a href="/{{ $langue }}/{{$url}}">Prédications</a></li>
+          <li><a href="/{{ $langue }}">{{__('app.menu.home')}}</a></li>
+          <li><a href="/{{ $langue }}/{{$url}}">{{__('app.menu.predication')}}</a></li>
           <li class="active">{{ $predication->titre }}</li>
         </ol>
       </div>
@@ -42,7 +41,7 @@
     
         <div class="col-md-6 mb-sm-50" id="download">
             <a type="" title="Télécharger"  onclick="document.title = '{{ $predication->chapitre }} : {{ $predication->titre }}'; printForm()">
-                <button class="btn-ghost btn-small">Télécharger le pdf</button>
+                <button class="btn-ghost btn-small">{{__('app.app.home_subtitle7')}} </button>
             </a>
          </div>
          

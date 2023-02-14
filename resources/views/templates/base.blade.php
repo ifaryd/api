@@ -2,13 +2,13 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @php
-  $assetUrl = "public/templates";
+  $assetUrl = "templates";
 @endphp
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Prophète Kacou Philippe &mdash; Portail du Ciel</title> 
+        <title>{!! nl2br(__('app.app.title')) !!}</title> 
         <meta name="description" content="">
 
         <!-- Favicon -->
@@ -78,7 +78,7 @@
       </button>
 
       <h1 class="hero-lead wow fadeInLeft" data-wow-duration="1.5s">
-        <a  href="/fr-fr" style="display: block; color: #7b3d1a;">Matthieu25v6</a>
+        <a  href="/" style="display: block; color: #7b3d1a;">Matthieu25v6</a>
       </h1>
       <!-- Logo -->
       <!-- <a class="navbar-brand log" href=""><img src="{% static 'images/logo.png" alt="Definity - Logo"></a>  -->
@@ -90,29 +90,29 @@
         <li class="dropdown">
         <!-- Accueil -->
         <li class="dropdown mg">
-          <a href="/fr-fr" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">Accueil</a>
+          <a href="/" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{__('app.menu.home')}}</a>
         <!-- / .dropdown-menu -->
         </li>
         <!-- / Accueil -->
 
         <!-- Prédications -->
         <li class="dropdown mg">
-          <a href="/fr-fr/predications" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">Prédications</a>
+          <a href="/predications" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{__('app.menu.predication')}}</a>
         </li>
         <!-- / Prédications -->
 
         <!-- Adorations -->
         <li class="dropdown mg">
-          <a href="/fr-fr/cantiques" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">Cantiques</a>
+          <a href="/cantiques" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{__('app.menu.cantique')}}</a>
         </li>
 
         <!-- / Adorations -->
 
         <li class="dropdown mg">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">Galéries<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{__('app.menu.galerie')}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/fr-fr/galeries/photos" style="color:black">Photos</a></li>
-            <li><a href="/fr-fr/galeries/videos" style="color:black">Videos</a></li>
+            <li><a href="/galeries/photos" style="color:black">{{__('app.menu.photo')}}</a></li>
+            <li><a href="/galeries/videos" style="color:black">{{__('app.menu.video')}}</a></li>
           </ul>
         </li>
         <!-- / Galerie -->
@@ -150,14 +150,14 @@
 
         <!-- Le monde -->
         <li class="dropdown mega-fw mg">
-          <a href="/fr-fr/assemblees" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">Le cri de minuit dans monde</a>
+          <a href="/assemblees" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{__('app.menu.assemblees')}}</a>
         <!-- / .dropdown-menu -->
         </li>
         <!-- / Le monde -->
 
         <!-- Contacts -->
         <li class="dropdown mg">
-          <a href="/fr-fr/contacts" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">Contacts</a>
+          <a href="/contacts" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{__('app.menu.contactez')}}</a>
         <!-- / .dropdown-menu -->
         </li>
         <!-- / Contacts -->
@@ -170,24 +170,14 @@
       <!-- Navbar Links Right -->
       <ul class="nav navbar-nav navbar-right" style="margin-top: 0px !important;">
         <li class="dropdown mg">
-          <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">FR<span class="caret"></span></a>
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{Str::upper(app()->getLocale())}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            {{-- {% for item in langs %} 
-            <li><a href="{% url 'index' item.initial %}">{{ item.initial }}</a></li>
-            {% endfor %} --}}
-            <li><a href="">fr</a></li>
-            <li><a href="">es</a></li>
-            <li><a href="">pt</a></li>
-           
-        
-
+            <li><a href="/changeLanguage/fr" style="color:black">FR</a></li>
+            <li><a href="/changeLanguage/en" style="color:black">EN</a></li>
+            <li><a href="/changeLanguage/pt" style="color:black">PT</a></li>
+            <li><a href="/changeLanguage/es" style="color:black">ES</a></li>
           </ul>
         </li>
-
-        <!-- Languages -->
-        
-        <!-- / Languages -->
-
       </ul><!-- / .nav .navbar-nav .navbar-right -->
 
     </div><!--/.navbar-collapse -->
@@ -207,7 +197,7 @@
               <div class="col-md-3 col-sm-6 mb-sm-100" style="margin-bottom: 67px;">
                 <div class="widget about-widget">
                   <h5 class="header-widget">
-                    <a href="/fr-fr/predications"><li class="fot">Prédications</li></a>
+                    <a href="/predications"><li class="fot">{{__('app.menu.predication')}}</li></a>
                   </h5>
 
                   <ul class="social-links">
@@ -222,7 +212,7 @@
               <div class="col-md-3 col-sm-6 mb-sm-100">
                 <div class="widget gallery-widget">
                   <h5 class="header-widget">
-                    <a href="/fr-fr/cantiques"><li class="fot">Cantiques</li></a>
+                    <a href="/cantiques"><li class="fot">{{__('app.menu.cantique')}}</li></a>
                   </h5>
                 </div><!-- / .widget -->
               </div><!-- / .col-md-3 -->
@@ -230,22 +220,22 @@
               <!-- Twitter Feed -->
               <div class="col-md-3 col-sm-6 mb-sm-100">
                 <div class="widget twitter-widget">
-                  <h5 class="header-widget">Galéries</h5>
-                  <a href="/fr-fr/galeries/photos"><li class="fot">Photos</li></a> 
-                  <a href="/fr-fr/galeries/videos"><li class="fot">Videos</li></a>
+                  <h5 class="header-widget">{{__('app.menu.galerie')}}</h5>
+                  <a href="/galeries/photos"><li class="fot">{{__('app.menu.photo')}}</li></a> 
+                  <a href="/galeries/videos"><li class="fot">{{__('app.menu.video')}}</li></a>
                 </div><!-- / .widget -->
               </div><!-- / .col-md-3 -->
 
               <!-- Newsletter -->
               <div class="col-md-3 col-sm-6 mb-sm-100">
                 <div class="widget newsletter-widget">
-                  <h5 class="header-widget">Contacts</h5>
-                  <strong><p>Téléphone Mobile</p></strong>
-                  <p>(+225) 0708000789 (Apôtre Aman Martin)</p>
-                  <p>(+225) 0574747430 (Apôtre Aman Martin)</p>
+                  <h5 class="header-widget">{{__('app.menu.contactez')}}</h5>
+                  <strong><p>{{__('app.menu.telephone_mobile')}}</p></strong>
+                  <p>(+225) 0708000789 ({{__('app.menu.apotre')}} Aman Martin)</p>
+                  <p>(+225) 0574747430 ({{__('app.menu.apotre')}} Aman Martin)</p>
                   <strong><p>Email</p></strong>
                   <a href="mailto:kacou.philippe@gmail.com" target="_blank" style="color: #fff !important;">kacou.philippe@gmail.com</a>
-                  <strong><p>Adresse postale</p></strong>
+                  <strong><p>{{__('app.menu.adresse_postale')}}</p></strong>
                   <p>BP 374 Sikensi (Côte d'Ivoire)</p>
                   <!-- <strong><p>Skype</p></strong>
                    <a href="skype:kacou.philippe" target="_blank">kacou.philippe</a> 
@@ -273,7 +263,7 @@
                 </div>
 
                 <div class="col-sm-6">
-                  <small><a href="#page-top" class="pull-right to-the-top">Monter<i class="fa fa-angle-up"></i></a></small>
+                  <small><a href="#page-top" class="pull-right to-the-top">{{__('app.menu.monter')}}<i class="fa fa-angle-up"></i></a></small>
                 </div>
 
               </div><!-- / .row -->
