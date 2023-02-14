@@ -68,7 +68,7 @@ Route::get('/galeries/photos', function () {
     setLocalApplication();
     $request = new Request();
     $langueId = session('langueId');
-    $request->langue = 1;
+    //$request->langue_id = 1;
     if($langueId && (int)$langueId >0){
         //$request->langue_id = (int)$langueId;
     }
@@ -82,9 +82,9 @@ Route::get('/galeries/videos', function () {
     setLocalApplication();
     $request = new Request();
     $langueId = session('langueId');
-    $request->langue = 1;
+    //$request->langue_id = 1;
     if($langueId && (int)$langueId >0){
-       // $request->langue_id = (int)$langueId;
+       //$request->langue_id = (int)$langueId;
     }
     $request->per_page = 12;
     $photoService = new VideoService();

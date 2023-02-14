@@ -17,7 +17,7 @@ class PhotoService{
     }
   
     public function filterDataModel(Request $request){
-      
+
       $data;
       if($request->mobile){
         $data = DataModel::all();
@@ -28,6 +28,10 @@ class PhotoService{
       }
       if($request->langue_id){
         $data = DataModel::with('langue')->where('langue_id', $request->langue_id);
+       if($request->per_page){
+         $data = $data->paginate($request->per_page);
+       }
+       return DataResource::collection($data);
       }
       if(!$request->langue && !$request->per_page){
         $data = DataModel::with('langue')->lazyById(100);
