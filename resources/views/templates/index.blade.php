@@ -4,13 +4,7 @@
   $assetUrl = "public/templates";
 @endphp
 @section('content')
-<style>
-  .hero-content-wrapper{
-    /* background-image: url('templates/images/logo-pkacou3.jpeg');
-    background-repeat: no-repeat;
-    background-size: 100%; */
-  }
-</style>
+
 <div id="home" class="main-demo-hero">
     <div class="bg-overlay">
                       

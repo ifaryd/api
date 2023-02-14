@@ -16,8 +16,9 @@
         </ol>
       </div>
     </div>
-  </header>
+  </header> 
 
+  
   <div class="container section">
     <div class="row">
       <!-- Highlited Rows Table -->
@@ -49,12 +50,13 @@
             <tr>
               <td data-label><a href="{{$url.'/'.$predication->id}}" class="fott">{{ $predication->chapitre }}</a></td>
               <td data-label> <a href="{{$url.'/'.$predication->id}}" class="fott">{{ $predication->titre }}</a></td>
-              <td data-label><a href="{{$url.'/'.$predication->id}}#download" class="fott">PDF{{$predication->lien_audio_cloud}}</a> </td>
+              <td data-label><a href="{{$url.'/'.$predication->id}}#download" class="fott">PDF</a> </td>
               <td data-label style="padding-top: 0px;padding-bottom: 0px;">
-                <iframe width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url={{ $predication->lien_audio_cloud }}&color=%23ff5500&inverse=false&auto_play=false&show_user=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"></div> </td>
+                <iframe width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url={{ $predication->lien_audio_cloud }}&color=%23ff5500&inverse=false&auto_play=false&show_user=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"></div> 
+              </td>
             </tr>
             @endforeach          
-            </tbody>
+          </tbody>
         </table><!-- / .table -->
         <div class="row">
           @if ($predications->lastPage() && $predications->total() > $predications->perPage())
