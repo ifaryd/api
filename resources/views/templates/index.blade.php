@@ -1,6 +1,6 @@
 @extends('templates/base')
 @php
-  $assetUrl = "templates";
+  $assetUrl = "public/templates";
 @endphp
 @section('content')
 
