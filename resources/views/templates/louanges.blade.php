@@ -26,7 +26,7 @@ select option{color: #555;}
     <div class="row">
       <!-- Highlited Rows Table -->
     <div class="col-md-offset-0 col-lg-12 ws-m">
-      <div style="display:flex; flew-direction: row; justify-content: space-between;">
+      <div style="display:flex; flew-direction: row; justify-content: space-between; flex-wrap: wrap; margin-bottom: 10px;">
         <a href="changeCantique" id="url" class="d-none"></a>
         @if ($predications->lastPage() && $predications->total() > $predications->perPage())
         <nav class="blog-pagination">
@@ -35,14 +35,14 @@ select option{color: #555;}
                 @if ($i == $predications->currentPage())
                 <li><a class="acti" href="?page={{ $i }}">{{ $i }}</a></li>
                 @else
-                <li><a href="?page={{ $i }}">{{ $i }}</a></li>
+                <li><a href="?page={{ $i }}">{{ $i }}</a></li> 
                 @endif
             @endfor
             </ul>
         </nav>
         @endif
         <div>
-            <select class="form-control placeholder" onchange="change(this)">
+            <select class="form-control placeholder" onchange="change(this)" style="font-size: 18px;">
               <option>...</option>
                 @foreach($chantres as $chantre)
                     @if($chantre->id == $userId)
@@ -64,7 +64,7 @@ select option{color: #555;}
           </thead>
           <tbody>
             @foreach ($predications as $predication)
-            <tr>
+            <tr style="font-size: 18px;">
               <td data-label><a href="{{$url.'/'.$predication->id}}" class="fott">{{ $predication->titre }}</a></td>
               <td data-label><a href="{{ $predication->lien_audio }}" class="fott">{{__('app.app.home_subtitle7')}}</a> </td>
               @php

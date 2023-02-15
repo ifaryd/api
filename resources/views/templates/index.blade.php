@@ -3,7 +3,13 @@
   $assetUrl = "public/templates";
 @endphp
 @section('content')
-
+<style>
+  .app-fonnt{
+    color:black !important;
+    font-size: 18px;
+    font-weight: 100;
+  }
+</style>
 <div id="home" class="main-demo-hero">
     <div class="bg-overlay">
                       
@@ -41,11 +47,11 @@
       
       <header class="sec-heading">
         <h2>{{__('app.app.home_title')}}</h2>
-        <span class="subheading">{{__('app.app.home_subtitle2')}}</span>
+        <span class="subheading app-fonnt">{{__('app.app.home_subtitle2')}}</span>
       </header>
 
       <div class="col-md-offset-2 col-md-8 text-center ws-m" style="padding-bottom: 50px;">
-        <p style="color:black; font-size: 18px;">
+        <p class="app-fonnt">
           {!! nl2br(__('app.app.home_subtitle3')) !!}
         </p>
       </div>
@@ -73,7 +79,7 @@
         
         <header class="sec-heading">
           <h2>{!! nl2br(__('app.menu.predication')) !!}</h2>
-          <span class="subheading">{!! nl2br(__('app.app.home_subtitle4')) !!}</span>
+          <span class="subheading app-fonnt">{!! nl2br(__('app.app.home_subtitle4')) !!}</span>
         </header>
 
         
@@ -104,7 +110,7 @@
                 <a href="/predications/{{$predication->id}}" class="post-title"><h4>{{$predication->chapitre}}</h4></a>
   
                 <!-- Blurb -->
-                <p>{{$predication->chapitre}} : {{$predication->titre}}</p>
+                <p>{{$predication->chapitre}} : {{Str::substr($predication->titre, 0, 38)}} {{Str::length($predication->titre) >38 ? '...' : ''}}</p>
   
                 <!-- Link -->
                 <a href="/predications/{{$predication->id}}" class="btn btn-small">{!! nl2br(__('app.app.home_subtitle5')) !!}</a>
@@ -142,7 +148,7 @@
     
     <header class="sec-heading">
       <h2>{!! nl2br(__('app.menu.contactez')) !!}</h2>
-      <span class="subheading">{!! nl2br(__('app.contact.question')) !!}</span>
+      <span class="subheading app-fonnt">{!! nl2br(__('app.contact.question')) !!}</span>
     </header>
     
     <div class="contact-wrapper">
@@ -166,14 +172,14 @@
                 <!-- Phone -->
                 <div class="col-sm-6 address-group">
                   <span>{!! nl2br(__('app.menu.telephone_mobile')) !!}</span>
-                  <a href="#">+225 07 08 000 789</a>
-                  <a href="#">+225 07 74 747 430 </a>
+                  <a href="#"  class="app-fonnt">+225 07 08 000 789</a>
+                  <a href="#" class="app-fonnt">+225 07 74 747 430 </a>
                 </div>
 
                 <!-- Address -->
                 <div class="col-sm-5 address-group">
                   <span>{!! nl2br(__('app.menu.adresse_postale')) !!}</span>
-                  <p>BP 374 Sikensi (Côte d'Ivoire)</p>
+                  <p class="app-fonnt">BP 374 Sikensi (Côte d'Ivoire)</p>
                 </div>
 
               </div><!-- / .row -->
@@ -184,7 +190,7 @@
                 <div class="col-sm-6 address-group">
                   <span>{!! nl2br(__('app.contact.email')) !!}</span>
         
-                  <a href="mailto:kacou.philippe@gmail.com" target="_blank">kacou.philippe@gmail.com</a>
+                  <a class="app-fonnt" href="mailto:kacou.philippe@gmail.com" target="_blank">kacou.philippe@gmail.com</a>
                 </div>
 
                 <!-- Hours -->

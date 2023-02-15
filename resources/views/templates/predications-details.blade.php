@@ -4,14 +4,22 @@
   $langue = '';
   $url ="predications"
 @endphp
+
+<style>
+  .app-fonnt{
+    color:black !important;
+    font-size: 18px;
+    font-weight: 100;
+  }
+</style>
+
 <header class="page-title pt-small" style="margin-top: 70px;">
     <div class="container">
       <div class="row">
         <h1 class="col-sm-6">{{__('app.menu.predication')}}</h1>
         <ol class="col-sm-6 text-right breadcrumb">
           <li><a href="/{{ $langue }}">{{__('app.menu.home')}}</a></li>
-          <li><a href="/{{ $langue }}/{{$url}}">{{__('app.menu.predication')}}</a></li>
-          <li class="active">{{ $predication->titre }}</li>
+          <li><a href="{{ $langue }}/{{$url}}">{{__('app.menu.predication')}}</a></li>
         </ol>
       </div>
     </div>
@@ -22,11 +30,11 @@
       
       <header class="sec-heading" style="margin-bottom: 60px;">
         <h2 class="pred-title">{{ $predication->chapitre }} : {{ $predication->titre }}</h2>
-        <span class="subheading lesr">{{ $predication->sous_titre }}</span>
+        <span class="subheading lesr" style="color:black !important">{{ $predication->sous_titre }}</span>
       </header>
 
       @if ($predication->versets)
-      <div class="col-lg-12 mb-sm-50 just">
+      <div class="col-lg-12 mb-sm-50 just app-fonnt">
         @foreach ($predication->versets as $verset)
         <p><strong>{{ $verset->numero }}</strong> {{ $verset->contenu }}</p>
         @endforeach

@@ -25,7 +25,7 @@ select option{color: #555;}
     <div class="row">
       <!-- Highlited Rows Table -->
     <div class="col-md-offset-0 col-lg-12 ws-m">
-      <div style="display:flex; flew-direction: row; justify-content: space-between;">
+      <div style="display:flex; flew-direction: row; justify-content: space-between;  flex-wrap: wrap; margin-bottom: 10px;">
         <a href="changeAssemblee" id="url" class="d-none"></a>
         @if ($predications->lastPage() && $predications->total() > $predications->perPage())
         <nav class="blog-pagination">
@@ -41,7 +41,7 @@ select option{color: #555;}
         </nav>
         @endif
         <div>
-            <select class="form-control placeholder" onchange="change(this)">
+            <select class="form-control placeholder" onchange="change(this)" style="font-size: 18px;">
               <option>...</option>
                 @foreach($chantres as $chantre)
                     @if($chantre->id == $pays_id)
@@ -67,7 +67,7 @@ select option{color: #555;}
             @foreach ($predications as $villes)
             @if($villes && $villes->assemblees)
                 @foreach($villes->assemblees as $assemblee)
-                <tr>
+                <tr style="font-size: 18px;">
                     <td data-label><a class="fott">{{ $assemblee->nom }}</a></td>
                     <td data-label><a class="fott">{{ $villes->libelle }}</a></td>
                     <td data-label><a class="fott">{{ $assemblee->addresse }}</a></td>

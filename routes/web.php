@@ -26,7 +26,7 @@ use Illuminate\Http\Request;
 
 Route::get('/changeLanguage/{en}', function ($lng) {
     session(['locale'=>$lng]);
-    return redirect('/');
+    return back();
 });
 
 Route::get('/', function () {

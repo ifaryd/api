@@ -46,7 +46,7 @@
           </thead>
           <tbody>
             @foreach ($predications as $predication)
-            <tr>
+            <tr style="font-size: 18px;">
               <td data-label><a href="{{$url.'/'.$predication->id}}" class="fott">{{ $predication->chapitre }}</a></td>
               <td data-label> <a href="{{$url.'/'.$predication->id}}" class="fott">{{ $predication->titre }}</a></td>
               <td data-label><a href="{{$url.'/'.$predication->id}}#download" class="fott">PDF</a> </td>

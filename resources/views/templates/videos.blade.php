@@ -11,7 +11,7 @@
         <h1 class="col-sm-6">{{__('app.menu.video')}}</h1>
         <ol class="col-sm-6 text-right breadcrumb">
           <li><a href="/{{ $langue }}">{{__('app.menu.home')}}/{{__('app.menu.galerie')}}</a></li>
-          <li class="active">{{__('app.app.video')}}</li>
+          <li class="active">{{__('app.menu.video')}}</li>
         </ol>
       </div>
     </div>
@@ -34,6 +34,7 @@
         </nav> 
         @endif
         @foreach ($photos as $photo)
+        
         <div class="col-md-4 portfolio-item print mt-1">
           <div class="p-wrapper hover-default" style="height: 292px !important;">
             <iframe width="420" height="315" src="https://www.youtube.com/embed?v={{ $photo->url }}?frameborder=0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -55,4 +56,5 @@
         @endif
     </div><!-- / .row -->
   </section>
+ 
 @endsection

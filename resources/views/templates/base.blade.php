@@ -66,6 +66,14 @@
       display: block;
     }
   }
+  li a{
+    font-size: 18px;
+    font-weight: 100;
+    color: black !important;
+  }
+  footer{
+    font-size: 18px;
+  }
 </style>
 <nav class="navbar navbar-default navbar-trans-dark  navbar-fixed-top navbar-static-top mega">
   <div class="container" style="min-width: 93% !important;">
@@ -90,29 +98,29 @@
         <li class="dropdown">
         <!-- Accueil -->
         <li class="dropdown mg">
-          <a href="/" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{__('app.menu.home')}}</a>
+          <a href="/" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">{{__('app.menu.home')}}</a>
         <!-- / .dropdown-menu -->
         </li>
         <!-- / Accueil -->
 
         <!-- Prédications -->
         <li class="dropdown mg">
-          <a href="/predications" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{__('app.menu.predication')}}</a>
+          <a href="/predications" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false"  >{{__('app.menu.predication')}}</a>
         </li>
         <!-- / Prédications -->
 
         <!-- Adorations -->
         <li class="dropdown mg">
-          <a href="/cantiques" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{__('app.menu.cantique')}}</a>
+          <a href="/cantiques" class="dropdown-toggle" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false"  >{{__('app.menu.cantique')}}</a>
         </li>
 
         <!-- / Adorations -->
 
         <li class="dropdown mg">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{__('app.menu.galerie')}}<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false"  >{{__('app.menu.galerie')}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/galeries/photos" style="color:black">{{__('app.menu.photo')}}</a></li>
-            <li><a href="/galeries/videos" style="color:black">{{__('app.menu.video')}}</a></li>
+            <li><a href="/galeries/photos"  >{{__('app.menu.photo')}}</a></li>
+            <li><a href="/galeries/videos"  >{{__('app.menu.video')}}</a></li>
           </ul>
         </li>
         <!-- / Galerie -->
@@ -150,14 +158,14 @@
 
         <!-- Le monde -->
         <li class="dropdown mega-fw mg">
-          <a href="/assemblees" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{__('app.menu.assemblees')}}</a>
+          <a href="/assemblees" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false"  >{{__('app.menu.assemblees')}}</a>
         <!-- / .dropdown-menu -->
         </li>
         <!-- / Le monde -->
 
         <!-- Contacts -->
         <li class="dropdown mg">
-          <a href="/contacts" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{__('app.menu.contactez')}}</a>
+          <a href="/contacts" class="dropdown-toggle"  data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false"  >{{__('app.menu.contactez')}}</a>
         <!-- / .dropdown-menu -->
         </li>
         <!-- / Contacts -->
@@ -170,12 +178,12 @@
       <!-- Navbar Links Right -->
       <ul class="nav navbar-nav navbar-right" style="margin-top: 0px !important;">
         <li class="dropdown mg">
-          <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false" style="color:black">{{Str::upper(app()->getLocale())}}<span class="caret"></span></a>
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350" role="button" aria-haspopup="true" aria-expanded="false"  >{{Str::upper(app()->getLocale())}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/changeLanguage/fr" style="color:black">FR</a></li>
-            <li><a href="/changeLanguage/en" style="color:black">EN</a></li>
-            <li><a href="/changeLanguage/pt" style="color:black">PT</a></li>
-            <li><a href="/changeLanguage/es" style="color:black">ES</a></li>
+            <li><a href="/changeLanguage/fr"  >FR</a></li>
+            <li><a href="/changeLanguage/en"  >EN</a></li>
+            <li><a href="/changeLanguage/pt"  >PT</a></li>
+            <li><a href="/changeLanguage/es"  >ES</a></li>
           </ul>
         </li>
       </ul><!-- / .nav .navbar-nav .navbar-right -->
@@ -214,6 +222,7 @@
                   <h5 class="header-widget">
                     <a href="/cantiques"><li class="fot">{{__('app.menu.cantique')}}</li></a>
                   </h5>
+                  <a href="/assemblees"><li class="fot">{{__('app.menu.assemblees')}}</li></a> 
                 </div><!-- / .widget -->
               </div><!-- / .col-md-3 -->
 
@@ -231,8 +240,7 @@
                 <div class="widget newsletter-widget">
                   <h5 class="header-widget">{{__('app.menu.contactez')}}</h5>
                   <strong><p>{{__('app.menu.telephone_mobile')}}</p></strong>
-                  <p>(+225) 0708000789 ({{__('app.menu.apotre')}} Aman Martin)</p>
-                  <p>(+225) 0574747430 ({{__('app.menu.apotre')}} Aman Martin)</p>
+                  <p>(+225) 0574747430 / 0708000789 ({{__('app.menu.apotre')}} Aman Martin)</p>
                   <strong><p>Email</p></strong>
                   <a href="mailto:kacou.philippe@gmail.com" target="_blank" style="color: #fff !important;">kacou.philippe@gmail.com</a>
                   <strong><p>{{__('app.menu.adresse_postale')}}</p></strong>
@@ -304,15 +312,8 @@
 
         <!-- Definity JS -->
         <script src="{{asset($assetUrl.'/js/main.js')}}"></script>
-        <script>
-          $('select').change(function() {
-          if ($(this).children('option:first-child').is(':selected')) {
-            $(this).addClass('placeholder');
-          } else {
-            $(this).removeClass('placeholder');
-          }
-          });
-        </script>
+
+         
     </body>
 
 <!-- Mirrored from ajdethemes.com/definity-html/index-main-mp.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Aug 2022 11:37:25 GMT -->

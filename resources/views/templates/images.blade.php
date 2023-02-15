@@ -2,7 +2,7 @@
 @section('content')
 @php
   $langue = '';
-  $url ="photos"
+  $url ="galeries/photos"
 @endphp
 
 <header class="page-title pt-small" style="margin-top: 70px;">

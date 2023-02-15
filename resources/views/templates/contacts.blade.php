@@ -4,83 +4,35 @@
   $langue = '';
 @endphp
 
+<style>
+  .app-fonnt{
+    color:black !important;
+    font-size: 18px;
+    font-weight: 100;
+  }
+</style>
 <header class="page-title pt-small" style="margin-top: 70px;">
     <div class="container">
       <div class="row">
         <h1 class="col-sm-6">{!! nl2br(__('app.contact.contact_us')) !!}</h1>
         <ol class="col-sm-6 text-right breadcrumb">
-          <li><a href="accueil">{!! nl2br(__('app.menu.contact')) !!}</a></li>
-          <li class="active">{!! nl2br(__('app.contact.question')) !!}</li>
+          <li><a href="accueil">{!! nl2br(__('app.menu.home')) !!}</a></li>
+          <li class="active app-fonnt">{!! nl2br(__('app.menu.contact')) !!}</li>
         </ol>
       </div>
     </div>
   </header>
 
-  <section id="contact" class="section contact-1">
-    
-    <header class="sec-heading">
-      <h2>{!! nl2br(__('app.menu.contactez')) !!}</h2>
-      <span class="subheading">{!! nl2br(__('app.contact.question')) !!}</span>
-    </header>
+  <section id="contact" class="section contact-1" >
     
     <div class="contact-wrapper">
       <!-- Map -->
      
      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15881.249412620044!2d-4.580225970505733!3d5.667896487129959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc058339b3e6993%3A0x83061b2c38f23a49!2sSikensi!5e0!3m2!1sfr!2sci!4v1674264676700!5m2!1sfr!2sci" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-      <!-- Show Info Button -->
-      <div class="show-info-link">
-        <a href="#" class="show-info"><i class="fa fa-info"></i><h6></h6></a>
-      </div>
-
       <div class="container">
         <div class="row ws-m">
-
-          <!-- Address Info -->
-          <div class="col-xs-offset-1 col-xs-11 col-md-offset-2 col-md-6 contact-info-wrapper">
-            <address>
-              <div class="row">
-
-                <!-- Phone -->
-                <div class="col-sm-6 address-group">
-                  <span>{!! nl2br(__('app.menu.telephone_mobile')) !!}</span>
-                  <a href="#">+225 07 08 000 789</a>
-                  <a href="#">+225 07 74 747 430 </a>
-                </div>
-
-                <!-- Address -->
-                <div class="col-sm-5 address-group">
-                  <span>{!! nl2br(__('app.menu.adresse_postale')) !!}</span>
-                  <p>BP 374 Sikensi (Côte d'Ivoire)</p>
-                </div>
-
-              </div><!-- / .row -->
-
-              <div class="row">
-
-                <!-- Email -->
-                <div class="col-sm-6 address-group">
-                  <span>{!! nl2br(__('app.contact.email')) !!}</span>
-        
-                  <a href="mailto:kacou.philippe@gmail.com" target="_blank">kacou.philippe@gmail.com</a>
-                </div>
-
-                <!-- Hours -->
-                <!-- <div class="col-sm-5 address-group">
-                  <span>Open Hours</span>
-                  <p>Mon-Fri: 9am-5pm</p>
-                  <p>Sat: 10am-1pm</p>
-                </div> -->
-
-              </div><!-- / .row -->
-
-              <!-- Show Map Button -->
-              <!-- <div class="row show-map-link">
-                <a href="#" class="show-map"><span class="icon-map-pin"></span>Show on map</a>
-              </div> / .row -->
-            </address>
-          </div><!-- / .contact-info-wrapper -->
-        </div><!-- / .row -->
+        </div>
         
         <!-- Contact Form -->
         <div class="row">
