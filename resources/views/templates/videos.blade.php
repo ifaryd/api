@@ -34,10 +34,10 @@
         </nav> 
         @endif
         @foreach ($photos as $photo)
-        
+        {{-- {{dd( $photo->url )}} --}}
         <div class="col-md-4 portfolio-item print mt-1">
-          <div class="p-wrapper hover-default" style="height: 292px !important;">
-            <iframe width="420" height="315" src="https://www.youtube.com/embed?v={{ $photo->url }}?frameborder=0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="p-wrapper hover-default" style="height: 315px !important;">
+            <iframe width="400" height="315" src="https://www.youtube.com/embed/{{$photo->url}}?frameborder=0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div><!-- / .portfolio-item -->
         @endforeach 

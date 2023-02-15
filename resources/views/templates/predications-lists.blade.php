@@ -10,7 +10,7 @@
       <div class="row">
         <h1 class="col-sm-6">{{__('app.app.predication')}}</h1>
         <ol class="col-sm-6 text-right breadcrumb">
-          <li><a href="/{{ $langue }}">{{__('app.app.home')}}</a></li>
+          <li><a href="/{{ $langue }}">{{__('app.menu.home')}}</a></li>
           <li class="active">{{__('app.app.predication')}}</li>
         </ol>
       </div>

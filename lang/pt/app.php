@@ -26,7 +26,7 @@ return [
 'home_subtitle2' => "As Palavras de Vida Eterna Hoje",
 'home_subtitle3' => "Como os profetas da Bíblia, em abril de 1993, um homem que nunca havia estado em uma igreja recebeu a visão da visita de um Anjo que o comissionou para uma Mensagem destinada à Salvação da humanidade em cumprimento de<strong> Matth.25:6 </strong> et d' <strong>Apoc.12:14</strong>.",
 'home_subtitle4' => "A mensagem do Profeta Kacou Philippe",
-'home_subtitle5' => "Consulte Mais informação",
+'home_subtitle5' => "Ver mais",
 'home_subtitle6' => "Nenhum texto associado",
 'home_subtitle7' => "Download",
 'home_subtitle8' => "Ouvir",
