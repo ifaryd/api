@@ -42,7 +42,7 @@ return [
 
 'menu'=>[
 'home' => 'bienvenida',
-'predication' => 'Prédicsermonesations',
+'predication' => 'sermones',
 'cantique' => 'himnos',
 'galerie' => 'galerías',
 'photo' => 'Photos',
