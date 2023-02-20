@@ -18,10 +18,13 @@ class ConcordanceService{
     }
   
     public function filterDataModel(Request $request){
-      
+      $data;
       if($request->mobile){
         $data = DataModel::all();
         return DataResource::collection($data);
+      }
+      else{
+        $data = DataModel::with(['verset_from', 'verset_to'])->get();
       }
       return new DataResource($data);
     }

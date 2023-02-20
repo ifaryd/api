@@ -5,6 +5,7 @@ namespace App\Http\Services;
 use Illuminate\Http\Request;
 use App\Http\Resources\VilleResource as DataResource;
 use App\Models\Ville as DataModel;
+use App\Models\Assemblee;
 
 class VilleService{
 
@@ -27,9 +28,12 @@ class VilleService{
         $data = DataModel::with('pays')->orderBy('id', 'desc')->paginate((int)$request->per_page);
       }
       if($request->pays_id){
-        $data = DataModel::with('pays')->where('pays_id', $request->pays_id)->get();
+        $data = DataModel::with('pays')->where('pays_id', $request->pays_id);
         if ($request->per_page){
             $data = paginate($predications, (int)$request->per_page);
+        }
+        else{
+          $data = $data->get();
         }
         return DataResource::collection($data);
       }
@@ -52,9 +56,16 @@ class VilleService{
     }
   
     public function deleteDataModel($id){
-  
-      $data = $this->find($id);
-      return $data->delete();
+
+      $assemblee = Assemblee::where('ville_id', $id)->first();
+      if(!isset($assemblee)){
+        $data = $this->find($id);
+        if(isset($data)){
+          return $data->delete();
+        }
+      }else{
+        return 0;
+      }
     }
   
     public function find($id)

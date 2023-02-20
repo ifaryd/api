@@ -5,6 +5,14 @@ namespace App\Http\Services;
 use Illuminate\Http\Request;
 use App\Http\Resources\LangueResource as DataResource;
 use App\Models\Langue as DataModel;
+use App\Models\Confirme;
+use App\Models\Predication;
+use App\Models\Cantique;
+use App\Models\Actualite;
+use App\Models\Temoignage;
+use App\Models\Video;
+use App\Models\Photo;
+use Illuminate\Support\Facades\DB;
 
 class LangueService{
 
@@ -49,11 +57,29 @@ class LangueService{
 
       return $dataUpdated;
     }
-  
+
     public function deleteDataModel($id){
   
-      $data = $this->find($id);
-      return $data->delete();
+      $confirme = Confirme::where('langue_id', $id)->first();
+      $predication = Predication::where('langue_id', $id)->first();
+      $cantique = Cantique::where('langue_id', $id)->first();
+
+      $actualite = Actualite::where('langue_id', $id)->first();
+      $temoignage = Temoignage::where('langue_id', $id)->first();
+      $video = Video::where('langue_id', $id)->first();
+      $photo = Photo::where('langue_id', $id)->first();
+
+      if(!isset($confirme) && !isset($predication) && !isset($cantique) &&
+      !isset($actualite) && !isset($temoignage) && !isset($video) && !isset($photo)){
+        $data = $this->find($id);
+        if(isset($data)){
+          DB::table('langue_pays')->where('langue_id', $id)->delete();
+          return $data->delete();
+        }
+      }else{
+        return 0;
+      }
+
     }
   
     public function find($id)

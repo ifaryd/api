@@ -31,6 +31,16 @@ class UserService{
         $query->where('libelle', '=', 'Chantre');
       })->get();
     }
+    if($request->charge && $request->charge == "admin"){
+      $data = DataModel::orderBy('id', "ASC")->whereHas('charges', function ($query){
+        $query->where('libelle', '=', 'Admin');
+      })->get();
+    }
+    if($request->charge && $request->charge == "dirigeant"){
+      $data = DataModel::orderBy('id', "ASC")->whereHas('charges', function ($query){
+        $query->where('libelle', '=', 'Dirigeant');
+      })->get();
+    }
     else{
       $data = DataModel::lazyById(100);
     }

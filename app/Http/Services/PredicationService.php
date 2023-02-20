@@ -42,7 +42,7 @@ class PredicationService{
       }
       else{
         //return $request->langue;
-        $predications = DataModel::where('langue_id', $request->langue)->get();
+        $predications = DataModel::with('langue')->where('langue_id', $request->langue)->get();
         if($request->per_page){
             if($request->verset && $request->verset==='true'){
               $data = $predications->each->versets;

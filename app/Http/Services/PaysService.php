@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Resources\PaysResource as DataResource;
 use App\Models\Pays as DataModel;
 use Illuminate\Support\Facades\DB;
+use App\Models\Ville;
+use App\Models\Confirme;
 
 class PaysService
 {
@@ -54,11 +56,24 @@ class PaysService
     return $dataUpdated;
   }
 
+  //confirmes charge_user villes langue_pays
   public function deleteDataModel($id)
   {
 
-    $data = $this->find($id);
-    return $data->delete();
+    $confirme = Confirme::where('pays_id', $id)->first();
+    $ville = Ville::where('pays_id', $id)->first();
+    $charge_user = DB::table('charge_user')->where('pays_id', $id)->first();
+
+    if(!isset($confirme) && !isset($langue_pays) && !isset($charge_user)){
+      $data = $this->find($id);
+      if(isset($data)){
+        DB::table('langue_pays')->where('pays_id', $id)->delete();
+        return $data->delete();
+      }
+    }else{
+      return 0;
+    }
+
   }
 
   public function find($id)

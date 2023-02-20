@@ -6,7 +6,7 @@ use App\Models\Ville;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
+use Illuminate\Support\Facades\DB;
 class Assemblee extends Model
 {
     use HasFactory, SoftDeletes;
@@ -22,9 +22,10 @@ class Assemblee extends Model
         return $this->belongsTo(Ville::class);
     }
 
-    public function users()
+    public function userss()
     {
         return $this->belongsToMany(User::class)->withPivot(['assemblee_id', 'pays_id', 'position_chantre', 'principal']);
     }
+
 }
  

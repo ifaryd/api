@@ -8,6 +8,8 @@ use App\Models\Assemblee as DataModel;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Ville;
+use App\Models\Charge;
+
 class AssembleeService{
 
     public function findDataModel($id)
@@ -17,19 +19,16 @@ class AssembleeService{
     }
   
     public function dirigeantAssemblee($assemblee_id){
+      
       $userId = DB::table('charge_user')
         ->where("assemblee_id", $assemblee_id)
         ->where("principal", 1)
         ->first();
         return $user = User::find($userId->user_id);
     }
-
+    
     public function filterDataModel(Request $request){
-      // return $dbuser = DB::table('charge_user')
-      // ->where("assemblee_id", 1)
-      // ->join('users', 'charge_user.user_id', '=', 'users.id')
-      // ->join('charges', 'charge_user.charge_id', '=', 'charges.id')
-      // ->get();
+
       $data;
       if($request->mobile){
         $data = DataModel::all();
@@ -39,16 +38,20 @@ class AssembleeService{
         $data = DataModel::with('ville')->orderBy('id', 'desc')->paginate((int)$request->per_page);
       }
       if ($request->ville){
-        $data = DataModel::with('ville')->where("ville_id", $request->ville)->orderBy('id', 'desc')->get();
+        $data = DataModel::with('ville')->where("ville_id", $request->ville)->orderBy('id', 'desc');
         if($request->per_page){
           $data = $data->paginate($request->per_page);
+        }else{
+          $data = $data->get();
         }
       }
       if ($request->pays_id){
 
-        $data = Ville::orderBy('id', "ASC")->where('pays_id', $request->pays_id)->with('assemblees');
+        $data = Ville::orderBy('id', "ASC")->where('pays_id', $request->pays_id)->with(['assemblees']);
         if($request->per_page){
           $data = $data->paginate($request->per_page);
+        }else{
+          $data = $data->get();
         }
       }
       else{

@@ -31,11 +31,12 @@ class VersetService{
         if(!$predication || empty($predication)){
           return DataResource::collection([]); 
         }else{
-          $data = DataModel::orderBy('id', "ASC")
+          $data = DataModel::with('predication')->orderBy('id', "ASC")
           ->where('predication_id', $predication->id)->get();
         }
-      }if($request->predication){
-        $data = DataModel::orderBy('id', "ASC")
+      }
+      if($request->predication){
+        $data = DataModel::with('predication')->orderBy('id', "ASC")
           ->where('predication_id', $request->predication)->get();
       }
       if ($request->per_page){

@@ -33,7 +33,7 @@ class CantiqueStoreRequest extends FormRequest
             'contenu' => '',
             'duree' => 'required|integer',
             'user_id' => 'required|integer',
-            'langue_id' => 'required|integer',
+            'langue_id' => 'nullable|integer',
         ];
     }
 

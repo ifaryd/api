@@ -55,6 +55,7 @@ Route::apiResources([
 Route::get('/charge_users', [UserController::class, 'charges_user']);
 Route::get('/merges', [MergeDbController::class, 'merges']);
 Route::post('/concordances', [VersetController::class, 'addConcordance']);
+Route::get('/concordances', [ConcordanceController::class, 'index']);
 Route::post('/concordances/{predicationId}/{versetId}', [ConcordanceController::class, 'versetConcordance']);
 Route::delete('/concordances/{id}', [VersetController::class, 'removeConcordance']);
 Route::get('/dirigeant-assemblee/{assemblee_id}', [AssembleeController::class, 'dirigeantAssemblee']);
