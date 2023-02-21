@@ -24,14 +24,10 @@ class CantiqueService{
         $data = DataModel::all();
         return DataResource::collection($data);
       }
-
       if($request->user_id){
-        $data = DataModel::where('user_id', '=', $request->user_id)->with(['user', 'langue']);
+        $data = DataModel::where('user_id', '=', $request->user_id)->with(['user', 'langue'])->get();
         if($request->per_page){
           $data = paginate($data, (int)$request->per_page);
-        }
-        else{
-          $data = $data->get();
         }
         return DataResource::collection($data);
       }

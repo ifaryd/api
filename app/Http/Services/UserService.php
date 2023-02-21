@@ -41,7 +41,7 @@ class UserService{
         $query->where('libelle', '=', 'Dirigeant');
       })->get();
     }
-    else{
+    else if(!$request->charge){
       $data = DataModel::lazyById(100);
     }
     return DataResource::collection($data);

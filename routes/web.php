@@ -111,7 +111,6 @@ Route::get('/cantiques', function (Request $request) {
     $request->per_page = 100;
     $cantiqueService = new CantiqueService();
     $userService = new UserService(); 
-    
     $request->charge = "chantre";
     $chantres = $userService->filterDataModel($request);
 
@@ -121,6 +120,7 @@ Route::get('/cantiques', function (Request $request) {
     else{
         $request->user_id = $chantres[0]->id;
     }
+    
     $request->per_page = 15;
     $predications =  $cantiqueService->filterDataModel($request); 
     $userId = $request->user_id;
