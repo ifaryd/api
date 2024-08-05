@@ -47,7 +47,7 @@ public function merges()
     // }
 
     //return $this->mergeLanguageCommon();
-    //return $this->mergeLanguageData("Français", "fr-fr", "France", "fr", true);
+    return $this->mergeLanguageData("Français", "fr-fr", "France", "fr", true);
     //return $this->mergeLanguageData("Anglais", "en-en", "Angletèrre", "en", true);
     //return $this->mergeLanguageData("Espagnol", "es-es", "Espagne", "es", true);
     //return $this->mergeLanguageData("Portugais", "pt-pt", "Portugal", "pt", true);
@@ -56,9 +56,9 @@ public function merges()
 private function mergeLanguageData($langue, $initial_langue, $pays, $sigle_pays, $langue_principal_du_pays){
 
     $predications = $this->mergePredication($langue, $initial_langue, $pays, $sigle_pays, $langue_principal_du_pays);
-    $temoignages =  $this->mergeTemoignages($initial_langue);
-    $photos = $this->mergePhotos($initial_langue);
-    $videos = $this->mergeVideos($initial_langue);
+    //$temoignages =  $this->mergeTemoignages($initial_langue);
+    //$photos = $this->mergePhotos($initial_langue);
+    //$videos = $this->mergeVideos($initial_langue);
     $confirmes = $this->mergeConfirmes($initial_langue);
     return $confirmes;
 }
@@ -66,11 +66,11 @@ private function mergeLanguageData($langue, $initial_langue, $pays, $sigle_pays,
 private function mergeLanguageCommon(){
     $pays = $this->mergePays();
     $villes = $this->mergeVilles();
-    $chantres = $this->mergeCharges('Chantre');
+    //$chantres = $this->mergeCharges('Chantre');
     $ministres = $this->mergeCharges('Ministre');
     $assemblees = $this->mergeAssemblees();
-    $cantiques = $this->mergeCantiques();
-    return $cantiques;
+    //$cantiques = $this->mergeCantiques();
+    return $assemblees;
 }
 
 private function mergePays(){
@@ -242,44 +242,48 @@ private function mergeAssemblees(){
     foreach ($assemblees as $key => $assemblee){
         $dirigeantLite = Dirigeant::on('sqlite')->where('numero', $assemblee->num_dirigeant)->first();
         $villeLite = Ville::on('sqlite')->where('numero', $assemblee->num_ville)->withTrashed()->first();
-        $ville = Ville::where("libelle", $villeLite->nom)->first();
-        $pays_id = $ville->pays_id;
+        
 
-        $user = User::updateOrCreate(
-            ['first_name' =>  $dirigeantLite->nom],
-            ['last_name' => '', 
-            'telephone'=> $dirigeantLite->tel1 .'/'. $dirigeantLite->tel2,
-            'email'=>$dirigeantLite->email,
-            "facebook"=>$dirigeantLite->page_facebook,
-            "youtube"=>$dirigeantLite->page_youtube,
-            ]
-        );
-
-        $dirigeant = Charge::firstOrCreate(
-            ['libelle' =>  "Dirigeant"],
-            ['libelle' =>  "Dirigeant"]
-        );
-
-        if(isset($pays_id) && !empty($pays_id)){
-            $assemble = $dataModel::firstOrCreate(
-                ['nom' =>  $assemblee->nom, 'ville_id' =>  $ville->id],
-                [
-                'nom' =>  $assemblee->nom, 
-                'ville_id' =>  $ville->id,
-                'localisation' =>  $assemblee->gps,
-                'addresse' =>  $assemblee->situation,
-                'photo' =>  ""
+        if(isset($dirigeantLite) && !empty($dirigeantLite) && isset($villeLite) && !empty($villeLite)){
+            $ville = Ville::where("libelle", $villeLite->nom)->first();
+            $pays_id = $ville->pays_id;
+       
+            $user = User::updateOrCreate(
+                ['first_name' =>  $dirigeantLite->nom],
+                ['last_name' => '', 
+                'telephone'=> $dirigeantLite->tel1 .'/'. $dirigeantLite->tel2,
+                'email'=>$dirigeantLite->email,
+                "facebook"=>$dirigeantLite->page_facebook,
+                "youtube"=>$dirigeantLite->page_youtube,
                 ]
             );
 
-            $data = [
-                'charge_id' => $dirigeant->id, 
-                'user_id' => $user->id,
-                "principal" => true,
-                "pays_id" => $pays_id,
-                "assemblee_id" => $assemble->id
-            ];
-            DB::table('charge_users')->insert($data);
+            $dirigeant = Charge::firstOrCreate(
+                ['libelle' =>  "Dirigeant"],
+                ['libelle' =>  "Dirigeant"]
+            );
+
+            if(isset($pays_id) && !empty($pays_id)){
+                $assemble = $dataModel::firstOrCreate(
+                    ['nom' =>  $assemblee->nom, 'ville_id' =>  $ville->id],
+                    [
+                    'nom' =>  $assemblee->nom, 
+                    'ville_id' =>  $ville->id,
+                    'localisation' =>  $assemblee->gps,
+                    'addresse' =>  $assemblee->situation,
+                    'photo' =>  ""
+                    ]
+                );
+
+                $data = [
+                    'charge_id' => $dirigeant->id, 
+                    'user_id' => $user->id,
+                    "principal" => true,
+                    "pays_id" => $pays_id,
+                    "assemblee_id" => $assemble->id
+                ];
+                DB::table('charge_users')->insert($data);
+            }
         }  
     }
 
@@ -333,7 +337,7 @@ private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $
     $pays->langues()->sync([$langue->id => ['principal' => $principal]]);
 
     $dataModel = new Predication;
-    $predications = $dataModel::on('sqlite')->withTrashed()->limit(152)->get();
+    $predications = $dataModel::on('sqlite')->withTrashed()->limit(162)->get();
 
     if(!isset($predications) || empty($predications)){
         return false;
@@ -357,11 +361,12 @@ private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $
             $duree = 0; 
         }
 
-        $data =  explode("-", $predicationF->lien_audio)[0];
-        if(isset($data) && !empty($data)){
-            $data = "https://api.soundcloud.com/tracks/".explode("stream/",trim($data))[1];
-        }
+        // $data =  explode("-", $predicationF->lien_audio)[0];
+        // if(isset($data) && !empty($data)){
+        //     $data = "https://api.soundcloud.com/tracks/".explode("stream/",trim($data))[1];
+        // }
 
+        $data = $predicationF->lien_audio;
         $predicationData =  [
             'sous_titre' => $predicationF->sous_titre,
             'numero' => $predicationF->numero, 
@@ -373,10 +378,17 @@ private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $
             "chapitre"=>$predicationF->chapitre,
             "couverture"=>"",
             "sermon_similaire"=>$predicationF->similar_sermon,
+            "date_publication"=>$predicationF->date_publication,
+            "lien_pdf"=>$predicationF->lien_pdf,
+            "lien_epub"=>$predicationF->lien_epub,
+            "img_pred"=>$predicationF->img_pred,
+            "legende"=>$predicationF->legende,
         ];
         if(isset($langue->id)){
             $predicationData["langue_id"] =  $langue->id;
         }
+         \Log::info($predicationData);
+        // \Log::info($predicationF);
         $predication = Predication::updateOrCreate(
             ['titre' =>  $predicationF->titre],
             $predicationData
@@ -400,7 +412,7 @@ private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $
                         ]
                     );
         
-                    $concordances = Concordance::on('sqlite')
+                    $concordances = Concordance::on('sqlite2')
                         ->where("num_pred", $predication->numero)
                         ->where("num_verset", $verset->numero)
                         ->withTrashed()->get();

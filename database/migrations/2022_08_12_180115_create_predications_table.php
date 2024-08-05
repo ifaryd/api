@@ -26,6 +26,14 @@ return new class extends Migration
             $table->string("chapitre")->nullable();
             $table->longText("couverture")->nullable();
             $table->longText("sermon_similaire")->nullable();
+
+            //new fields added
+            $table->integer("date_publication")->nullable();
+            $table->string("lien_pdf")->nullable();
+            $table->longText("lien_epub")->nullable();
+            $table->longText("legende")->nullable();
+
+
             $table->foreignId('langue_id')->nullable()->constrained('langues')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();

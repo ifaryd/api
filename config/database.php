@@ -42,11 +42,18 @@ return [
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
+        'sqlite2' => [
+            'driver' => 'sqlite',
+            //'url' => env('DATABASE_URL_SQLITE'),
+            'database' => env('DB_DATABASE_SQLITE2', database_path('database.sqlite')),
+            'prefix' => '',
+            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+        ],
         
         'mysql' => [
             'driver' => 'sqlite',
             //'url' => env('DATABASE_URL_SQLITE'),
-            'database' => env('DB_DATABASE_SQLITE_ALL/..', database_path('matth25v6_all.db')),
+            'database' => env('DB_DATABASE_SQLITE_ALL/..', database_path('matth25v6.db')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
