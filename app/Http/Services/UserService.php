@@ -26,6 +26,7 @@ class UserService{
     if ($request->per_page){
       $data = DataModel::orderBy('id', 'ASC')->paginate((int)$request->per_page);
     }
+   
     if($request->charge && $request->charge == "chantre"){
       $data = DataModel::orderBy('id', "ASC")->whereHas('charges', function ($query){
         $query->where('libelle', '=', 'Chantre');
@@ -49,7 +50,7 @@ class UserService{
 
   public function charges_user(){
     $data;
-    $data = DB::table('charge_user')->get();
+    $data = DB::table('charge_users')->get();
     return $data;
   }
 

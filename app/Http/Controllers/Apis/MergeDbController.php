@@ -47,7 +47,7 @@ public function merges()
     // }
 
     //return $this->mergeLanguageCommon();
-    return $this->mergeLanguageData("Français", "fr-fr", "France", "fr", true);
+    //return $this->mergeLanguageData("Français", "fr-fr", "France", "fr", true);
     //return $this->mergeLanguageData("Anglais", "en-en", "Angletèrre", "en", true);
     //return $this->mergeLanguageData("Espagnol", "es-es", "Espagne", "es", true);
     //return $this->mergeLanguageData("Portugais", "pt-pt", "Portugal", "pt", true);
@@ -337,8 +337,9 @@ private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $
     $pays->langues()->sync([$langue->id => ['principal' => $principal]]);
 
     $dataModel = new Predication;
-    $predications = $dataModel::on('sqlite')->withTrashed()->limit(162)->get();
-
+    $predications = $dataModel::on('sqlite')->whereBetween('numero', [151, 163])->withTrashed()
+    ->limit(162)->get();
+//dd($predications);
     if(!isset($predications) || empty($predications)){
         return false;
     }

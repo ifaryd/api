@@ -18,6 +18,6 @@ class Charge extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot(['assemblee_id', 'pays_id', 'position_chantre', 'principal']);
+        return $this->belongsToMany(User::class, 'charge_users')->withPivot(['assemblee_id', 'pays_id', 'position_chantre', 'principal']);
     }
 }

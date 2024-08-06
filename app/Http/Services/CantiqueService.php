@@ -20,6 +20,7 @@ class CantiqueService{
     public function filterDataModel(Request $request){
       
       $data;
+      
       if($request->mobile){
         $data = DataModel::all();
         return DataResource::collection($data);
@@ -29,6 +30,7 @@ class CantiqueService{
         if($request->per_page){
           $data = paginate($data, (int)$request->per_page);
         }
+        
         return DataResource::collection($data);
       }
 

@@ -62,7 +62,7 @@ class PaysService
 
     $confirme = Confirme::where('pays_id', $id)->first();
     $ville = Ville::where('pays_id', $id)->first();
-    $charge_user = DB::table('charge_user')->where('pays_id', $id)->first();
+    $charge_user = DB::table('charge_users')->where('pays_id', $id)->first();
 
     if(!isset($confirme) && !isset($langue_pays) && !isset($charge_user)){
       $data = $this->find($id);

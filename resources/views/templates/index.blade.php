@@ -87,13 +87,17 @@
         <div style="">
         @foreach ($predications as $predication)
         @if($predication)
-        
+          @php
+            $url_pre = str_replace('stream', 'tracks', str_replace('feeds','api', $predication->lien_audio_cloud));
+          @endphp
           <div class="col-md-3 col-md-6 mb-sm-50">
             <div class="blog-post wow fadeIn" data-wow-duration="2s">
   
               <!-- Image -->
-              <a href="/predications/{{$predication->id}}" class="post-img"><img src="{{asset($assetUrl.'/images/couv.png') }}" alt="Blog Post 1"></a>
-  
+              {{-- <a href="/predications/{{$predication->id}}" class="post-img"><img src="{{asset($assetUrl.'/images/couv.png') }}" alt="Blog Post 1"></a> --}}
+              <div class="">
+                <iframe width="100%" height="130" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url={{ $url_pre }}&color=%23915d22&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+              </div>
               <div class="bp-content">
                 
                 <!-- Meta data -->

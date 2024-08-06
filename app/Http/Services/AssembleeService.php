@@ -20,7 +20,7 @@ class AssembleeService{
   
     public function dirigeantAssemblee($assemblee_id){
       
-      $userId = DB::table('charge_user')
+      $userId = DB::table('charge_users')
         ->where("assemblee_id", $assemblee_id)
         ->where("principal", 1)
         ->first();

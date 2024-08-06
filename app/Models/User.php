@@ -67,7 +67,7 @@ class User extends Authenticatable
 
     public function charges()
     {
-        return $this->belongsToMany(Charge::class)
+        return $this->belongsToMany(Charge::class, 'charge_users')
         ->withPivot(['assemblee_id', 'pays_id', 'position_chantre', 'principal'])
         ->orderByPivot('created_at', 'desc');
     }

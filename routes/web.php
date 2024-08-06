@@ -118,7 +118,7 @@ Route::get('/cantiques', function (Request $request) {
         $request->user_id = (int)session('chantre_id'); 
     }
     else{
-        $request->user_id = $chantres[0]->id;
+        $request->user_id = (isset($chantres) && isset($chantres[0])) ? $chantres[0]->id :0;
     }
     
     $request->per_page = 15;

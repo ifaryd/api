@@ -3,6 +3,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @php
   $assetUrl = "public/templates";
+  //$assetUrl = "templates";
 @endphp
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
