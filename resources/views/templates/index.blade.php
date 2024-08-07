@@ -2,6 +2,9 @@
 @php
   $assetUrl = env('PUBLIC_FILE');
   $locale = session('locale');
+  if(!isset($locale)){
+    $locale = "fr";
+  }
 @endphp
 @section('content')
 <style>
