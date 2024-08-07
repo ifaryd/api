@@ -20,7 +20,7 @@ return [
 'iphone_application' => 'aplicativo para iphone',
 'desktop_application' => 'aplicativo do Windows',
 'home_title' => 'Bem-vindo ao site oficial do Profeta Kacou Philippe',
-'home_subtitle' => 'O grito da meia-noite<br> sooui',
+'home_subtitle' => 'A Mensagem de<br> Mateus 25:6',
 'prophete' => 'Profeta',
 'defiler' => 'Rolagem',
 'home_subtitle2' => "As Palavras de Vida Eterna Hoje",

@@ -20,7 +20,7 @@ return [
         'iphone_application' => 'Application Iphone',
         'desktop_application' => 'Application Windows',
         'home_title' => 'Bienvenue sur le site officiel du message de Matthieu25v6',
-        'home_subtitle' => 'Matthieu 25v6<br> est accompli',
+        'home_subtitle' => 'Le Message de<br> Matthieu 25:6',
         'prophete' => 'Prophète',
         'defiler' => 'Défiler',
         'home_subtitle2' => "Les paroles de la vie éternelle aujourd'hui",
