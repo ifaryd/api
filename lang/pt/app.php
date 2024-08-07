@@ -65,6 +65,7 @@ return [
 'message' => 'Mensagem',
 'contact_us' => 'Contate-nos',
 'envoyer'  => 'Enviar',
+"wait" => 'Por favor, aguarde...'
 ]
 
 ];

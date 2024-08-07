@@ -65,7 +65,8 @@ return [
         'placeholder' => 'Entrer votre',
         'message' => 'Message',
         'contact_us' => 'Nous contacter',
-        'envoyer' =>'Envoyer'
+        'envoyer' =>'Envoyer',
+        "wait" => 'Veuillez patienter...'
     ]
 
 ];

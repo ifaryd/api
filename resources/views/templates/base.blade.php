@@ -2,8 +2,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @php
-  $assetUrl = "public/templates";
-  //$assetUrl = "templates";
+  $assetUrl = env('PUBLIC_FILE');
 @endphp
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{!! nl2br(__('app.app.title')) !!}</title> 
         <meta name="description" content="">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{asset($assetUrl.'/images/favicon.ico')}}">
         <!-- Bootstrap -->
@@ -306,7 +305,7 @@
         <script src="{{asset($assetUrl.'/js/vendor/jquery.ajaxchimp.js')}}"></script>
         <script src="{{asset($assetUrl.'/js/pdf.js')}}"></script>
         <script src="{{asset($assetUrl.'/js/print.min.js')}}"></script>
-
+        <script src="{{asset($assetUrl.'/js/notify.js')}}"></script>
         <!-- Google Maps -->
         <script src="{{asset($assetUrl.'/js/gmap.js')}}"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"></script>

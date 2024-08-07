@@ -11,7 +11,7 @@ use App\Http\Services\PaysService;
 use App\Http\Services\VilleService;
 use App\Http\Services\AssembleeService;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Apis\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +37,7 @@ Route::get('/', function () {
     if($langueId && (int)$langueId >0){
         $request->langue = (int)$langueId;
     }
-    $request->per_page = 4;
+    $request->per_page = 12;
     $predicationService = new PredicationService();
     $predications =  $predicationService->filterDataModel($request); 
     return view('templates/index',compact('predications'));
@@ -165,3 +165,5 @@ Route::get('/contacts', function () {
     setLocalApplication();
     return view('templates/contacts');
 });
+
+Route::post('/sendEmail', [UserController::class, 'contacts'])->name('contacts');

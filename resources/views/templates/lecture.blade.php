@@ -1,5 +1,5 @@
 @php
-  $assetUrl = "templates";
+  $assetUrl = env('PUBLIC_FILE');
 @endphp
 
 <div>

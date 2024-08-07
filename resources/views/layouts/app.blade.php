@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ config('app.name') }}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
+    
     <!-- CoreUI CSS -->
     <link rel="stylesheet" href="{{ mix('build/css/app.css') }}" crossorigin="anonymous">
 

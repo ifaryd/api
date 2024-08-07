@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserStoreRequest as DataStoreRequest;
 use App\Http\Services\UserService as DataService;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMatthieu25v6;
 class UserController extends Controller
 {
     private $dataService;
@@ -39,6 +41,24 @@ class UserController extends Controller
     {
       $body = $request->validated();
       return $this->dataService->createDataModel($body);
+    }
+
+    public function contacts(Request $request){
+
+      $email = $request->email;
+      $name = $request->name;
+      $message = $request->message;
+      
+      Mail::to(env('ADMIN_EMAIL'))
+            ->cc('frere.boga@gmail.com')
+            ->bcc(env('CC_ADMIN_EMAIL'))
+            ->send(new ContactMatthieu25v6($name, $message, $email));
+
+      return response()->json([
+        'success' => true,
+        'message' => $request->all(),
+      ]);
+
     }
 
     /**
