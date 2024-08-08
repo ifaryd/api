@@ -14,7 +14,7 @@ return [
 */
 'app'=> [
 'title' => "Prophète Kacou Philippe &mdash; portal do céu",
-'logo' => "Matthieu25v6",
+'logo' => "Mateus 25:6",
 'predication' => 'sermões',
 'mobile_application' => 'aplicativo Android',
 'iphone_application' => 'aplicativo para iphone',
@@ -24,7 +24,7 @@ return [
 'prophete' => 'Profeta',
 'defiler' => 'Rolagem',
 'home_subtitle2' => "As Palavras de Vida Eterna Hoje",
-'home_subtitle3' => "Como os profetas da Bíblia, em abril de 1993, um homem que nunca havia estado em uma igreja recebeu a visão da visita de um Anjo que o comissionou para uma Mensagem destinada à Salvação da humanidade em cumprimento de<strong> Matth.25:6 </strong> et d' <strong>Apoc.12:14</strong>.",
+'home_subtitle3' => "Como os profetas da Bíblia, em abril de 1993, um homem que nunca havia estado em uma igreja recebeu a visão da visita de um Anjo que o comissionou para uma Mensagem destinada à Salvação da humanidade em cumprimento de<strong> Mateus.25:6 </strong> et d' <strong>Apoc.12:14</strong>.",
 'home_subtitle4' => "A mensagem do Profeta Kacou Philippe",
 'home_subtitle5' => "Ver mais",
 'home_subtitle6' => "Nenhum texto associado",

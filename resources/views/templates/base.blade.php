@@ -86,7 +86,7 @@
       </button>
 
       <h1 class="hero-lead wow fadeInLeft" data-wow-duration="1.5s">
-        <a  href="/" style="display: block; color: #7b3d1a;">Matthieu25v6</a>
+        <a  href="/" style="display: block; color: #7b3d1a;">{{__('app.app.logo')}}</a>
       </h1>
       <!-- Logo -->
       <!-- <a class="navbar-brand log" href=""><img src="{% static 'images/logo.png" alt="Definity - Logo"></a>  -->
