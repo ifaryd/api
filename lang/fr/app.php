@@ -19,7 +19,7 @@ return [
         'mobile_application' => 'Application Android',
         'iphone_application' => 'Application Iphone',
         'desktop_application' => 'Application Windows',
-        'home_title' => 'Bienvenue sur le site officiel du message de Matthieu25v6',
+        'home_title' => 'Bienvenue sur le site officiel du message de Matthieu 25:6',
         'home_subtitle' => 'Le Message de<br> Matthieu 25:6',
         'prophete' => 'Prophète',
         'defiler' => 'Défiler',
