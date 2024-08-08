@@ -19,7 +19,7 @@ return [
 'mobile_application' => 'aplicativo Android',
 'iphone_application' => 'aplicativo para iphone',
 'desktop_application' => 'aplicativo do Windows',
-'home_title' => 'Bem-vindo ao site oficial do Profeta Kacou Philippe',
+'home_title' => 'Bem-vindo ao site oficial do mensagem de Mateus 25:6',
 'home_subtitle' => 'A Mensagem de<br> Mateus 25:6',
 'prophete' => 'Profeta',
 'defiler' => 'Rolagem',

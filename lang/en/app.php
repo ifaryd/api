@@ -19,7 +19,7 @@ return [
 'mobile_application' => 'Android app',
 'iphone_application' => 'Iphone app',
 'desktop_application' => 'Windows app',
-'home_title' => 'Welcome to the official website of Prophet Kacou Philippe',
+'home_title' => 'Welcome to the official website of the message of Matthew 25:6',
 'home_subtitle' => 'The Message of<br> Matthew 25:6',
 'prophete' => 'Prophet',
 'defiler' => 'Scroll',

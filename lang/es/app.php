@@ -19,7 +19,7 @@ return [
 'mobile_application' => 'aplicación Android',
 'iphone_application' => 'aplicación para iPhone',
 'desktop_application' => 'aplicación de Windows',
-'home_title' => 'Bienvenido al sitio web oficial del Profeta Kacou Philippe',
+'home_title' => 'Bienvenido al sitio web oficial del mensaje de Mateo 25:6',
 'home_subtitle' => 'El mensaje de<br> Mateo 25:6',
 'prophete' => 'Profeta',
 'defiler' => 'Desplazarse',
