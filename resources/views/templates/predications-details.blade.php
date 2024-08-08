@@ -77,9 +77,10 @@
             </a>
         </div>
         <div class="ml-2" id="download" style="margin-left: 12px">
-          <a title="Télécharger" href="{{ $predication->lien_audio_cloud }}">
-              <button class="btn-ghost btn-small">{{__('app.app.home_subtitle7')}} MP3 </button>
-          </a>
+          {{-- <a title="Télécharger" href="{{ $predication->lien_audio_cloud }}">
+              
+          </a> --}}
+          <button id="downloadBtn" class="btn-ghost btn-small">{{__('app.app.home_subtitle7')}} MP3 </button>
        </div>
         </div>
         
@@ -115,5 +116,22 @@
         })
         
     }
+
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      // Lien à télécharger
+      var audioUrl = '{{ $predication->lien_audio_cloud }}';
+      
+      // Crée un élément <a> de manière dynamique
+      var link = document.createElement('a');
+      link.href = audioUrl;
+      link.download = ''; // Optionnel: le nom du fichier téléchargé
+
+      // Ajoute l'élément <a> au DOM, clique dessus pour initier le téléchargement, puis le retire
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
     </script>
+
+    
 @endsection
