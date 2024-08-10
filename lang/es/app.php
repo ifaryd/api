@@ -53,6 +53,11 @@ return [
 'telephone_mobile' => 'Teléfono',
 'apotre' => 'Apóstol',
 'adresse_postale' => 'Dirección postal',
+'telephone_mobile_number' => '(+521) 8443268915 / (+591) 77123945',
+'apotre_name' => 'César Esparza García (México) / Daniel Rolando Nogales Zapata (Bolivia)',
+'adresse_postale_value' => "México / Bolivia",
+'email' => 'Email',
+'email_value' => 'kacou.philippe@gmail.com',
 'monter' => 'Subir',
 ],
 

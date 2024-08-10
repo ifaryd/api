@@ -240,11 +240,11 @@
                 <div class="widget newsletter-widget">
                   <h5 class="header-widget">{{__('app.menu.contactez')}}</h5>
                   <strong><p>{{__('app.menu.telephone_mobile')}}</p></strong>
-                  <p>(+225) 0574747430 / 0708000789 ({{__('app.menu.apotre')}} Aman Martin)</p>
-                  <strong><p>Email</p></strong>
-                  <a href="mailto:kacou.philippe@gmail.com" target="_blank" style="color: #fff !important;">kacou.philippe@gmail.com</a>
+                  <p>{{__('app.menu.telephone_mobile_number')}} ({{__('app.menu.apotre')}} {{__('app.menu.apotre_name')}})</p>
+                  <strong><p>{{__('app.menu.email')}}</p></strong>
+                  <a href="mailto:kacou.philippe@gmail.com" target="_blank" style="color: #fff !important;">{{__('app.menu.email_value')}}</a>
                   <strong><p>{{__('app.menu.adresse_postale')}}</p></strong>
-                  <p>BP 374 Sikensi (Côte d'Ivoire)</p>
+                  <p>{{__('app.menu.adresse_postale_value')}}</p>
                   <!-- <strong><p>Skype</p></strong>
                    <a href="skype:kacou.philippe" target="_blank">kacou.philippe</a> 
                   <strong><p>Facebook</p></strong>

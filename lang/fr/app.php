@@ -54,6 +54,11 @@ return [
         'telephone_mobile' => 'Téléphone',
         'apotre' => 'Apôtre',
         'adresse_postale' => 'Adresse postale',
+        'telephone_mobile_number' => '(+225) 0574747430 / 0708000789',
+        'apotre_name' => 'Aman Martin',
+        'adresse_postale_value' => "BP 374 Sikensi (Côte d'Ivoire)",
+        'email' => 'Email',
+        'email_value' => 'kacou.philippe@gmail.com',
         'monter' => 'Monter',
     ],
 

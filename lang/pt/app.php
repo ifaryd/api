@@ -53,6 +53,11 @@ return [
 'telephone_mobile' => 'Telefone',
 'apotre' => 'Apóstolo',
 'adresse_postale' => 'Endereço',
+'telephone_mobile_number' => '(+244) 931993967 / (+55) 9499162-4955',
+'apotre_name' => 'Hugo Ze (Angola) / Deutamar Costa (Brazil)',
+'adresse_postale_value' => "Angola / Brazil",
+'email' => 'Email',
+'email_value' => 'kacou.philippe@gmail.com',
 'monter' => 'Ir para cima',
 ],
 

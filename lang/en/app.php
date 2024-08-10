@@ -53,6 +53,11 @@ return [
 'telephone_mobile' => 'Phone',
 'apotre' => 'Apostle',
 'adresse_postale' => 'Postal Address',
+'telephone_mobile_number' => '(+225) 0757585000 / 0556070355',
+'apotre_name' => 'Yanick Aka',
+'adresse_postale_value' => "BP 374 Sikensi (Côte d'Ivoire)",
+'email' => 'Email',
+'email_value' => 'kacou.philippe@gmail.com',
 'monter' => 'To go up',
 ],
 
