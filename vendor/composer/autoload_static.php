@@ -699,6 +699,7 @@ class ComposerStaticInit177022ec2344c44788bfb4c00fa44b86
         'App\\Http\\Services\\VersetService' => __DIR__ . '/../..' . '/app/Http/Services/VersetService.php',
         'App\\Http\\Services\\VideoService' => __DIR__ . '/../..' . '/app/Http/Services/VideoService.php',
         'App\\Http\\Services\\VilleService' => __DIR__ . '/../..' . '/app/Http/Services/VilleService.php',
+        'App\\Mail\\ContactMatthieu25v6' => __DIR__ . '/../..' . '/app/Mail/ContactMatthieu25v6.php',
         'App\\Models\\Actualite' => __DIR__ . '/../..' . '/app/Models/Actualite.php',
         'App\\Models\\Assemblee' => __DIR__ . '/../..' . '/app/Models/Assemblee.php',
         'App\\Models\\Cantique' => __DIR__ . '/../..' . '/app/Models/Cantique.php',

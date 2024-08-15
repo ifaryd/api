@@ -56,7 +56,7 @@
         <div class="hero-content">
           
           <h1 class="hero-lead wow fadeInLeft" data-wow-duration="1.5s">{!! nl2br(__('app.app.home_subtitle')) !!}</h1>
-          <h4 class="h-alt hero-subheading wow fadeIn acti" data-wow-duration="2s" data-wow-delay=".7s">{{__('app.app.prophete')}} Kacou Philippe</h4>
+          <h4 class="h-alt hero-subheading wow fadeIn acti" data-wow-duration="2s" data-wow-delay=".7s">{{__('app.app.prophete')}} Kacou Philippe tes</h4>
           <a href="/predications" class="btn wow fadeIn" data-wow-duration="2s" data-wow-delay="1s" style="margin-bottom: 5px">{{__('app.menu.predication')}}</a>
           <a target="_blank" href="https://play.google.com/store/apps/details?id=com.matth25.prophetekacou" class="btn wow fadeIn" data-wow-duration="2s" data-wow-delay="1s" style="margin-bottom: 5px">{{__('app.app.mobile_application')}}</a>
           <a target="_blank" href="https://apps.apple.com/bj/app/proph%C3%A8te-kacou-officiel/id1348915504" class="btn wow fadeIn" data-wow-duration="2s" data-wow-delay="1s" style="margin-bottom: 5px">{{__('app.app.iphone_application')}}</a>

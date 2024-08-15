@@ -13,7 +13,7 @@ return [
     |
     */
     'app'=> [
-        'title' => "Prophète Kacou Philippe &mdash; Portail du Ciel",
+        'title' => "matthieu25v6.org &mdash; Portail du Ciel",
         'logo' => "Matthieu 25:6",
         'predication' => 'Prédications',
         'mobile_application' => 'Application Android',
