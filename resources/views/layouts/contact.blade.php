@@ -1,4 +1,4 @@
-<section id="contact" class="section contact-1" >
+<section id="contacts" class="sections contact-1s" >
     
     <div class="contact-wrapper">
       <!-- Map -->
