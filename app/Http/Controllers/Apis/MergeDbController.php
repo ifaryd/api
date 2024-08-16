@@ -48,7 +48,7 @@ public function merges()
 
     //return $this->mergeLanguageCommon();
     //return $this->mergeLanguageData("Français", "fr-fr", "France", "fr", true);
-    //return $this->mergeLanguageData("Anglais", "en-en", "Angletèrre", "en", true);
+    return $this->mergeLanguageData("Anglais", "en-en", "Angletèrre", "en", true);
     //return $this->mergeLanguageData("Espagnol", "es-es", "Espagne", "es", true);
     //return $this->mergeLanguageData("Portugais", "pt-pt", "Portugal", "pt", true);
 }
@@ -59,8 +59,8 @@ private function mergeLanguageData($langue, $initial_langue, $pays, $sigle_pays,
     //$temoignages =  $this->mergeTemoignages($initial_langue);
     //$photos = $this->mergePhotos($initial_langue);
     //$videos = $this->mergeVideos($initial_langue);
-    $confirmes = $this->mergeConfirmes($initial_langue);
-    return $confirmes;
+    //$confirmes = $this->mergeConfirmes($initial_langue);
+    return $predications;
 }
 
 private function mergeLanguageCommon(){
