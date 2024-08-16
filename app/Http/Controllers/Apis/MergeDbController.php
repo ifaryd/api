@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\DB;
 class MergeDbController extends Controller
 {
 
+    
 /**
  * merge existing data from sqlite db into mysqldb.
  *
@@ -35,6 +36,8 @@ class MergeDbController extends Controller
 public function merges()
 {
     // $predications = Predication::all();
+    //$this->mergeCantiqueJson();
+    //return $this->mergeChantreChargesJson();
 
     // foreach ($predications as $predication){
     //     $data =  explode("-", $predication->lien_audio)[0];
@@ -46,11 +49,60 @@ public function merges()
         
     // }
 
-    //return $this->mergeLanguageCommon();
+    return $this->mergeLanguageCommon();
     //return $this->mergeLanguageData("Français", "fr-fr", "France", "fr", true);
     //return $this->mergeLanguageData("Anglais", "en-en", "Angletèrre", "en", true);
     //return $this->mergeLanguageData("Espagnol", "es-es", "Espagne", "es", true);
     //return $this->mergeLanguageData("Portugais", "pt-pt", "Portugal", "pt", true);
+}
+
+public function mergeCantiqueJson(){
+    $folders = json_decode(file_get_contents(env('PUBLIC_FILE').'/Folder.json'));
+    $cantiques = json_decode(file_get_contents(env('PUBLIC_FILE').'/Audio.json'));
+    $table = [];
+    $dataModel = new Cantique;
+    
+    foreach ($folders as $folder){
+        $folder_name = $folder->name;
+        $folder_position = $folder->position;
+
+        foreach ($cantiques as $cantique){
+            if($cantique->artist == $folder_name){
+
+
+                $chantre = Chantre::on('sqlite')->where("numero", $cantique->number)->first();
+                $explode_nom = explode(" (", $chantre->nom);
+                $first_name = $explode_nom[0];
+                $user = User::where("first_name", $first_name)->first();
+                $dataModel::firstOrCreate(
+                    ['titre' =>  $cantique->titre, 'lien_audio' =>  $cantique->lien_audio],
+                    [
+                    'titre' =>  $cantique->titre,
+                    'lien_audio' =>  $cantique->lien_audio,
+                    "nom_fichier" =>  $cantique->file_name,
+                    "duree" =>  $cantique->duration,
+                    "contenu" =>  $cantique->paroles,
+                    "user_id" =>  $user->id
+                    ]
+                );
+
+                $table["name"] = $folder_name;
+                $table["position"] = $folder_position;
+                $table["audioLink"] = $cantique->audioLink;
+                $table["duration"] = $cantique->duration;
+                $table["fileName"] = $cantique->fileName;
+                $table["number"] = $cantique->number;
+                $table["title"] = $cantique->title;
+                $table["words"] = $cantique->words;
+
+                dd([
+                    "folder"=>$folder,
+                    "cantique"=>$table,
+                ]);
+            }
+        }
+    }
+    
 }
 
 private function mergeLanguageData($langue, $initial_langue, $pays, $sigle_pays, $langue_principal_du_pays){
@@ -65,10 +117,10 @@ private function mergeLanguageData($langue, $initial_langue, $pays, $sigle_pays,
 
 private function mergeLanguageCommon(){
     $pays = $this->mergePays();
-    $villes = $this->mergeVilles();
+    //$villes = $this->mergeVilles();
     //$chantres = $this->mergeCharges('Chantre');
-    $ministres = $this->mergeCharges('Ministre');
-    $assemblees = $this->mergeAssemblees();
+    //$ministres = $this->mergeCharges('Ministre');
+    //$assemblees = $this->mergeAssemblees();
     //$cantiques = $this->mergeCantiques();
     return $assemblees;
 }
@@ -223,6 +275,122 @@ private function mergeCharges($charge_value){
             }
         }
         
+    }
+
+    return [count(User::all()), Charge::all(), count(DB::table('charge_users')->get())];
+    
+}
+
+private function mergeChantreChargesJson(){
+
+    $dataModel = new Charge;
+    $chantreModel = new Chantre;
+    $ministreModel = new Ministre;
+    $country_name = '';
+    $country_id; 
+
+    $charge = $dataModel::firstOrCreate(
+        ['libelle' =>  "Chantre"],
+        ['libelle' =>  "Chantre"]
+    );
+   //"Chants Lingala", "RDC", "Chants juifs", "Zimbabwe", "Portugais", "Mexique"
+    $chantres = json_decode(file_get_contents(env('PUBLIC_FILE').'/Folder.json'));
+    //dd($chantres);
+
+    if(!isset($chantres) || empty($chantres)){
+        return false;
+    }
+    
+    foreach($chantres as $chantre){
+        $explode_nom = explode(" (", $chantre->name);
+        $first_name = $explode_nom[0];
+        $chantre_position = $chantre->position ?? 0;
+
+        $user = User::firstOrCreate(
+            ['first_name' =>  $first_name],
+            ['first_name' =>  $first_name, 'last_name' =>  '']
+        );
+        
+        if($explode_nom && isset($explode_nom[1])){
+            $country_name = explode(")", $explode_nom[1])[0];
+            $pays = Pays::where('nom',$country_name)->first();
+            if($country_name == "RDC"){
+                $pays = Pays::where('nom',"RD. Congo")->first();
+            }
+            $country_id = $pays && $pays->id;
+        }
+
+        if(isset($explode_nom)){
+
+            if($explode_nom == "Mexique"){
+
+                $pays = Pays::firstOrCreate(
+                    ['nom' =>  "México"],
+                    ['nom' =>  "México", 'sigle' =>  'MX']
+                );
+
+                $country_id = $pays && $pays->id;
+            }
+
+            if($explode_nom == "Portugais"){
+
+                $pays = Pays::firstOrCreate(
+                    ['nom' =>  "Portugal"],
+                    ['nom' =>  "Portugal", 'sigle' =>  'PT']
+                );
+
+                $country_id = $pays && $pays->id;
+            }
+
+            if($explode_nom == "Zimbabwe"){
+
+                $pays = Pays::firstOrCreate(
+                    ['nom' =>  "Zimbabwe"],
+                    ['nom' =>  "Zimbabwe", 'sigle' =>  'ZW']
+                );
+
+                $country_id = $pays && $pays->id;
+            }
+
+            if($explode_nom == "Chants juifs"){
+
+                $pays = Pays::firstOrCreate(
+                    ['nom' =>  "Israël"],
+                    ['nom' =>  "Israël", 'sigle' =>  'IL']
+                );
+
+                $country_id = $pays && $pays->id;
+            }
+            if($explode_nom == "Chants Lingala"){
+
+                $pays = Pays::firstOrCreate(
+                    ['nom' =>  "RD. Congo"],
+                    ['nom' =>  "RD. Congo", 'sigle' =>  'IL']
+                );
+
+                $country_id = $pays && $pays->id;
+            }
+        }
+        
+
+        $charge_user = DB::table('charge_users')
+            ->where('charge_id', $charge->id)
+            ->where('user_id', $user->id)
+            ->first();
+        //dd($charge_user);
+
+        if(!isset($charge_user)){
+            $data = [
+            'charge_id' => $charge->id, 
+            'user_id' => $user->id,
+            'position_chantre' => $chantre_position,
+            "principal" => false
+            ];
+            if(isset($country_id) && !empty($country_id)){
+                $data["pays_id"] = $country_id;
+            }
+            DB::table('charge_users')->insert($data);
+        }
     }
 
     return [count(User::all()), Charge::all(), count(DB::table('charge_users')->get())];
