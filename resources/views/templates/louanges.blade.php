@@ -72,7 +72,11 @@ select option{color: #555;}
                $link = str_replace('stream', 'tracks', $link);
               @endphp
               <td data-label style="padding-top: 0px;padding-bottom: 0px;">
-                <iframe width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url={{ $link}}&color=%23ff5500&inverse=false&auto_play=false&show_user=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"></div> </td>
+              {{-- <iframe width="100%" height="20" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url={{ $link}}&color=%23ff5500&inverse=false&auto_play=false&show_user=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"></div> </td>  --}}
+                  <audio controls style="background-color: rgb(4, 255, 0); opacity: 0.7">
+                  <source src="{{ $predication->lien_audio }}" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
             </tr>
             @endforeach          
             </tbody>

@@ -4,6 +4,37 @@
   $langue = '';
   $url ="cantiques"
 @endphp
+
+<style>
+  .app-fonnt{
+    color:black !important;
+    font-size: 18px;
+    font-weight: 100;
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    .small-content{
+      margin-top: 12px;
+    }
+}
+
+/* Écrans de moins de 600px (mobiles) */
+@media only screen and (max-width: 600px) {
+  .small-content{
+      margin-top: 12px;
+    }
+}
+
+/* Écrans de moins de 480px (petits mobiles) */
+@media only screen and (max-width: 480px) {
+  .small-content{
+      margin-top: 12px;
+    }
+}
+  
+</style>
+
 <header class="page-title pt-small" style="margin-top: 70px;">
     <div class="container">
       <div class="row">
@@ -36,25 +67,61 @@
 
     <div class="row ws-m">
     
-    
-        <div class="col-md-6 mb-sm-50" id="download">
-            <a href="{{ $predication->lien_audio }}"  title="{{__('app.app.home_subtitle7')}}">
-                <button class="btn-ghost btn-small">{{__('app.app.home_subtitle7')}}</button>
+    <div style="display:flex; justify-content: space-between; flex-wrap: wrap;">
+        <div style="display:flex">
+          <div class="" id="download">
+            <a type="" title="Télécharger"  onclick="document.title = '{{ $predication->titre }} : {{ $predication->user->first_name }}'; printForm()">
+                <button class="btn-ghost btn-small">{{__('app.app.home_subtitle7')}} PDF</button>
             </a>
+        </div>
+        <div class="ml-2" id="download" style="margin-left: 12px">
+          {{-- <a title="Télécharger" href="{{ $predication->lien_audio }}">
+              
+          </a> --}}
+          <button id="downloadBtn" class="btn-ghost btn-small">{{__('app.app.home_subtitle7')}} MP3 </button>
+       </div>
+        </div>
+        
+      
+        <div class="small-content" id="download">
+          <audio controls style="background-color: rgb(4, 255, 0); opacity: 0.7">
+            <source src="{{ $predication->lien_audio }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
          </div>
-         
-        @php
-         $link = str_replace('feeds', 'api', $predication->lien_audio);
-         $link = str_replace('stream', 'tracks', $link);
-        @endphp
+       </div>
 
-        <div class="col-md-6 mb-sm-50">
-            <iframe width="100%" height="110" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url={{ $link }}&color=%23915d22&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/kacou-philippe-proph-te" title="Prophète Kacou Philippe" target="_blank" style="color: #cccccc; text-decoration: none;"></a> <a href="https://soundcloud.com/kacou-philippe-proph-te/kacou-80-version-wolof" title="" target="_blank" style="color: #cccccc; text-decoration: none;"></a></div>
-          </div>
-      </div><!-- / .row -->
+      </div>
 
    
 
   </section><!-- / .container -->
+  <script>
+    function printForm() {
+        printJS({
+            printable: 'invoice',
+            type: 'html',
+            style: ".pred-title {text-align: center !important;} .lesr {text-align: center !important;} .just {text-align: justify;}",
+            ignoreElements: ['esc', 'esc1', 'esc2'],
+            documentTitle: '{{ $predication->titre }} : {{ $predication->user->first_name }}',
+            
+        })
+        
+    }
 
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      // Lien à télécharger
+      var audioUrl = '{{ $predication->lien_audio }}';
+      
+      // Crée un élément <a> de manière dynamique
+      var link = document.createElement('a');
+      link.href = audioUrl;
+      link.download = ''; // Optionnel: le nom du fichier téléchargé
+
+      // Ajoute l'élément <a> au DOM, clique dessus pour initier le téléchargement, puis le retire
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+    </script>
 @endsection
