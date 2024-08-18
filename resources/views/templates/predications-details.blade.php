@@ -14,9 +14,36 @@
   }
 
 
+  @media only screen and (min-width: 768px) {
+    .sec-heading{
+      margin-top: -66px;
+    }
+    .sec-heading{
+      margin-bottom: 0px;
+    }
+  }
+
   @media only screen and (max-width: 768px) {
     .small-content{
       margin-top: 12px;
+    }
+    .sec-heading{
+      margin-top: -56px;
+    }
+    .sec-heading{
+      margin-bottom: 0px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .small-content{
+      margin-top: 12px;
+    }
+    .sec-heading{
+      margin-top: 38px;
+    }
+    .sec-heading{
+      margin-bottom: 0px;
     }
 }
 
@@ -32,11 +59,14 @@
   .small-content{
       margin-top: 12px;
     }
+    .sec-heading{
+      font-size: 12px;
+    }
 }
   
 </style>
 
-<header class="page-title pt-small" style="margin-top: 70px;">
+<header class="page-title pt-small" style="margin-top: 70px; display:none;">
     <div class="container">
       <div class="row">
         <h1 class="col-sm-6">{{__('app.menu.predication')}}</h1>
@@ -51,7 +81,7 @@
 <section class="container section">
     <div class="row ws-m" id="invoice">
       
-      <header class="sec-heading" style="margin-bottom: 60px;">
+      <header class="sec-heading">
         <h2 class="pred-title">{{ $predication->chapitre }} : {{ $predication->titre }}</h2>
         <span class="subheading lesr" style="color:black !important">{{ $predication->sous_titre }}</span>
       </header>

@@ -66,7 +66,7 @@ select option{color: #555;}
             @foreach ($predications as $predication)
             <tr style="font-size: 18px;">
               <td data-label><a href="{{$url.'/'.$predication->id}}" class="fott">{{ $predication->titre }}</a></td>
-              <td data-label><a href="{{ $predication->lien_audio }}" class="fott">{{__('app.app.home_subtitle7')}}</a> </td>
+              <td data-label><a href="{{ $url.'/'.$predication->id }}" class="fott">{{__('app.app.home_subtitle7')}}</a> </td>
               @php
                $link = str_replace('feeds', 'api', $predication->lien_audio);
                $link = str_replace('stream', 'tracks', $link);
