@@ -178,7 +178,8 @@
       </div>
       </div><!-- / .row -->
     </section><!-- / .container -->
-  </div><!-- / .gray-bg -->
+  </div>
+  <!-- / .gray-bg -->
 
  
   

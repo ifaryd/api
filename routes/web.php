@@ -51,7 +51,7 @@ Route::get('/predications', function () {
     if($langueId && (int)$langueId >0){
         $request->langue = (int)$langueId;
     }
-    $request->per_page = 10;
+    $request->per_page = 8;
     $predicationService = new PredicationService();
     $predications =  $predicationService->filterDataModel($request); 
     return view('templates/predications-lists',compact('predications'));
