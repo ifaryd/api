@@ -77,6 +77,16 @@
               let email = $('#email').val();
               let message = $('#message').val();
               $('input#sendShow').val($('input#wait').val())
+              if(!name || !email || !message){
+                $('#notification').notify("Veuillez remplir tous les champs!", 'error', { position:"right" ,autoHideDelay: 10000});
+                $('input#sendShow').val($('input#send').val())
+                return 
+              }
+              if(message.length<20){
+                $('#notification').notify("Votre message doit contenir au moins 20 caractères!", 'error', { position:"right" ,autoHideDelay: 10000});
+                $('input#sendShow').val($('input#send').val())
+                return
+              }
               $.ajax({
                   url: "/sendEmail",
                   type: 'POST',
