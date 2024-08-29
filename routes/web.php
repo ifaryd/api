@@ -24,6 +24,10 @@ use App\Http\Controllers\Apis\UserController;
 |
 */
 
+Route::get('/principal', function () {
+    return redirect()->away('https://itunes.apple.com/bj/app/proph%C3%A8te-kacou-officiel/id1348915504?mt=8');
+});
+
 Route::get('/changeLanguage/{en}', function ($lng) {
     session(['locale'=>$lng]);
     return back();
