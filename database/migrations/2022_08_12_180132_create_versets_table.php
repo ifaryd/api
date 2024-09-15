@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer("numero");
             $table->longText("contenu");
             $table->longText("info")->nullable();
+            $table->longText("linkAtContent")->nullable()->comment("les textes qui ont un lien");
+            $table->longText("urlContent")->comment("le lien associé au texte");
             $table->foreignId('predication_id')->nullable()->constrained('predications')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();

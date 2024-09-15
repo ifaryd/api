@@ -666,6 +666,8 @@ private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $
                         [
                         'info' => $verset->info,
                         'numero' => $verset->numero,
+                        'linkAtContent' => $verset->linkAtContent,
+                        'urlContent' => $verset->urlContent,
                         ]
                     );
         
