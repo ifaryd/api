@@ -35,25 +35,15 @@ class MergeDbController extends Controller
  */
 public function merges()
 {
-    // $predications = Predication::all();
-    return $this->mergeCantiquesJSONFile();
-    return $this->mergeChantreChargesJson();
 
-    // foreach ($predications as $predication){
-    //     $data =  explode("-", $predication->lien_audio)[0];
-    //     if(isset($data) && !empty($data)){
-    //         $update = "https://api.soundcloud.com/tracks/".explode("stream/",trim($data))[1];
-    //         Predication::where('id',$predication->id)
-    //     ->update(['lien_audio_cloud' => $update]);
-    //     }
-        
-    // }
+    #return $this->mergeCantiquesJSONFile();
+    #return $this->mergeChantreChargesJson();
 
-    //return $this->mergeLanguageCommon();
-    //return $this->mergeLanguageData("Français", "fr-fr", "France", "fr", true);
-    //return $this->mergeLanguageData("Anglais", "en-en", "Angletèrre", "en", true);
-    //return $this->mergeLanguageData("Espagnol", "es-es", "Espagne", "es", true);
-    //return $this->mergeLanguageData("Portugais", "pt-pt", "Portugal", "pt", true);
+    #return $this->mergeLanguageCommon();
+    #return $this->mergeLanguageData("Français", "fr-fr", "France", "fr", true);
+    #return $this->mergeLanguageData("Anglais", "en-en", "Angletèrre", "en", true);
+    #return $this->mergeLanguageData("Espagnol", "es-es", "Espagne", "es", true);
+    return $this->mergeLanguageData("Portugais", "pt-pt", "Portugal", "pt", true);
 }
 
 private function mergeCantiquesJSONFile(){
