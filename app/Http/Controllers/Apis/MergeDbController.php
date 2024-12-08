@@ -39,11 +39,11 @@ public function merges()
     #return $this->mergeCantiquesJSONFile();
     #return $this->mergeChantreChargesJson();
 
-    #return $this->mergeLanguageCommon();
+    return $this->mergeLanguageCommon();
     #return $this->mergeLanguageData("Français", "fr-fr", "France", "fr", true);
     #return $this->mergeLanguageData("Anglais", "en-en", "Angletèrre", "en", true);
     #return $this->mergeLanguageData("Espagnol", "es-es", "Espagne", "es", true);
-    return $this->mergeLanguageData("Portugais", "pt-pt", "Portugal", "pt", true);
+    #return $this->mergeLanguageData("Portugais", "pt-pt", "Portugal", "pt", true);
 }
 
 private function mergeCantiquesJSONFile(){
@@ -96,10 +96,13 @@ private function mergeLanguageData($langue, $initial_langue, $pays, $sigle_pays,
 private function mergeLanguageCommon(){
     $pays = $this->mergePays();
     $villes = $this->mergeVilles();
-    //$chantres = $this->mergeCharges('Chantre');
     $ministres = $this->mergeCharges('Ministre');
     $assemblees = $this->mergeAssemblees();
-    //$cantiques = $this->mergeCantiques();
+    
+    //this option is now an alternative if not it replace
+    /*$chantres = $this->mergeCharges('Chantre');
+    $cantiques = $this->mergeCantiques();*/
+
     return $assemblees;
 }
 
@@ -149,7 +152,7 @@ private function mergeCharges($charge_value){
     $chantreModel = new Chantre;
     $ministreModel = new Ministre;
     $country_name = '';
-    $country_id; 
+    $country_id = null; 
 
     $charge = $dataModel::firstOrCreate(
         ['libelle' =>  $charge_value],
@@ -583,7 +586,7 @@ private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $
     $pays->langues()->sync([$langue->id => ['principal' => $principal]]);
 
     $dataModel = new Predication;
-    $predications = $dataModel::on('sqlite')->whereBetween('numero', [151, 163])->withTrashed()
+    $predications = $dataModel::on('sqlite')->whereBetween('numero', [0, 163])->withTrashed()
     ->limit(162)->get();
 //dd($predications);
     if(!isset($predications) || empty($predications)){
