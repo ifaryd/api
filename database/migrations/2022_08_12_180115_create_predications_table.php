@@ -28,7 +28,7 @@ return new class extends Migration
             $table->longText("sermon_similaire")->nullable();
 
             //new fields added
-            $table->integer("date_publication")->nullable();
+            $table->string("date_publication")->nullable();
             $table->string("lien_pdf")->nullable();
             $table->longText("lien_epub")->nullable();
             $table->longText("legende")->nullable();

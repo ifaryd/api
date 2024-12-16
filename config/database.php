@@ -38,14 +38,14 @@ return [
         'sqlite' => [
             'driver' => 'sqlite',
             //'url' => env('DATABASE_URL_SQLITE'),
-            'database' => env('DB_DATABASE_SQLITE', database_path('database.sqlite')),
+            'database' => env('DB_DATABASE_SQLITE'),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
         'sqlite2' => [
             'driver' => 'sqlite',
             //'url' => env('DATABASE_URL_SQLITE'),
-            'database' => env('DB_DATABASE_SQLITE2', database_path('database.sqlite')),
+            'database' => env('DB_DATABASE_SQLITE2'),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
@@ -53,7 +53,7 @@ return [
         'mysql' => [
             'driver' => 'sqlite',
             //'url' => env('DATABASE_URL_SQLITE'),
-            'database' => env('DB_DATABASE_SQLITE_ALL/..', database_path('matth25v6.db')),
+            'database' => env('DB_DATABASE_SQLITE_ALL'),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
