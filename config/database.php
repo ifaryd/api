@@ -53,7 +53,7 @@ return [
         'mysql' => [
             'driver' => 'sqlite',
             //'url' => env('DATABASE_URL_SQLITE'),
-            'database' => env('DB_DATABASE_SQLITE_ALL'),
+            'database' => env('DB_DATABASE_SQLITE_ALL/..', database_path('matth25v6.db')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
