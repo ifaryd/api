@@ -62,3 +62,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+server ip
+ssh -p 65002 u290503316@191.96.56.225
+cd domains/matthieu25v6.org/public_html
