@@ -39,6 +39,9 @@ return [
         'home_subtitle15' => "Nom",
         'home_subtitle16' => "Chapitre",
         'home' => 'Accueil',
+        'all_sermons' => 'Toutes les prédications',
+        'select_country' => 'Sélectionner le pays',
+        'select_user' => 'Sélectionner'
     ],
 
     'menu'=>[

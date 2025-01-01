@@ -3,7 +3,7 @@
   $assetUrl = env('PUBLIC_FILE');
   $locale = session('locale');
   if(!isset($locale)){
-    $locale = "fr";
+    $locale = "en";
   }
 @endphp
 @section('content')
@@ -178,7 +178,7 @@
         @endif
         @endforeach
 
-        <a href="/predications" class="btn btn-small">{!! nl2br(__('Toutes les predications')) !!}</a>
+        <a href="/predications" class="btn btn-small">{!! nl2br(__('app.app.all_sermons')) !!}</a>
       </div>
       </div><!-- / .row -->
     </section><!-- / .container -->

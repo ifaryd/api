@@ -284,7 +284,7 @@
               <div class="row">
                 
                 <div class="col-sm-6">
-                  <small>&copy; <script>document.write(new Date().getFullYear());</script> matthieu25v6.org Made by <a class="no-style-link" href="" target="_blank">PKP-DEV</a></small>
+                  <small>&copy; <script>document.write(new Date().getFullYear());</script> matthieu25v6.org</small>
                 </div>
 
                 <div class="col-sm-6">

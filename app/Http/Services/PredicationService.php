@@ -26,7 +26,7 @@ class PredicationService{
       }
       $predications = Langue::orderBy('id', "ASC")->whereHas('predications', function ($query){
       });
-
+     
       if(!$request->langue){
         $predications = DataModel::with('langue')->get();
         if ($request->per_page){

@@ -13,7 +13,6 @@
     font-weight: 100;
   }
 
-
   @media only screen and (min-width: 768px) {
     .sec-heading{
       margin-top: -66px;
@@ -81,7 +80,7 @@
 <section class="container section">
     <div class="row ws-m" id="invoice">
       
-      <header class="sec-heading">
+      <header style="margin-top: 1px" class="sec-heading">
         <h2 class="pred-title">{{ $predication->chapitre }} : {{ $predication->titre }}</h2>
         <span class="subheading lesr" style="color:black !important">{{ $predication->sous_titre }}</span>
       </header>

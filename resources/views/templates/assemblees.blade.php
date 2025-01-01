@@ -4,12 +4,46 @@
   $langue = '';
   $url ="assemblees";
 @endphp
+
 <style>
-    .placeholder{color: grey;}
+  .placeholder{color: grey;}
 select option:first-child{color: grey; display: none;}
 select option{color: #555;}
+
+  @media only screen and (min-width: 768px) {
+    .small-content{
+      margin-bottom: 0px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .small-content{
+      margin-top: 12px !important;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .small-content{
+      margin-top: 80px !important;
+    }
+}
+
+/* Écrans de moins de 600px (mobiles) */
+@media only screen and (max-width: 600px) {
+  .small-content{
+      margin-top: 80px !important;
+    }
+}
+
+/* Écrans de moins de 480px (petits mobiles) */
+@media only screen and (max-width: 480px) {
+  .small-content{
+      margin-top: 100px !important;
+    }
+}
+  
 </style>
-<header class="page-title pt-small" style="margin-top: 70px;">
+<!--<header class="page-title pt-small" style="margin-top: 90px;">
     <div class="container">
       <div class="row">
         <h1 class="col-sm-6">{{__('app.app.home_subtitle10')}}</h1>
@@ -19,9 +53,9 @@ select option{color: #555;}
         </ol>
       </div>
     </div>
-  </header>
+  </header>-->
 
-  <div class="container section">
+  <div class="container section small-content">
     <div class="row">
       <!-- Highlited Rows Table -->
     <div class="col-md-offset-0 col-lg-12 ws-m">
@@ -41,11 +75,12 @@ select option{color: #555;}
         </nav>
         @endif
         <div>
-            <select class="form-control placeholder" onchange="change(this)" style="font-size: 18px;">
-              <option>...</option>
+          <label style="color:red">{{__('app.app.select_country')}}</label>
+            <select class="form-control placeholder" onchange="change(this)" style="font-size: 18px; color:blue">
+              <option>Selectionner votre pays</option>
                 @foreach($chantres as $chantre)
                     @if($chantre->id == $pays_id)
-                      <option selected value="{{ $chantre->id }}">{{ $chantre->nom }}</option>
+                      <option class="color:white" selected value="{{ $chantre->id }}">{{ $chantre->nom }}</option>
                     @else
                       <option value="{{ $chantre->id }}">{{ $chantre->nom }}</option>
                     @endif

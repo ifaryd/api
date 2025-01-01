@@ -24,7 +24,7 @@ return [
 'prophete' => 'Prophet',
 'defiler' => 'Scroll',
 'home_subtitle2' => "The Words of Eternal Life Today",
-'home_subtitle3' => "Like the prophets of the Bible, in April 1993, a man who had never been in a church received in vision the visitation of an Angel who commissioned him for a Message intended for the Salvation of humanity in fulfillment of Matth.25:6 and Revel.12:14.",
+'home_subtitle3' => "Like the prophets of the Bible, in April 1993, a man who had never been in a church, received in a vision, the visitation of an Angel who commissioned him for a Message destined for the Salvation of mankind, in fulfilment of Mat.25:6 and Rev. 12:14.",
 'home_subtitle4' => "The message of Matthew 25:6",
 'home_subtitle5' => "Read more",
 'home_subtitle6' => "No associated text",
@@ -38,6 +38,9 @@ return [
 'home_subtitle14' => "City",
 'home_subtitle15' => "Name",
 'home_subtitle16' => "Chapter",
+'all_sermons' => 'All the sermons',
+'select_country' => 'Select the country',
+'select_user' => 'Select'
 ],
 
 'menu'=>[
@@ -46,7 +49,7 @@ return [
 'cantique' => 'hymns',
 'galerie' => 'Galeries',
 'photo' => 'Pictures',
-'video' => 'Movies',
+'video' => 'Videos',
 'assemblees' => 'Midnight cry in the world',
 'contactez' => 'contact us',
 'contact' => 'Contacts',
