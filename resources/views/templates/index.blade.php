@@ -12,6 +12,7 @@
     color:black !important;
     font-size: 18px;
     font-weight: 100;
+    margin-top: 30px; 
   }
   .sec-heading {
   margin-bottom: 30px !important;
@@ -28,6 +29,9 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .app-fonnt{
+    margin-top: 60px; 
+  }
   #predication-sm{
     
   }
