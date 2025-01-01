@@ -74,8 +74,25 @@
   footer{
     font-size: 18px;
   }
+  .drapeau{
+    height: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .drapeau-div{
+    display: flex; 
+    justify-content:center; 
+    align-items:center; 
+    height: 60px;
+  }
 </style>
 <nav class="navbar navbar-default navbar-trans-dark  navbar-fixed-top navbar-static-top mega">
+  <div class="drapeau-div">
+    <a href="/changeLanguage/en"><img class="drapeau" src="{{asset($assetUrl.'/images/drapeau/en.jpg')}}" alt="logo_en"></a>
+    <a href="/changeLanguage/fr"><img class="drapeau" src="{{asset($assetUrl.'/images/drapeau/fr.jpg')}}" alt="logo_fr"></a>
+    <a href="/changeLanguage/es"><img class="drapeau" src="{{asset($assetUrl.'/images/drapeau/es.jpg')}}" alt="logo_es"></a>
+    <a href="/changeLanguage/pt"><img class="drapeau" src="{{asset($assetUrl.'/images/drapeau/pt.jpg')}}" alt="logo_pt"></a>
+  </div>
   <div class="container" style="min-width: 93% !important;">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">

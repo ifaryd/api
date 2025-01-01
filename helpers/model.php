@@ -52,8 +52,8 @@ function setLocalApplication($locale = ''){
       App::setLocale($locale);
   }
   else{
-      App::setLocale('fr');
-      $locale = 'fr';
+      App::setLocale('en');
+      $locale = 'en';
   }
 
   $langue = Langue::where('initial', $locale.'-'.$locale)->first();

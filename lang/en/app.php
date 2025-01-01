@@ -68,7 +68,7 @@ return [
 'subject' => 'Subject',
 'placeholder' => 'Enter your',
 'message' => 'Message',
-'contact_us' => 'Contact_us',
+'contact_us' => 'Contact us',
 'envoyer'  => 'Send',
 "wait" => 'Please wait...'
 ]
