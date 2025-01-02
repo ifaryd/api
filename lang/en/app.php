@@ -47,7 +47,7 @@ return [
 'home' => 'Home',
 'predication' => 'sermons',
 'cantique' => 'hymns',
-'galerie' => 'Galeries',
+'galerie' => 'Gallery',
 'photo' => 'Pictures',
 'video' => 'Videos',
 'assemblees' => 'Midnight cry in the world',

@@ -30,7 +30,7 @@
 
 @media only screen and (max-width: 768px) {
   .app-fonnt{
-    margin-top: 60px; 
+    margin-top: 85px; 
   }
   #predication-sm{
     
