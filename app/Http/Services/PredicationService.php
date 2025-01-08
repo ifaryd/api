@@ -9,9 +9,9 @@ use App\Models\Langue;
 
 class PredicationService{
 
-    public function findDataModel($id)
+    public function findDataModel($id, $langueId = null)
     {
-      $data = $this->find($id);
+      $data = $this->find($id, $langueId);
       $data->versets = $data->versets;
       $data->langue = $data->langue;
       return new DataResource($data);
@@ -19,7 +19,7 @@ class PredicationService{
   
     public function filterDataModel(Request $request){
 
-      $data;
+      $data = null;
       if($request->mobile && $request->langue){
         $data = DataModel::where('langue_id', $request->langue)->get();
         return DataResource::collection($data);
@@ -80,9 +80,16 @@ class PredicationService{
       return $data->delete();
     }
   
-    public function find($id)
+    public function find($id, $langueId = null)
     {
-      $data = DataModel::find($id);
+      $data = null;
+      if($langueId){
+       $data = DataModel::where('langue_id', $langueId)->where('numero', $id)->first();
+      }
+      else{
+        $data = DataModel::find($id);
+      }
+      
       if (!$data) modelNotFound();
       return $data;
     }

@@ -65,4 +65,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 server ip
 ssh -p 65002 u290503316@191.96.56.225
-cd domains/matthieu25v6.org/public_html
+cd domains/philippekacou.org/public_html

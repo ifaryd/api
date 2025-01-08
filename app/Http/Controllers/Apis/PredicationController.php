@@ -44,9 +44,9 @@ class PredicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-      return $this->dataService->findDataModel($id);
+      return $this->dataService->findDataModel($id, $request->langueId);
     }
 
     /**
