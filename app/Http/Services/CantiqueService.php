@@ -19,7 +19,7 @@ class CantiqueService{
 
     public function filterDataModel(Request $request){
       
-      $data;
+      $data = null;
       
       if($request->mobile){
         $data = DataModel::all();

@@ -41,10 +41,10 @@ public function merges()
     #$this->mergeChantreChargesJson();
 
     #return $this->mergeLanguageCommon();
-    #return $this->mergeLanguageData("Français", "fr-fr", "France", "fr", true);
+    return $this->mergeLanguageData("Français", "fr-fr", "France", "fr", true);
     #return $this->mergeLanguageData("Anglais", "en-en", "Angletèrre", "gb", true);
     #return $this->mergeLanguageData("Espagnol", "es-es", "Espagne", "es", true);
-    return $this->mergeLanguageData("Portugais", "pt-pt", "Portugal", "pt", true);
+    #return $this->mergeLanguageData("Portugais", "pt-pt", "Portugal", "pt", true);
 
     #return $this->mergeConcordances("fr-fr");
     #return $this->mergeConcordances("en-en");
@@ -95,7 +95,7 @@ private function mergeLanguageData($langue, $initial_langue, $pays, $sigle_pays,
     //$temoignages =  $this->mergeTemoignages($initial_langue);
     //$photos = $this->mergePhotos($initial_langue);
     //$videos = $this->mergeVideos($initial_langue);
-    $confirmes = $this->mergeConfirmes($initial_langue);
+    //$confirmes = $this->mergeConfirmes($initial_langue);
     return $predications;
 }
 
@@ -608,7 +608,7 @@ private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $
     $dataModel = new Predication;
 
     $inRange = $this->predicationIntervalle(162, 162);
-
+    $inRange = [146, 160, 162];
     $predications = $dataModel::on('sqlite')->whereIn('numero', $inRange)->withTrashed()->get();
 
     if(!isset($predications) || empty($predications)){
@@ -694,6 +694,8 @@ private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $
                         'urlContent' => $verset->urlContent,
                         ]
                     );
+
+                    \Log::info("Verset: ".$verset->numero);
                 }
     
             }

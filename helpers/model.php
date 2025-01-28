@@ -36,7 +36,7 @@ function dirigeantAssemblee($assemblee_id){
     ->where("assemblee_id", $assemblee_id)
     ->where("principal", 1)
     ->first();
-    return $user = User::find($userId->user_id);
+    return User::find($userId->user_id);
 }
 
 function setLocalApplication($locale = ''){
