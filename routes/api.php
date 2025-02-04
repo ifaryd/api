@@ -19,6 +19,7 @@ use App\Http\Controllers\Apis\AssembleeController;
 use App\Http\Controllers\Apis\ConfirmeController;
 use App\Http\Controllers\Apis\ConcordanceController;
 use App\Http\Controllers\Apis\MergeDbController;
+use App\Http\Controllers\Apis\WriteToJsonController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -52,6 +53,7 @@ Route::apiResources([
     'confirmes' => ConfirmeController::class,
 ]);
 
+Route::any('write-to-json/{lang}', [WriteToJsonController::class, 'writeToJson']);
 Route::get('/charge_users', [UserController::class, 'charges_user']);
 Route::get('/merges', [MergeDbController::class, 'merges']);
 Route::post('/concordances', [VersetController::class, 'addConcordance']);

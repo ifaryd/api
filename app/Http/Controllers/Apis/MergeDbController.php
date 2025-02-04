@@ -22,7 +22,7 @@ use App\Models\Video;
 use App\Models\Type;
 use App\Models\Confirme;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
+ini_set('memory_limit', '-1');
 
 class MergeDbController extends Controller
 {
@@ -635,10 +635,6 @@ private function mergePredication($libelle_langue, $initial_langue, $nom_pays, $
             }
 
 
-        // $data =  explode("-", $predicationF->lien_audio)[0];
-        // if(isset($data) && !empty($data)){
-        //     $data = "https://api.soundcloud.com/tracks/".explode("stream/",trim($data))[1];
-        // }
 
         $data = $predicationF->lien_audio;
         $predicationData =  [
