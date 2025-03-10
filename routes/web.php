@@ -167,7 +167,7 @@ Route::get('/cantique/{id}', function ($id) {
 
 Route::get('/contacts', function () {
     setLocalApplication();
-    return view('templates/contacts');
+    return view('templates/contacts'); 
 });
 
 Route::post('/sendEmail', [UserController::class, 'contacts'])->name('contacts');
