@@ -60,7 +60,7 @@ return [
 'apotre_name' => 'Hugo Ze (Angola) / Deutamar Costa (Brasil)',
 'adresse_postale_value' => "BP 374 Sikensi (Côte d'Ivoire)",
 'email' => 'Email',
-'email_value' => 'kacou.philippe@gmail.com',
+'email_value' => 'mat25v6.msg@gmail.com',
 'monter' => 'Ir para cima',
 ],
 

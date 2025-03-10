@@ -60,7 +60,7 @@ return [
 'apotre_name' => 'Yanick Aka',
 'adresse_postale_value' => "BP 374 Sikensi (Côte d'Ivoire)",
 'email' => 'Email',
-'email_value' => 'kacou.philippe@gmail.com',
+'email_value' => 'mat25v6.msg@gmail.com',
 'monter' => 'To go up',
 ],
 

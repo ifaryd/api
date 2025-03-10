@@ -61,7 +61,7 @@ return [
 'apotre_name' => 'César Esparza García (México) / Daniel Rolando Nogales Zapata (Bolivia)',
 'adresse_postale_value' => "BP 374 Sikensi (Côte d'Ivoire)",
 'email' => 'Correo electrónico',
-'email_value' => 'kacou.philippe@gmail.com',
+'email_value' => 'mat25v6.msg@gmail.com',
 'monter' => 'Subir',
 ],
 

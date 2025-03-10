@@ -259,7 +259,7 @@
                   <strong><p>{{__('app.menu.telephone_mobile')}}</p></strong>
                   <p>{{__('app.menu.telephone_mobile_number')}} ({{__('app.menu.apotre')}} {{__('app.menu.apotre_name')}})</p>
                   <strong><p>{{__('app.menu.email')}}</p></strong>
-                  <a href="mailto:kacou.philippe@gmail.com" target="_blank" style="color: #fff !important;">{{__('app.menu.email_value')}}</a>
+                  <a href="mailto:mat25v6.msg@gmail.com" target="_blank" style="color: #fff !important;">{{__('app.menu.email_value')}}</a>
                   <strong><p>{{__('app.menu.adresse_postale')}}</p></strong>
                   <p>{{__('app.menu.adresse_postale_value')}}</p>
                   <!-- <strong><p>Skype</p></strong>
